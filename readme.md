@@ -1,8 +1,8 @@
 # TIL : Today I Learned
 
-## Monthly I Learned
+## 월별 계획표
 
-### June, I will ,,,
+### 6월 목표 및 계획
 
 <p>React</p>
 
@@ -19,7 +19,7 @@
 - [ ] colamap 프로젝트 커스텀 오버레이 구현 (더미 데이터를 통해 배열 형식으로 받아온 배열을 렌더링하기)
 - [ ] colamap 프로젝트 백엔드 서버와 연결
 
-### July, I will
+### 7월 목표 및 계획
 
 <p>Algorithm</p>
 
@@ -29,7 +29,7 @@
 
 - [ ] 팀원간 피드백 및 1차 배포 (7월까지)
 
-## React (+ typescrip)
+## React (+ typescript)
 
 ## JavaScript
 
