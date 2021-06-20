@@ -47,8 +47,10 @@
 
 - <a href="https://github.com/junh0328/TIL/tree/master/React#Chapter-1-%EB%A6%AC%EC%95%A1%ED%8A%B8-%EC%8B%9C%EC%9E%91">Chapter 1, 리액트 시작</a>
 - <a href="https://github.com/junh0328/TIL/tree/master/React#Chapter-2-JSX">Chapter 2, JSX</a>
-- <a href="https://github.com/junh0328/TIL/tree/master/React#Chapter-2-JSX">Chapter 3, 컴포넌트</a>
+- <a href="https://github.com/junh0328/TIL/tree/master/React#Chapter-3-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8">Chapter 3, 컴포넌트</a>
 - <a href="https://github.com/junh0328/TIL/tree/master/React#Chapter4-Event-Handling">Chapter 4, Event Handling</a>
+- <a href="">Chapter 5, ref DOM에 이름 달기</a>
+- <a href="">Chapter 6, 컴포넌트 반복</a>
 
 ### React에 타입스크립트 적용하기
 

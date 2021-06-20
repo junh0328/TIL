@@ -10,6 +10,8 @@
 - [Chapter 2, JSX](#Chapter-2-JSX)
 - [Chapter 3, 컴포넌트](#Chapter-3-컴포넌트)
 - [Chapter 4, Event Handling](#Chapter4-Event-Handling)
+- [Chapter 5, ref DOM에 이름 달기](#Chapter-5-ref-DOM에-이름-달기)
+- [Chapter 6, 컴포넌트 반복](#Chapter-6-컴포넌트-반복)
 
 ## Chapter 1 리액트 시작
 
@@ -1099,3 +1101,375 @@ const EventPractice = () => {
 };
 export default EventPractice;
 ```
+
+## Chapter 5 ref DOM에 이름 달기
+
+<p>일반 HTML에서 DOM 요소에 이름을 달 때는 id 선택자를 사용합니다.</p>
+
+```html
+<div id="“my-element“"></div>
+```
+
+<p>특정 DOM 요소에 어떤 작업을 해야 할 때 이렇게 요소에 id를 달면 CSS에서 특정 id에 특정 스타일을 적용하거나 자바스크립트에서 해당 id를 가진 요소를 찾아서 작업할 수 있겠죠. 이 책에서 다루는 리액트 프로젝트에 사용하는 public/index.html 파일에도 id가 root인 div 요소가 있습니다.</p>
+
+```html
+<html lang="“en“">
+  <head>
+    <meta charset="“utf-8“" />
+    <meta
+      name="“viewport“"
+      content="“width"
+      ="device-width,"
+      initial-scale="1“"
+    />
+    <link rel=“shortcut icon“ href=“%PUBLIC_URL%/favicon.ico“>
+    <title>React App</title>
+  </head>
+  <body>
+    <div id="“root“"></div>
+  </body>
+</html>
+```
+
+<p>그리고 src/index.js 파일 중에는 id가 root인 요소에 리액트 컴포넌트를 렌더링하라는 코드가 있습니다.</p>
+
+```js
+📁src/index.js
+
+…
+ReactDOM.render(<App />, document.getElementById(‘root‘));
+```
+
+<p>이렇게 HTML에서 id를 사용하여 DOM에 이름을 다는 것처럼 리액트 프로젝트 내부에서 DOM에 이름을 다는 방법이 있습니다. 바로 ref(reference의 줄임말) 개념입니다.</p>
+
+> 리액트 컴포넌트 안에서는 id를 사용하면 안 되나요?
+
+<p>리액트 컴포넌트 안에서도 id를 사용할 수는 있습니다. JSX 안에서 DOM에 id를 달면 해당 DOM을 렌더링할 때 그대로 전달됩니다. 하지만 특수한 경우가 아니면 사용을 권장하지 않습니다. 예를 들어 같은 컴포넌트를 여러 번 사용한다고 가정해 보세요. HTML에서 DOM의 id는 유일(unique)해야 하는데, 이런 상황에서는 중복 id를 가진 DOM이 여러 개 생기니 잘못된 사용입니다.</p>
+
+<p>ref는 전역적으로 작동하지 않고 컴포넌트 내부에서만 작동하기 때문에 이런 문제가 생기지 않습니다.</p>
+
+<p>대부분은 id를 사용하지 않고도 원하는 기능을 구현할 수 있지만, 다른 라이브러리나 프레임워크와 함께 id를 사용해야 하는 상황이 발생할 수 있습니다. 이런 상황에서는 컴포넌트를 만들 때마다 id 뒷부분에 추가 텍스트를 붙여서(예: button01 button02 button03…) 중복 id가 발생하는 것을 방지해야 합니다.</p>
+
+### ref는 어떤 상황에서 사용해야 할까?
+
+<p>먼저 ref는 어떤 상황에 사용해야 하는지 제대로 짚고 넘어가 봅시다. 일단 특정 DOM에 작업을 해야 할 때 ref를 사용한다는 것은 이미 파악했습니다. 하지만 대체 어떤 작업을 할 때 ref를 사용해야 할까요? 'DOM을 꼭 직접적으로 건드려야 할 때' 입니다.하지만 리액트에서 이런 작업은 굳이 DOM에 접근하지 않아도 state로 구현할 수 있습니다.</p>
+
+<p>이 장에서는 클래스형 컴포넌트에서 ref를 사용하는 방법을 알아보겠습니다. 함수형 컴포넌트에서 ref를 사용하려면 Hooks를 사용해야 하기 때문에 8장에서 Hooks를 배우면서 알아볼 것입니다.</p>
+
+```js
+📁exams/src/components/ValidationSample.js
+
+import React, { Component } from "react";
+import "./style.css";
+
+class ValidationSample extends Component {
+  state = {
+    password: "",
+    clicked: false,
+    validated: false,
+  };
+
+  handleChange = (e) => {
+    this.setState({
+      password: e.target.value,
+    });
+  };
+
+  handleButtonClick = () => {
+    this.setState({
+      clicked: true,
+      validated: this.state.password === "0000",
+    });
+  };
+
+  render() {
+    return (
+      <div>
+        <input
+          type="password"
+          value={this.state.password}
+          onChange={this.handleChange}
+          className={
+            this.state.clicked
+              ? this.state.validated
+                ? "success"
+                : "failure"
+              : ""
+          }
+        />
+        <button onClick={this.handleButtonClick}>검증하기</button>
+      </div>
+    );
+  }
+}
+
+export default ValidationSample;
+```
+
+<p>input 에서는 onChange 이벤트가 발생하면 handleChange를 호출하여 state의 password 값을 업데이트하게 했습니다. button에서는 onClick 이벤트가 발생하면 handleButtonClick을 호출하여 Clicked 값을 참으로 설정했고, validate 값을 검증 결과로 설정했습니다. </p>
+
+<p>input의 className 값은 버튼을 누르기 전에는 비어 있는 문자열을 전달하며, 버튼을 누른 후 검증 경과에 따라 success 또는 failure 값을 설정합니다.</p>
+
+<img width="40%" src="./images/success.png" alt="success"/>
+<img width="40%" src="./images/false.png" alt="false"/>
+
+> DOM을 꼭 사용해야 하는 상황
+
+<p>앞 예제에서는 state를 사용하여 우리에게 필요한 기능을 구현했지만, 가끔 state만으로 해결할 수 없는 기능이 있습니다. 어떤 상황인지 알아볼까요?</p>
+
+- 특정 input에 포커스 주기
+- 스크롤 박스 조작하기
+- Canvas 요소에 그림 그리기 등
+
+<p>이때는 어쩔 수 없이 DOM에 직접 접근해야 하는데, 이를 위해 바로 ref를 사용합니다.</p>
+
+### ref 사용
+
+<p>ref를 사용하는 방법은 두 가지입니다.</p>
+
+- 콜백 함수를 통한 ref 설정
+- createRef를 통한 ref 설정
+
+> 콜백 함수를 통한 ref(레퍼런스) 설정
+
+<p>ref를 만드는 가장 기본적인 방법은 콜백 함수를 사용하는 것입니다. ref를 달고자 하는 요소에 ref라는 콜백 함수를 props로 전달해 주면 됩니다. 이 콜백 함수는 ref 값을 파라미터로 전달받습니다. 그리고 함수 내부에서 파라미터로 받으 ref를 컴포넌트의 멤버 변수로 설정해 줍니다.</p>
+
+```
+<input ref={(ref) => {this.input=ref}} />
+```
+
+<p>이렇게 하면 앞으로 this.input은 input 요소의 DOM을 가리킵니다. ref의 이름은 원하는 것으로 자유롭게 지정할 수 있습니다. DOM 타입과 관계없이 this.superman = ref처럼 마음대로 지정합니다.</p>
+
+> createRef를 통한 ref 설정
+
+<p>ref를 만드는 또 다른 방법은 리액트에 내장되어 있는 createRef라는 함수를 사용하는 것입니다. 이 함수를 사용해서 만들면 더 적은 코드로 쉽게 사용할 수 있습니다. 이 기능은 리액트 v16.3부터 도입되었으며 이전 버전에서는 작동하지 않습니다.</p>
+
+```js
+import React, { Component } from ‘react‘;
+
+class RefSample extends Component {
+  input = React.createRef();
+
+handleFocus = () => {
+    this.input.current.focus();
+  }
+
+render() {
+    return (
+      <div>
+        <input ref={this.input} />
+      </div>
+    );
+  }
+}
+
+export default RefSample;
+```
+
+<p>createRef를 사용하여 ref를 만들려면 우선 컴포넌트 내부에서 멤버 변수로 React.createRef()를 담아 주어야 합니다. 그리고 해당 멤버 변수를 ref를 달고자 하는 요소에 ref props로 넣어 주면 ref 설정이 완료됩니다.</p>
+
+<p>설정한 뒤 나중에 ref를 설정해 준 DOM에 접근하려면 this.input.current를 조회하면 됩니다. 콜백 함수를 사용할 때와 다른 점은 이렇게 뒷부분에 .current를 넣어 주어야 한다는 것입니다.</p>
+
+### 컴포넌트에 ref 달기
+
+<p>리액트에서는 컴포넌트에도 ref를 달 수 있습니다. 이 방법은 주로 컴포넌트 내부에 있는 DOM을 컴포넌트 외부에서 사용할 때 씁니다. 컴포넌트에 ref를 다는 방법은 DOM에 ref를 다는 방법과 똑같습니다.</p>
+
+```
+<MyComponent ref={(ref) => {this.myComponent=ref}}/>
+```
+
+<p>이렇게 하면 MyComponent 내부의 메서드 및 멤버 변수에도 접근할 수 있습니다. 즉, 내부의 ref에도 접근할 수 있습니다(예: myComponent.handleClick, myComponent.input 등).</p>
+
+### 정리
+
+<p>컴포넌트 내부에서 DOM에 직접 접근해야 할 때는 ref를 사용합니다. 먼저 ref를 사용하지 않고도 기능을 구현할 수 있는지 반드시 고려한 후에 활용하세요 </p>
+
+<p>컴포넌트끼리 데이터를 교류할 때는 언제나 데이터를 부모 ↔ 자식 흐름으로 교류해야 합니다. 나중에 리덕스 혹은 Context API를 사용하여 효율적으로 교류하는 방법을 배울 것입니다.</p>
+
+## Chapter 6 컴포넌트 반복
+
+<p>웹 애플리케이션을 만들다 보면 다음과 같이 반복되는 코드를 작성할 때가 있습니다. </p>
+
+```js
+import React from ‘react‘;
+
+const IterationSample = () => {
+  return (
+    <ul>
+      <li>눈사람</li>
+      <li>얼음</li>
+      <li>눈</li>
+      <li>바람</li>
+    </ul>
+  );
+};
+
+export default IterationSample;
+```
+
+<p>코드에서 다음 형태가 계속 반복되는 것을 볼 수 있습니다.</p>
+
+```js
+<li>...</li>
+```
+
+<p>리액트 프로젝트에서 반복적인 내용을 효율적으로 보여 주고 관리하기 위해서 자바스크립트 배열의 프로토타입 함수인 map( ) 함수를 이용합니다.</p>
+
+> <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array">자바스크립트 배열 프로토타입 함수 보기</a>
+
+### 자바스크립트 배열의 map( ) 함수
+
+<p>자바스크립트 배열 객체의 내장 함수인 map 함수를 사용하여 반복되는 컴포넌트를 렌더링할 수 있습니다. map 함수는 파라미터로 전달된 함수를 사용해서 배열 내 각 요소를 원하는 규칙에 따라 변환한 후 그 결과로 새로운 배열을 생성합니다.</p>
+
+```
+arr.map(callback, [thisArg])
+
+- callback: 새로운 배열의 요소를 생성하는 함수로 파라미터는 다음 세 가지입니다.
+  > currentValue: 현재 처리하고 있는 요소
+  > index: 현재 처리하고 있는 요소의 index 값
+  > array: 현재 처리하고 있는 원본 배열
+- thisArg(선택 항목): callback 함수 내부에서 사용할 this 레퍼런스
+```
+
+<p>map 함수를 사용하여 배열 [1, 2, 3, 4, 5]의 각 요소를 제곱해서 새로운 배열을 생성하겠습니다.</p>
+
+```js
+case 1 : 기본 문법으로 map 활용하기
+
+var numbers = [1, 2, 3, 4, 5];
+var result = numbers.map(function (num) {  // 파라미터 자리에 콜백으로 함수를 작성한 모습입니다
+  return num * num;
+});
+
+console.log(result);
+
+case 2 : 화살표 함수를 통해 map 활용하기
+
+const numbers = [1, 2, 3, 4, 5];
+const result = numbers.map(num => num * num);
+console.log(result);
+
+>>>
+[1, 4, 9, 16, 26] // 두 result 값 모두 같은 값을 보여줍니다.
+```
+
+### 데이터 배열을 컴포넌트 배열로 변환하기
+
+<p>기존 배열에 있는 값들을 제곱하여 새로운 배열을 생성했습니다. 똑같은 원리로 기존 배열로 컴포넌트로 구성된 배열을 생성할 수도 있답니다.</p>
+
+```js
+import React from "react";
+
+const IterationSample = () => {
+  const names = ["눈사람", "얼음", "눈", "바람"];
+  const nameList = names.map((name) => <li>{name}</li>);
+  return <ul>{nameList}</ul>;
+};
+
+export default IterationSample;
+```
+
+<p>map 함수에서 JSX를 작성할 때는 앞서 다룬 예제처럼 DOM 요소를 작성해도 되고, 컴포넌트를 사용해도 됩니다.</p>
+
+### key
+
+<p>리액트에서 key는 컴포넌트 배열을 렌더링했을 때 어떤 원소에 변동이 있었는지 알아내려고 사용합니다. 예를 들어 유동적인 데이터를 다룰 때는 원소를 새로 생성할 수도, 제거할 수도, 수정할 수도 있죠. key가 없을 때는 Virtual DOM을 비교하는 과정에서 리스트를 순차적으로 비교하면서 변화를 감지합니다. 하지만 key가 있다면 이 값을 사용하여 어떤 변화가 일어났는지 더욱 빠르게 알아낼 수 있습니다.</p>
+
+<p>key 값을 설정할 때는 map 함수의 인자로 전달되는 함수 내부에서 컴포넌트 props를 설정하듯이 설정하면 됩니다. key 값은 언제나 유일해야 합니다. 따라서 데이터가 가진 고윳값을 key 값으로 설정해야 합니다.</p>
+
+```js
+import React from "react";
+
+const IterationSample = () => {
+  const names = ["눈사람", "얼음", "눈", "바람"];
+  const namesList = names.map((name, index) => <li key={index}>{name}</li>);
+  return <ul>{namesList}</ul>;
+};
+
+export default IterationSample;
+
+// 위 함수에서는 각 배열이 가진 고유 값인 index 값을 key로 사용하였습니다.
+```
+
+### 응용
+
+> 데이터 추가<br/>
+> 데이터 제거<br/>
+> useRef()를 통한 input 포커싱 <br/>
+> map( ) 함수를 통해 배열 매핑
+
+```js
+import React, { useRef, useState } from "react";
+
+const IterationSample = () => {
+  const style = { cursor: "pointer" };
+  const inputRef = useRef();
+  const [names, setNames] = useState([
+    { id: 1, text: "눈사람" },
+    { id: 2, text: "얼음" },
+    { id: 3, text: "눈" },
+    { id: 4, text: "바람" },
+  ]);
+  const [inputText, setInputText] = useState("");
+  const [nextId, setNextId] = useState(5); // 새로운 항목을 추가할 때 사용할 id
+
+  // change 감지
+  const onChange = (e) => {
+    setInputText(e.target.value);
+  };
+
+  // 데이터 추가
+  const onClick = (e) => {
+    e.preventDefault();
+    if (inputText) {
+      const nextNames = names.concat({
+        id: nextId,
+        text: inputText,
+      });
+      setNextId(nextId + 1);
+      setNames(nextNames);
+      setInputText("");
+    } else {
+      alert("입력한 값이 없습니다\n아무거나 입력해주세요🥲");
+      inputRef.current.focus();
+    }
+  };
+
+  // 데이터 제거
+
+  const onRemove = (id) => {
+    // 해당 id 값을 가진 객체 filter, id가 클릭한 아이디가 아닌것 만 보여줘
+    const nextNames = names.filter((name) => name.id != id);
+    console.log(nextNames);
+    // 추후 결과값은 namse 배열에 다시 렌더링
+    setNames(nextNames);
+  };
+
+  return (
+    <div>
+      <form onSubmit={onClick}>
+        <input ref={inputRef} value={inputText} onChange={onChange} />
+        <button onClick={onClick}>추가</button>
+      </form>
+      {names &&
+        names.map((name) => (
+          <li
+            style={style}
+            key={name.id}
+            onDoubleClick={() => {
+              onRemove(name.id);
+            }}
+          >
+            {name.text}
+          </li>
+        ))}
+    </div>
+  );
+};
+
+export default IterationSample;
+```
+
+### 정리
+
+<p>상태 안에서 배열을 변형할 때는 배열에 직접 접근하여 수정하는 것이 아니라 concat, filter 등의 배열 내장 함수를 사용하여 새로운 배열을 만든 후 이를 새로운 상태로 설정해 주어야 한다는 점을 명심하세요. 이 책에서는 더욱 다양한 배열 및 객체 업데이트 방법들을 계속 배워 나갈 것입니다.</p>
