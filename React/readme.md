@@ -2,12 +2,14 @@
 
 ## 들어가며
 
-이 readme 는 'velopert' 님이 쓰신 책인 '리액트를 다루는 기술'의 내용을 공부하고 정리하여 만든 정리본입니다. 이미지의 출처는 모두 '리액트를 다루는 기술' 내의 이미지를 사용하였습니다.
+이 readme 는 'velopert' 님이 쓰신 책인 '리액트를 다루는 기술'의 내용을 공부하고 정리하여 만든 정리본입니다. 이미지의 출처는 모두 '리액트를 다루는 기술' 내의 이미지를 사용하였습니다. <a href="https://thebook.io/080203/">the book.io</a> 를 통해서 해당 책의 내용을 볼 수 있습니다.
 
 ## 목차
 
 - [Chapter 1, 리액트 시작](#Chapter-1-리액트-시작)
 - [Chapter 2, JSX](#Chapter-2-JSX)
+- [Chapter 3, 컴포넌트](#Chapter-3-컴포넌트)
+- [Chapter 4, Event Handling](#Chapter4-Event-Handling)
 
 ## Chapter 1 리액트 시작
 
@@ -30,13 +32,13 @@
 
 <p>하지만, 이것이 과연 가능할까요? 웹 브라우저에서 이 방식대로 하면 CPU 점유율도 크게 증가할텐데요. DOM은 느리니까요. 페이스북 개발팀이 앞서 설명한 방식으로 최대한 성능을 아끼고 편안한 사용자 경험을 제공하면서 구현하고자 개발한 것이 바로 리액트(react)입니다.</p>
 
-### 리액트의 이해
+> 리액트의 이해
 
 <p>리액트는 자바스크립트 라이브러리로 사용자 인터페이스를 만드는데 사용합니다. 구조가 MVC, MVW 등인 프레임워크와 달리, 오직 V(View)에만 신경 쓰는 라이브러리입니다. 리액트 프로젝트에서 특정 부분이 어떻게 생길지 정하는 선언체가 있는데, 이를 컴포넌트라고 합니다. 컴포넌트는 다른 프레임워크에서 사용자 인터페이스를 다룰 때 사용하는 템플릿과는 다른 개념입니다. 템플릿은 보통 데이터셋이 주어지면 HTML 태그 형식을 문자열로 반환하는데, 이와 달리 컴포넌트는 재사용이 가능한 API로 수많은 기능들을 내장하고 있으며, 컴포넌트 하나에서 해당 컴포넌트의 생김새와 작동 방식을 정의합니다.</p>
 
 <p>사용자 화면에 뷰를 보여 주는 것을 렌더링이라고 합니다. 리액트 라이브러리는 뷰를 어떻게 렌더링하길래 데이터가 변할 때마다 새롭게 리렌더링하면서 성능을 아끼고, 최적의 사용자 경험을 제공할 수 있을까요? 이 비밀을 파악하려면 리액트 컴포넌트가 최초로 실행한 '초기 렌더링'과 컴포넌트의 데이터 변경으로 다시 실행되는 '리렌더링' 개념을 이해해야 합니다.</p>
 
-### 초기 렌더링
+> 초기 렌더링
 
 <p>어떤 UI 관련 프레임워크, 라이브러리를 사용하는지 간에 맨 처음 어떻게 보일지를 정하는 초기 렌더링이 필요합니다. 리액트 에서는 이를 다루는 render() 함수가 있습니다.</p>
 
@@ -53,7 +55,7 @@ render(){ ...}
 1. 문자열 형태의 HTML 코드를 생성합니다.
 2. 특정 DOM에 해당 내용을 주입하면 이벤트가 적용됩니다.
 
-### 조화 과정 (reconciliation)
+> 조화 과정 (reconciliation)
 
 <p>리액트에서 뷰를 업데이트할 때는 "업데이트 과정을 거친다"라고 하기 보다는 "조화(reconciliation)" 과정을 거친다라고 하는 것이 더 정확한 표현입니다. 컴포넌트에서 데이터에 변화가 있을 때 우리가 보기에는 변화에 따라 뷰가 변형되는 것처럼 보이지만, 사실은 새로운 요소를 갈아끼우기 때문입니다. 이 작업 또한 render 함수가 맡아서 합니다. 컴포넌트는 데이터를 업데이트했을 때 단순히 값을 수정하는 것이 아니라, 새로운 데이터를 가지고 render 함수를 또 다시 호출합니다. 하지만, 이때 render 함수가 반환하는 결과를 곧바로 DOM에 반영하지 않고, 이전에 render 함수가 만들었던 컴포넌트 정보와 현재 render 함수가 만든 컴포넌트 정보를 비교합니다. </p>
 
@@ -63,7 +65,7 @@ render(){ ...}
 
 ### 리액트의 특징
 
-### Virttual DOM (가상의 DOM:document object model)
+> Virttual DOM (가상의 DOM:document object model)
 
 <p>DOM은 Document Object Model의 약어입니다. 즉, 객체로 문서 구조를 표현하는 방법으로 XML이나 HTML로 작성합니다. 웹 브라우저는 DOM을 활용하여 객체에 자바스크립트와 CSS를 적용합니다. DOM은 트리 형태라서 특정 노드를 찾거나 수정하거나 제거하거나 원하는 곳에 삽입할 수 있습니다. 요즘 DOM API를 수많은 플랫폼과 웹 브라우저에 사용하는데, 이 DOM에는 치명적인 한 가지 문제점이 있습니다. 바로 동적 UI에 최적화되어 있지 않다는 것입니다. HTML은 자체적으로는 정적입니다. 자바스크립트를 사용하여 이를 동적으로 만들어줄 수 있습니다</p>
 
@@ -102,7 +104,7 @@ render(){ ...}
 
 ## Chapter 2 JSX
 
-### 코드 이해하기
+> 코드 이해하기
 
 ```js
 import React from "react";
@@ -162,7 +164,7 @@ return React.createElement(“div“, null, “Hello “, React.createElement(�
 
 ### JSX 문법
 
-### 감싸인 요소
+> 감싸인 요소
 
 <p>컴포넌트에 여러 요소가 있다면 반드시 부모 요소 하나로 감싸야 합니다. 한번 App.js 파일의 App 컴포넌트 함수 내부를 지우고 다음과 같이 작성해 보세요. 상단에 있는 SVG와 CSS를 import하는 코드도 지워 주세요.</p>
 
@@ -299,7 +301,7 @@ b = 2; // Uncaught TypeError: Assignment to constant variable.
 
 편하게 생각하면 기본적으로 const를 사용하고, 해당 값을 바꾸어야 할 때는 let을 사용하면 되겠습니다.</p>
 
-### If 문 대신 조건부 연산자
+> If 문 대신 조건부 연산자
 
 <p>JSX 내부의 자바스크립트 표현식에서 if 문을 사용할 수는 없습니다. 하지만 조건에 따라 다른 내용을 렌더링해야 할 때는 JSX 밖에서 if 문을 사용하여 사전에 값을 설정하거나, { } 안에 조건부 연산자를 사용하면 됩니다. 조건부 연산자의 또 다른 이름은 삼항 연산자입니다. 이 연산자를 한번 사용해 볼까요?</p>
 
@@ -318,7 +320,7 @@ function App() {
 }
 ```
 
-### AND 연산자(&&)를 사용한 조건부 렌더링
+> AND 연산자(&&)를 사용한 조건부 렌더링
 
 <p>개발하다 보면 특정 조건을 만족할 때 내용을 보여 주고, 만족하지 않을 때 아예 아무것도 렌더링하지 않아야 하는 상황이 올 수 있습니다.  다음과 같이 && 연산자를 사용해서 조건부 렌더링을 할 수 있습니다.</p>
 
@@ -332,3 +334,768 @@ function App() {
 > JSX는 언제 괄호로 감싸야 하나요?
 
 <p>JSX를 작성할 때 괄호로 감쌀 때도 있고, 감싸지 않을 때도 있습니다. 주로 JSX를 여러 줄로 작성할 때 괄호로 감싸고, 한 줄로 표현할 수 있는 JSX는 감싸지 않습니다. JSX를 괄호로 감싸는 것은 필수 사항이 아닙니다. 감싸도 되고 감싸지 않아도 됩니다.</p>
+
+## Chapter 3 컴포넌트
+
+<p>리액트를 사용하여 애플리케이션의 인터페이스를 설계할 때 사용자가 볼 수 있는 요소는 여러 가지 컴포넌트로 구성되어 있습니다. 예를 들어 뒤에서 만들어 볼 일정 관리 애플리케이션을 미리 살펴봅시다.</p>
+
+<img src="./images/TODOLIST.png" alt="TODOLIST">
+
+<p>위 프로젝트는 총 네 가지 컴포넌트를 사용하여 구성했습니다.</p>
+
+- TodoTemplate
+- TodoInput
+- TodoList
+- TodoItem
+
+<p>먼저 전체적인 틀을 잡아 주는 TodoTemplate 컴포넌트입니다. 이 컴포넌트는 현재 화면의 중앙에 있는 사각형 레이아웃의 역할을 하고 있습니다. 그리고 새로운 항목을 추가할 수 있는 TodoInput 컴포넌트입니다. 위 화면에서는 검정색 영역이 바로 TodoInput입니다. 그리고 할 일 항목을 여러 개 보여 주는 TodoList 컴포넌트입니다. 마지막으로 TodoList에서 각 항목을 보여 주기 위해 사용되는 TodoItem 컴포넌트입니다. </p>
+
+<p>컴포넌트의 기능은 단순한 템플릿 이상입니다. 데이터가 주어졌을 때 이에 맞추어 UI를 만들어 주는 것은 물론이고, 라이프사이클 API를 이용하여 컴포넌트가 화면에서 나타날 때, 사라질 때, 변화가 일어날 때 주어진 작업들을 처리할 수 있으며, 임의 메서드를 만들어 특별한 기능을 붙여 줄 수 있습니다.</p>
+
+<p>이 장에서는 먼저 클래스형 컴포넌트에 대해 살펴본 뒤, 컴포넌트를 새로 만들고 사용하는 방법을 알아보겠습니다. 그리고 컴포넌트의 속성 값을 지닌 props와 상태 값을 지닌 state를 사용하는 방법도 알아보겠습니다.</p>
+
+### 클래스형 컴포넌트
+
+<p>컴포넌트를 선언하는 방식은 두 가지입니다. 하나는 함수형 컴포넌트이고, 또 다른 하나는 클래스형 컴포넌트입니다.</p>
+
+> 클래스형 컴포넌트가 어떻게 이루어졌는지 확인해 볼까요?
+
+```js
+import React, { Component } from "react";
+
+class App extends Component {
+  render() {
+    const name = "react";
+    return <div className="react">{name}</div>;
+  }
+}
+
+export default App;
+```
+
+<p>
+클래스형 컴포넌트로 바뀌었지만 역할은 이전에 보았던 함수형 컴포넌트와 똑같습니다. 클래스형 컴포넌트와 함수형 컴포넌트의 차이점은 클래스형 컴포넌트의 경우 이후 배울 state 기능 및 라이프사이클 기능을 사용할 수 있다는 것과 임의 메서드를 정의할 수 있다는 것입니다.  클래스형 컴포넌트안에서는 render 함수가 꼭 있어야 하고, 그 안에서 보여 주어야 할 JSX를 반환해야 합니다.</p>
+
+> ES6의 클래스 문법
+
+<p>ES6 이전에는 자바스크립트에 클래스(class)가 없었습니다. 개념 자체는 있었지만, 그것을 구현하려면 class 대신에 prototype이라는 문법을 사용하여 다음과 같이 작업해야 했습니다.</p>
+
+```js
+function Dog(name) {
+  this.name = name;
+}
+
+Dog.prototype.say = function () {
+  console.log(this.name + ": 멍멍");
+};
+var dog = new Dog("검둥이");
+dog.say(); // 검둥이: 멍멍
+```
+
+<p>ES6 문법부터는 이것과 기능이 똑같은 코드를 class를 사용하여 다음과 같이 작성할 수 있습니다.</p>
+
+```js
+class Dog {
+  constructor(name) {
+    this.name = name;
+  }
+  say() {
+    console.log(this.name + ": 멍멍");
+  }
+}
+
+const dog = new Dog("흰둥이");
+dog.say(); // 흰둥이: 멍멍
+```
+
+> 컴포넌트를 선언할 수 있는 두 가지 방법 중 어느 상황에 함수형 컴포넌트를 사용해야 할까요?
+
+<p>함수형 컴포넌트의 장점을 나열해 보면 다음과 같습니다.</p>
+
+- 클래스형 컴포넌트보다 선언하기가 훨씬 편합니다.
+- 메모리 자원도 클래스형 컴포넌트보다 덜 사용합니다.
+- 프로젝트를 완성하여 빌드한 후 배포할 때도 함수형 컴포넌트를 사용하는 것이 결과물의 파일 크기가 더 작습니다.
+
+<p>함수형 컴포넌트의 주요 단점은 state와 라이프사이클 API의 사용이 불가능하다는 점인데요. 이 단점은 리액트 v16.8 업데이트 이후 Hooks라는 기능이 도입되면서 해결되었습니다. 완전히 클래스형 컴포넌트와 똑같이 사용할 수 있는 것은 아니지만 조금 다른 방식으로 비슷한 작업을 할 수 있게 되었습니다. 이번 장에서 Hooks에 대한 내용은 맛보기로만 조금 배워 보고, 8장에서 더 자세히 다루겠습니다.</p>
+
+<p>리액트 공식 매뉴얼에서는 컴포넌트를 새로 작성할 때 함수형 컴포넌트와 Hooks를 사용하도록 권장하고 있습니다. 하지만 그렇다고 해서 클래스형 컴포넌트가 사라지는 것은 아니므로 클래스형 컴포넌트의 기능은 꼭 알아 두어야 합니다.</p>
+
+### 첫 컴포넌트 생성
+
+> 먼저 함수형 컴포넌트로 작성하고, 나중에 클래스형 컴포넌트로도 작성해 보겠습니다.
+
+```js
+import React from "react";
+
+const MyComponent = () => {
+  return <div>나의 새롭고 멋진 컴포넌트</div>;
+};
+
+export default MyComponent;
+```
+
+<p>이번에 작성한 코드는 이전에 보았던 App 컴포넌트와 형태가 조금 다릅니다. 함수를 작성할 때 function 키워드를 사용하는 대신에 () => {}를 사용하여 함수를 만들어 주었습니다. 이는 ES6에 도입된 화살표 함수 문법입니다.</p>
+
+> ES6의 화살표 함수
+
+<p>화살표 함수(arrow function)는 ES6 문법에서 함수를 표현하는 새로운 방식입니다. 그렇다고 해서 기존 function을 이용한 함수 선언 방식을 아예 대체하지는 않습니다. 사용 용도가 조금 다릅니다. 이 문법은 주로 함수를 파라미터로 전달할 때 유용합니다.</p>
+
+```js
+case 1: 함수 선언식 사용
+setTimeout(function() {
+  console.log('hello world');
+}, 1000);
+
+case 2: 화살표 함수 사용
+setTimeout(() => {
+  console.log('hello world')
+}), 1000);
+```
+
+<p>이 문법이 기존 function을 대체할 수 없는 것은 용도가 다르기 때문입니다. 무엇보다 서로 가리키고 있는 this 값이 다릅니다.</p>
+
+> 다음 코드를 한번 확인해 보세요
+
+```js
+case 1 : 일반 함수
+
+function BlackDog() {
+  this.name = "흰둥이";
+  return {
+    name: "검둥이",
+    bark: function () {
+      console.log(this.name + ": 멍멍!");
+    },
+  };
+}
+
+const blackDog = new BlackDog();
+blackDog.bark(); // 검둥이: 멍멍! why? 같은 블록 스코프 { } 내의 name을 this 키워드로 참조했기 때문에, 일반 함수는 자신이 종속된 객체를 this로 가리킨다
+
+case 2 : 화살표 함수
+
+function WhiteDog() {
+  this.name = "흰둥이";
+  return {
+    name: "검둥이",
+    bark: () => {
+      console.log(this.name + ": 멍멍!");
+    },
+  };
+}
+
+const whiteDog = new WhiteDog();
+whiteDog.bark(); // 흰둥이: 멍멍! why? 화살표 함수는 자신이 종속된 인스턴스 (whiteDog 함수)를 가리키기 때문에
+```
+
+<p>함수형 컴포넌트를 선언할 때 function 키워드를 사용하는 것과 화살표 함수 문법을 사용하는 것간에는 큰 차이가 없습니다. 화살표 함수를 사용하는 것이 좀 더 간결하기 때문에 이 책에서는 함수형 컴포넌트를 만들 때 화살표 함수 문법을 사용하겠습니다. 어떤 방식을 선택할지는 단지 각자의 취향에 달려 있습니다.</p>
+
+### props
+
+<p>props는 properties를 줄인 표현으로 컴포넌트 속성을 설정할 때 사용하는 요소입니다. props 값은 해당 컴포넌트를 불러와 사용하는 부모 컴포넌트에서 설정할 수 있습니다.</p>
+
+> JSX 내부에서 props 렌더링
+
+<p>우선 MyComponent 컴포넌트를 수정하여 해당 컴포넌트에서 name이라는 props를 렌더링하도록 설정해 봅시다. props 값은 컴포넌트 함수의 파라미터로 받아 와서 사용할 수 있습니다. props를 렌더링할 때 2장에서 배웠던 것처럼 JSX 내부에서 { } 기호로 감싸 주면 됩니다.</p>
+
+```js
+import React from ‘react‘;
+
+const MyComponent = props => {
+return <div>안녕하세요, 제 이름은 {props.name}입니다.</div>;
+};
+
+export default MyComponent;
+```
+
+> 컴포넌트를 사용할 때 props 값 지정하기
+
+<p>App 컴포넌트에서 MyComponent의 props 값을 지정해 보겠습니다. App.js의 코드를 다음과 같이 수정해 보세요.</p>
+
+```js
+import React from "react";
+import MyComponent from "./MyComponent";
+
+const App = () => {
+  return <MyComponent name="React" />;
+};
+
+export default App;
+```
+
+<p>상위 컴포넌트인 App에서 MyComponent라는 컴포넌트를 렌더링 해주는데 props로 React라는 키값을 가진 name을 보내주었습니다. 따라서 MyComponent에서는 props.name으로 상위 컴포넌트에서 props를 통해 넘겨준 해당 값을 렌더링 담아 사용하는 것을 알 수 있습니다.</p>
+
+<img src="./images/PROPS.png" alt="PROPS">
+
+> props 기본값 설정: defaultProps
+
+```js
+(...)
+return <MyComponent />;
+(...)
+```
+
+<p>위와 같이 props를 내려주지 않는다면, MyComponent는 렌더링될 때 '안녕하세요 제 이름은 입니다.'라는 내용이 보일 것입니다. 따라서 기본 값을 하위 컴포넌트에서 설정하기 위해서는 defaultProps를 사용합니다</p>
+
+```js
+import React from "react";
+
+const MyComponent = (props) => {
+  return <div>안녕하세요, 제 이름은 {props.name}입니다.</div>;
+};
+
+MyComponent.defaultProps = {
+  name: "기본 이름",
+};
+
+export default MyComponent;
+```
+
+<p>위와 같이 defaultProps를 해당 프로퍼티에 설정해준다면 상위 컴포넌트에서 지정해주지 않더라도 빈 값이 렌더링되는 불상사를 줄일 수 있습니다.</p>
+
+<img src="./images/defaultProps.png" alt="defaultProps"/>
+
+> 태그 사이의 내용을 보여 주는 children
+
+<p>리액트 컴포넌트를 사용할 때 컴포넌트 태그 사이의 내용을 보여 주는 props가 있는데요. 바로 children입니다.</p>
+
+```js
+📁src/App.js
+
+import React from "react";
+import MyComponent from "./MyComponent";
+
+const App = () => {
+  return <MyComponent>리액트</MyComponent>;
+};
+
+export default App;
+```
+
+<p>위 코드에서 MyComponent 태그 사이에 작성한 리액트라는 문자열을 MyComponent 내부에서 보여 주려면 props.children 값을 보여 주어야 합니다.</p>
+
+```js
+📁src/MyComponent.js
+
+import React from "react";
+
+const MyComponent = (props) => {
+  return (
+    <div>
+      안녕하세요, 제 이름은 {props.name}입니다. <br />
+      children 값은 {props.children}
+      입니다.
+    </div>
+  );
+};
+
+MyComponent.defaultProps = {
+  name: "기본 이름",
+};
+
+export default MyComponent;
+```
+
+<p>하위 컴포넌트인 MyComponent에서 '리액트'라는 태그 사이의 내용을 props로 넘겨받아 사용합니다. { props.children } 을 통해 해당 props를 렌더링해주었습니다.</p>
+
+<img src="./images/children.png" alt="children"/>
+
+> 비구조화 할당 문법을 통해 props 내부 값 추출하기
+
+<p>현재 MyComponent에서 props 값을 조회할 때마다 props.name, props.children과 같이 props.이라는 키워드를 앞에 붙여 주고 있습니다. 이러한 작업을 더 편하게 하기 위해 ES6의 비구조화 할당 문법을 사용하여 내부 값을 바로 추출하는 방법을 알아보겠습니다.</p>
+
+```js
+📁src/MyComponent.js
+
+📁 case 1 : 비구조화 할당 문법 사용하기
+const MyComponent = (props) => {
+  const { name, children } = props;
+  return (
+    <div>
+      안녕하세요, 제 이름은 {name}입니다. <br />
+      children 값은 {children}
+      입니다.
+    </div>
+  );
+};
+
+MyComponent.defaultProps = {
+  name: "기본 이름",
+};
+
+export default MyComponent;
+
+📁 case 2 : 함수의 파라미터 부분에서 비구조화 할당 문법 사용하기
+const MyComponent = ({ name, children }) => {
+  return (
+    <div>
+      안녕하세요, 제 이름은 {name}입니다. <br />
+      children 값은 {children}
+      입니다.
+    </div>
+  );
+};
+
+MyComponent.defaultProps = {
+  name: '기본 이름'
+};
+
+```
+
+<p>방금 사용한, 객체에서 값을 추출하는 문법을 비구조화 할당(destructuring assignment)이라고 부릅니다. 이 문법은 구조 분해 문법이라고도 불리며, 함수의 파라미터 부분에서도 사용할 수 있습니다. 만약 함수의 파라미터가 객체라면 그 값을 바로 비구조화해서 사용하는 것이죠.</p>
+
+<p>어떤가요? 이렇게 props를 사용하면 훨씬 편하지요? 이 책에서는 앞으로 함수형 컴포넌트에서 props를 사용할 때 이렇게 파라미터 부분에서 비구조화 할당 문법을 사용합니다.</p>
+
+> propTypes를 통한 props 검증
+
+<p>컴포넌트의 필수 props를 지정하거나 props의 타입(type)을 지정할 때는 propTypes를 사용합니다. 컴포넌트의 propTypes를 지정하는 방법은 defaultProp을 설정하는 것과 비슷합니다. 우선 propTypes를 사용하려면 코드 상단에 import 구문을 사용하여 불러와야 합니다.</p>
+
+```js
+import React from ‘react‘;
+import PropTypes from ‘prop-types‘;
+
+const MyComponent = ({ name, children }) => {
+  return (…);
+};
+
+MyComponent.defaultProps = {
+  name: ‘기본 이름‘
+};
+
+MyComponent.propTypes = {
+  name: PropTypes.string
+};
+
+export default MyComponent;
+```
+
+<p>만약 컴포넌트에 설정한 props가 propTypes에서 지정한 형태와 일치하지 않는다면 브라우저 개발자 도구의 Console 탭에 다음과 같은 결과가 나타납니다.</p>
+
+<img src="./images/propTypes.png" alt="propTypes"/>
+
+> 더 많은 PropTypes 종류 <a href="https://thebook.io/080203/ch03/03/06/02/">보러 가기</a>
+
+> 클래스형 컴포넌트에서 props 사용하기
+
+<p>클래스형 컴포넌트에서 props를 사용할 때는 render 함수에서 this.props를 조회하면 됩니다. 그리고 defaultProps와 propTypes는 똑같은 방식으로 설정할 수 있습니다. MyComponent를 다음과 같이 클래스형 컴포넌트로 변환해 보세요.</p>
+
+```js
+import React, { Component } from ‘react‘;
+import PropTypes from ‘prop-types‘;
+
+class MyComponent extends Component {
+  render() {
+    const { name, favoriteNumber, children } = this.props; // 비구조화 할당
+    return (
+      <div>
+        안녕하세요, 제 이름은 {name}입니다. <br />
+        children 값은 {children}
+        입니다.
+        <br />
+        제가 좋아하는 숫자는 {favoriteNumber}입니다.
+      </div>
+    );
+  }
+}
+...
+
+생략
+
+...
+
+case 2 : defaultProps와 propTypes를 설정할 때 class 내부에서 지정하기
+
+import React, { Component } from ‘react‘;
+import PropTypes from ‘prop-types‘;
+
+
+class MyComponent extends Component {
+  static defaultProps = {
+    name: ‘기본 이름‘
+  };
+  static propTypes = {
+    name: PropTypes.string,
+    favoriteNumber: PropTypes.number.isRequired
+  };
+  render() {
+    const { name, favoriteNumber, children } = this.props; // 비구조화 할당
+    return (…);
+  }
+}
+```
+
+> defaultProps와 propTypes는 꼭 사용해야 하나요?
+
+<p>이 두 가지 설정은 컴포넌트의 필수 사항이 아니므로 꼭 사용할 필요가 없습니다. 하지만 여러분이 React를 사용하여 큰 규모의 프로젝트를 진행한다면, 특히 다른 개발자들과 협업한다면 해당 컴포넌트에 어떤 props가 필요한지 쉽게 알 수 있어 개발 능률이 좋아질 것입니다.</p>
+
+### state
+
+<p>리액트에서 state는 컴포넌트 내부에서 바뀔 수 있는 값을 의미합니다. props는 컴포넌트가 사용되는 과정에서 부모 컴포넌트가 설정하는 값이며, 컴포넌트 자신은 해당 props를 읽기 전용으로만 사용할 수 있습니다. props를 바꾸려면 무조건 부모 컴포넌트에서 바꾸어 주어야 합니다. 리액트에는 두 가지 종류의 state가 있습니다. 하나는 클래스형 컴포넌트가 지니고 있는 state 이고, 다른 하나는 함수형 컴포넌트에서 useState라는 훅 함수를 통해 사용하는 state입니다.</p>
+
+> 클래스형 컴포넌트의 state
+
+```js
+import React, { Component } from ‘react‘;
+
+class Counter extends Component {
+  constructor(props) {
+    super(props);
+    // state의 초깃값 설정하기
+    this.state = {
+      number: 0
+    };
+  }
+  render() {
+    const { number } = this.state; // state를 조회할 때는 this.state로 조회합니다.
+    return (
+      <div>
+        <h1>{number}</h1>
+        <button
+          // onClick을 통해 버튼이 클릭되었을 때 호출할 함수를 지정합니다.
+
+          onClick={() => {
+            // this.setState를 사용하여 state에 새로운 값을 넣을 수 있습니다.
+            this.setState({ number: number + 1 });
+          }}
+        >
+          +1
+        </button>
+      </div>
+    );
+  }
+}
+
+export default Counter;
+```
+
+<p>클래스형 컴포넌트에서 state를 설정할 때는 다음과 같이 constructor 메소드를 작성하여 설정합니다. 이는 컴포넌트의 생성자 메서드입니다. 클래스형 컴포넌트에서 constructor를 작성할 때는 반드시 super(props)를 호출해 주어야 합니다. 이 함수가 호출되면 현재 클래스형 컴포넌트가 상속받고 있는 리액트의 Component 클래스가 지닌 생성자 함수를 호출해 줍니다. 그 다음에는 this.state 값에 초깃값을 설정해 주었습니다. 컴포넌트의 state는 객체 형식 { 키 : 값 } 이어야합니다.</p>
+
+> 이벤트로 설정할 함수를 호출하는 것이 아닌 직접 넣어 줄 때는 화살표 함수 문법을 사용하여 넣어 주어야 합니다
+
+```js
+<button onClick={()=> this.setState({ number: number + 1}; )}>
+
+or
+
+const plusNum = (number) => {
+  setState(number : number + 1);
+}
+...
+
+<button onClick={plusNum}>+ 1 </button>
+```
+
+> constructor 메서드 없이 초기값 선언하기
+
+```js
+import React, { Component } from 'react';
+
+class Counter extends Component {
+  state = {
+    number: 0,
+    fixedNumber: 0
+  };
+  render() {
+    const { number, fixedNumber } = this.state; // state를 조회할 때는 this.state로 조회합니다.
+    return (...);
+  }
+}
+
+export default Counter;
+```
+
+<p>이렇게 하면 constructor 메서드를 선언하지 않고도 state 초깃값을 설정할 수 있습니다. 이 책에서는 앞으로 state를 사용할 때 이 방식을 사용하여 state의 초깃값을 설정하겠습니다.</p>
+
+> 함수형 컴포넌트의 state
+
+<p>Hooks를 사용하기 전에 배열 비구조화 할당이라는 것을 알아봅시다. 배열 비구조화 할당은 이전에 배운 객체 비구조화 할당과 비슷합니다. 즉, 배열 안에 들어 있는 값을 쉽게 추출할 수 있도록 해 주는 문법입니다.</p>
+
+```js
+const array = [1, 2];
+const one = array[0];
+const two = array[1];
+
+// array 안에 있는 값을 one과 two에 담아 주는 코드인데요. 위 코드는 배열 비구조화 할당을 사용하면 다음과 같이 표현할 수 있습니다.
+
+const array = [1, 2];
+const [one, two] = array;
+```
+
+<p>배열 비구조화 할당 문법을 알고 나면 useState 사용 방법을 쉽게 이해할 수 있습니다. 새 컴포넌트를 만들어서 useState를 사용해 보겠습니다. src 디렉터리에 Say.js라는 파일을 생성하고 다음 코드를 작성해 보세요.</p>
+
+```js
+import React, { useState } from ‘react‘;
+
+const Say = () => {
+  const [message, setMessage] = useState(“);
+  const onClickEnter = () => setMessage(‘안녕하세요!’);
+  const onClickLeave = () => setMessage(‘안녕히 가세요!’);
+
+return (
+    <div>
+      <button onClick={onClickEnter}>입장</button>
+      <button onClick={onClickLeave}>퇴장</button>
+      <h1>{message}</h1>
+    </div>
+  );
+};
+
+export default Say;
+```
+
+<p>useState 함수의 인자에는 상태의 초깃값을 넣어 줍니다. 클래스형 컴포넌트에서의 state 초깃값은 객체 형태를 넣어 주어야 한다고 배웠는데요. useState에서는 반드시 객체가 아니어도 상관없습니다. 값의 형태는 자유입니다. 숫자일 수도, 문자열일 수도, 객체일 수도, 배열일 수도 있습니다.</p>
+
+### state를 사용할 때 주의 사항
+
+<p>클래스형 컴포넌트든 함수형 컴포넌트든 state를 사용할 때는 주의해야 할 사항이 있습니다. state 값을 바꾸어야 할 때는 setState 혹은 useState를 통해 전달받은 세터 함수를 사용해야 합니다.</p>
+
+```js
+// 클래스형 컴포넌트에서…
+this.state.number = this.state.number + 1;
+this.state.array = this.array.push(2);
+this.state.object.value = 5;
+
+// 함수형 컴포넌트에서…
+const [object, setObject] = useState({ a: 1, b: 1 });
+object.b = 2;
+```
+
+<p>그렇다면 배열이나 객체를 업데이트해야 할 때는 어떻게 해야 할까요? 이런 상황에서는 배열이나 객체 사본을 만들고 그 사본에 값을 업데이트한 후, 그 사본의 상태를 setState 혹은 세터 함수를 통해 업데이트합니다.</p>
+
+> 사본을 만들어서 업데이트하기
+
+```js
+// 객체 다루기
+const object = { a: 1, b: 2, c: 3 };
+const nextObject = { ...object, b: 2 }; // 사본을 만들어서 b 값만 덮어 쓰기
+
+// 배열 다루기
+const array = [
+{ id: 1, value: true },
+{ id: 2, value: true },
+{ id: 3, value: false }
+];
+let nextArray = array.concat({ id: 4 }); // 새 항목 추가
+nextArray.filter(item => item.id != = 2); // id가 2인 항목 제거
+nextArray.map(item => (item.id === 1 ? { ...item, value: false } : item)); // id가 1인 항목의 value를 false로 설정
+```
+
+<p>객체에 대한 사본을 만들 때는 spread 연산자라 불리는 ...을 사용하여 처리하고, 배열에 대한 사본을 만들 때는 배열의 내장 함수들을 활용합니다</p>
+
+### 정리
+
+<p>props와 state는 둘 다 컴포넌트에서 사용하거나 렌더링할 데이터를 담고 있으므로 비슷해 보일 수 있지만, 그 역할은 매우 다릅니다. props는 부ㅜ모 컴포넌트가 설정하고, state는 컴포넌트 자체적으로 지닌 값으로 컴포넌트 내부에서 값을 업데이트할 수 있습니다.</p>
+
+<p>props를 사용한다고 해서 값이 무조건 고정적이지는 않습니다. 부모 컴포넌트의 state를 자식 컴포넌트의 props로 전달하고, 자식 컴포넌트에서 특정 이벤트가 발생할 때 부모 컴포넌트의 메서드를 호출하면 props도 유동적으로 사용할 수 있습니다. 이후 만들어 볼 일정 관리 애플리케이션에서 이러한 구조로 프로젝트를 설계하게 됩니다.</p>
+
+<img src="./images/propsAndState.png" alt="props와state요약">
+
+## Chapter4 Event Handling
+
+<p>사용자가 웹 브라우저에서 DOM 요소들과 상호 작용하는 것을 이벤트라고 합니다. 예를 들어 버튼에 마우스 커서를 올렸을 때는 onmouseover 이벤트를 실행하고, 클릭헸을 때는 onclick 이벤트를 실행합니다. </p>
+
+### 리액트의 이벤트 시스템
+
+<p>리액트의 이벤트 시스템은 웹 브라우저의 HTML 이벤트와 인터페이스가 동일하기 대문에 사용법이 꽤 비슷합니다. 사용법은 일반 HTML에서 이벤트를 작성하는 것과 비슷한데, 주의해야 할 몇 가지 사항이 있습니다.</p>
+
+> 이벤트를 사용할 때 주의 사항
+
+1. 이벤트 이름은 카멜 표기법으로 작성합니다. (낙타 등 표기법)
+2. 이벤트에 실행할 자바스크립트 코드를 전달하는 것이 아니라. 함수 형태의 값을 전달합니다. <p>HTML에서 이벤트를 설정할 때는 큰따옴표 안에 실행할 코드를 넣었지만, 리액트에서는 함수형태의 객체를 전달합니다.</p>
+3. DOM 요소에만 이벤트를 설정할 수 있습니다. <p> 즉 div, button, input, form, ...등의 DOM 요소에는 이벤트를 설정할 수 있지만, 우리가 직접 만든 컴포넌트에는 이벤트를 자체적으로 설정할 수 없습니다. </p><p>예를 들어 다음과 같이 MyComponent에 onClick 값을 설정한다면 MyComponent를 클릭할 때 doSomething 함수를 실행하는 것이 아니라, 그냥 이름이 onclick인 props를 MyComponent에게 전달해 줄 뿐입니다.</p><p>따라서 컴포넌트에 자체적으로 이벤트를 설정할 수는 없습니다. 하지만 전달받은 props를 컴포넌트 내부의 DOM 이벤트로 설정할 수는 있습니다.</p>
+
+```js
+case 1 : 내가 만든 컴포넌트에서 이벤트를 사용한다면 props로 하여금 해당 함수를 전달
+<MyComponent onClick={doSomething} />
+
+...
+
+case 2 : 기존 DOM 요소를 사용한다면 그대로 이벤트 핸들러 사용 가능
+<div onClick={this.props.onClick}>
+```
+
+> 이벤트 종류 알아보기 <a href="https://reactjs.org/docs/events.html">공식 문서 링크</a>
+
+### onChange 이벤트 핸들링하기
+
+> 클래스형 컴포넌트에서 이벤트 핸들링하기
+
+<p>이번 컴포넌트에서는 input 요소를 렌더링하는 코드와 해당 요소에 onChange 이벤트를 설정하는 코드를 작성합니다.</p>
+
+```js
+import React, { Component } from ‘react‘;
+
+class EventPractice extends Component {
+  render() {
+    return (
+      <div>
+        <h1>이벤트 연습</h1>
+        <input
+          type=“text“
+          name=“message“
+          placeholder=“아무거나 입력해 보세요“
+          onChange={
+            (e) => {
+              console.log(e); // console.log(e.target.value)
+            }
+          }
+        />
+      </div>
+    );
+  }
+}
+
+export default EventPractice;
+```
+
+<p>여기서 콘솔에 기록되는 e 객체는 SyntheticEvent 웹 브라우저의 네이티브 이벤트를 감싸는 객체입니다. 네이티브 이벤트와 인터페이스가 같으므로 순수 자바스크립트에서 HTML 이벤트를 다룰 때와 똑같이 사용하면 됩니다. SyntheticEvent는 네이티브 이벤트와 달리 이벤트가 끝나고 나면 이벤트가 초기화되므로 정보를 참조할 수 없습니다. 예를 들어, 0.5초 뒤에 e 객체를 참조하면 e 객체 내부의 모든 값이 비워지게 됩니다. 만약 비동기적으로 이벤트 객체를 참조할 일이 있다면 e.persist() 함수를 호출해 주어야 합니다. console.log(e)의 값을 console.log(e.target.value)로 바꿔보세요. 이벤트가 발생할 때마다 콘솔창에서 확인할 수 있게 됩니다.</p>
+
+> 임의 메서드 만들기
+
+<p>기존에 '이벤트에 실행할 자바스크립트 코드를 전달하는 것이 아니라, 함수 형태의 값을 전달합니다'라고 배웠습니다. 그렇기에 이벤트를 처리할 때 렌더링을 하는 동시에 함수를 만들어서 전달해 주었습니다. 이 방법 대신 함수를 미리 준비하여 전달하는 방법도 있습니다. 성능상으로는 차이가 거의 없지만, 가독성을 훨씬 높습니다. onChange와 onClick에 전달한 함수를 따로 빼내서 컴포넌트 임의 메서드를 만들어 보겠습니다.</p>
+
+```js
+
+case 1: 클래스형 컴포넌트에서 기존 형태의 함수 설정
+
+import React, { Component } from ‘react‘;
+
+class EventPractice extends Component {
+
+state = {
+    message: “
+  }
+
+constructor(props) {
+    super(props);
+    // 새롭게 사용자 정의한 함수들을 바인딩하는 과정입니다
+    this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+handleChange(e) {
+    this.setState({
+      message: e.target.value
+    });
+  }
+
+handleClick() {
+    alert(this.state.message);
+    this.setState({
+      message: “
+    });
+  }
+
+render() {
+    return (
+      <div>
+        <h1>이벤트 연습</h1>
+        <input
+          type=“text“
+          name=“message“
+          placeholder=“아무거나 입력해 보세요“
+          value={this.state.message}
+          onChange={this.handleChange}
+        />
+        <button onClick={this.handleClick}>확인</button>
+      </div>
+    );
+  }
+}
+
+export default EventPractice;
+
+case 2: 클래스형 컴포넌트에서 화살표 함수를 통한 함수 설정
+
+import React, { Component } from 'react';
+
+class EventPractice extends Component {
+
+  state = {
+    message: ''
+  }
+
+  handleChange = (e) => {
+    this.setState({
+      message: e.target.value
+    });
+  }
+
+  handleClick = () => {
+    alert(this.state.message);
+    this.setState({
+      message: ''
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>이벤트 연습</h1>
+        <input
+          type="text"
+          name="message"
+          placeholder="아무거나 입력해 보세요"
+          value={this.state.message}
+          onChange={this.handleChange}
+        />
+        <button onClick={this.handleClick}>확인</button>
+      </div>
+    );
+  }
+}
+
+export default EventPractice;
+```
+
+<p>함수가 호출될 때 this는 호출부에 따라 결정되므로, 클래스의 임의 메서드가 특정 HTML 요소의 이벤트로 등록되는 과정에서 메서드와 this의 관계가 끊어져 버립니다. 이 때문에 임의 메서드가 이벤트로 등록되어도 this를 컴포넌트 자신으로 제대로 가리키기 위해서는 메서드를 this와 바인딩(binding)하는 작업이 필요합니다. 만약 바인딩하지 않는 경우라면 this가 undefined를 가리키게 됩니다.</p>
+
+<p>현재 constructor 함수에서 함수를 바인딩하는 작업이 이루어지고 있습니다.</p>
+
+> 함수형 컴포넌트에서 이벤트 핸들링하기
+
+<p>앞서 설명한 내용이므로 함수형 컴포넌트로 변경된 코드만 보겠습니다.</p>
+
+```js
+import React, { useState } from ‘react‘;
+
+
+const EventPractice = () => {
+  const [username, setUsername] = useState("");
+  const [message, setMessage] = useState("");
+  const onChangeUsername = e => setUsername(e.target.value);
+  const onChangeMessage = e => setMessage(e.target.value);
+  const onClick = () => {
+    alert(username + ": " + message);
+    setUsername("");
+    setMessage("");
+  };
+  const onKeyPress = e => {
+    if (e.key === ‘Enter‘) {
+      onClick();
+    }
+  };
+  return (
+    <div>
+      <h1>이벤트 연습</h1>
+      <input
+        type=“text”
+        name=“username“
+        placeholder=“사용자명“
+        value={username}
+        onChange={onChangeUsername}
+      />
+      <input
+        type=“text“
+        name=“message“
+        placeholder=“아무거나 입력해 보세요“
+        value={message}
+        onChange={onChangeMessage}
+        onKeyPress={onKeyPress}
+      />
+      <button onClick={onClick}>확인</button>
+    </div>
+  );
+};
+export default EventPractice;
+```
