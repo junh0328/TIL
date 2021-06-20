@@ -38,6 +38,10 @@
 
 ## React (+ typescript)
 
+### React 개념
+
+### React에 타입스크립트 적용하기
+
 - <a href="https://github.com/junh0328/learning_typescript/blob/master/ReactByTS/readme.md#-todolist">todolist에 타입스크립트 환경 적용하기</a>
 - <a href="https://github.com/junh0328/learning_typescript/blob/master/ReactByTS/readme.md#-todo-redux">todolist에 타입스크립트 리덕스 적용하기</a>
 - <a href="https://github.com/junh0328/learning_typescript/blob/master/ReactByTS/readme.md#-redux-thunk">타입스크립트 환경에서 thunk 미들웨어 사용하기</a>
