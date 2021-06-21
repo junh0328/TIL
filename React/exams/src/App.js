@@ -1,5 +1,5 @@
 import "./App.css";
-import LifeCycleSample from "./components/LifeCycleSample";
+import LearningUseMemo from "./components/LearningUseMemo";
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
         height: "100vh",
       }}
     >
-      <LifeCycleSample />
+      <LearningUseMemo />
     </div>
   );
 }

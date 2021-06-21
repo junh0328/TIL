@@ -51,6 +51,8 @@
 - <a href="https://github.com/junh0328/TIL/tree/master/React#Chapter4-Event-Handling">Chapter 4, Event Handling</a>
 - <a href="https://github.com/junh0328/TIL/blob/master/React/readme.md#Chapter-5-ref-DOM%EC%97%90-%EC%9D%B4%EB%A6%84-%EB%8B%AC%EA%B8%B0">Chapter 5, ref DOM에 이름 달기</a>
 - <a href="https://github.com/junh0328/TIL/blob/master/React/readme.md#Chapter-6-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EB%B0%98%EB%B3%B5">Chapter 6, 컴포넌트 반복</a>
+- <a href="https://github.com/junh0328/TIL/blob/master/React/readme.md#Chapter-7-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8%EC%9D%98-%EB%9D%BC%EC%9D%B4%ED%94%84%EC%82%AC%EC%9D%B4%ED%81%B4-%EB%A9%94%EC%84%9C%EB%93%9C">Chapter 7, 컴포넌트의 라이프사이클 메서드</a>
+- <a href="https://github.com/junh0328/TIL/tree/master/React#Chapter-8-Hooks">Chapter 8, Hooks</a>
 
 ### React에 타입스크립트 적용하기
 
