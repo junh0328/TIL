@@ -1,12 +1,17 @@
 import "./App.css";
-import ValidationSample from "./components/ValidationSample";
-import ScrollBox from "./components/ScrollBox";
-import IterationSample from "./components/Iteration";
+import LifeCycleSample from "./components/LifeCycleSample";
 
 function App() {
   return (
-    <div>
-      <IterationSample />
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100vh",
+      }}
+    >
+      <LifeCycleSample />
     </div>
   );
 }

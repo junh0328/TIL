@@ -38,7 +38,7 @@ const IterationSample = () => {
 
   const onRemove = (id) => {
     // 해당 id 값을 가진 객체 filter, id가 클릭한 아이디가 아닌것 만 보여줘
-    const nextNames = names.filter((name) => name.id != id);
+    const nextNames = names.filter((name) => name.id !== id);
     console.log(nextNames);
     // 추후 결과값은 namse 배열에 다시 렌더링
     setNames(nextNames);
