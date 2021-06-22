@@ -16,6 +16,8 @@
 - [Chapter 8, Hooks](#Chapter-8-Hooks)
 - [Chapter 9, 컴포넌트 스타일링](#Chapter-9-컴포넌트-스타일링)
 - [Chapter 13, 리액트 라우터로 SPA 개발하기](#Chapter-13-리액트-라우터로-SPA-개발하기)
+- [Chapter 14, 외부 API를 연동하여 뉴스 뷰어 만들기](#Chapter-14-외부-API를-연동하여-뉴스-뷰어-만들기)
+- [Chapter 16, 리덕스 라이브러리 이해하기](#Chapter-16-리덕스-라이브러리-이해하기)
 
 ## Chapter 1 리액트 시작
 
@@ -2323,3 +2325,221 @@ export default Profile;
 <p>NavLink는 Link와 비슷합니다. 현재 경로와 Link에서 사용하는 경로가 일치하는 경우 특정 스타일 혹은 CSS 클래스를 적용할 수 있는 컴포넌트입니다.</p>
 
 <p>NavLink에서 링크가 활성화되었을 때의 스타일을 적용할 때는 activeStyle 값을, CSS 클래스를 적용할 때는 activeClassName 값을 props로 넣어 주면 됩니다</p>
+
+## Chapter 14 외부 API를 연동하여 뉴스 뷰어 만들기
+
+### 비동기 작업의 이해
+
+<p>웹 애플리케이션을 만들다 보면 처리할 때 시간이 걸리는 작업이 있습니다. 예를 들어 웹 애플리케이션에서 서버 쪽 데이터가 필요할 때는 Ajax 기법을 사용하여 서버의 API를 호출함으로써 데이터를 수신합니다. 이렇게 서버의 API를 사용해야 할 때는 네트워크 송수신 과정에서 시간이 걸리기 때문에 작업이 즉시 처리되는 것이 아니라, 응답을 받을 때까지 기다렸다가 전달받은 응답 데이터를 처리합니다. 이 과정에서 해당 작업을 비동기적으로 처리하게 됩니다.</p>
+
+<img src="./images/async.png" alt="async">
+
+<p>만약 작업을 동기적으로 처리한다면 요청이 끝날 때까지 기다리는 동안 중지 상태가 되기 때문에 다른 작업을 할 수 없습니다. 그리고 요청이 끝나야 비로소 그다음 예정된 작업을 할 수 있죠. 하지만 이를 비동기적으로 처리한다면 웹 애플리케이션이 멈추지 않기 때문에 동시에 여러 가지 요청을 처리할 수도 있고, 기다리는 과정에서 다른 함수도 호출할 수 있습니다.</p>
+
+<p>이렇게 서버 API를 호출할 때 외에도 작업을 비동기적으로 처리할 때가 있는데, 바로 setTimeout 함수를 사용하여 특정 작업을 예약할 때입니다. 예를 들어 다음 코드는 3초 후에 printMe 함수를 호출합니다.</p>
+
+```js
+function printMe() {
+  console.log("Hello World!");
+}
+setTimeout(printMe, 3000);
+console.log("대기 중...");
+
+>>>
+대기 중...
+Hello World!
+```
+
+<p>자바스크립트에서 비동기 작업을 할 때 가장 흔히 사용하는 방법은 콜백 함수를 사용하는 것입니다. 위 코드에서는 printMe가 3초 뒤에 호출되도록 printMe 함수 자체를 setTimeout 함수의 인자로 전달해 주었는데, 이런 함수를 콜백 함수라고 부릅니다.</p>
+
+> <a href="https://github.com/junh0328/upgrade_javascript/tree/master/BASIC#Chapter-11-%EB%B9%84%EB%8F%99%EA%B8%B0-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D">JS 콜백, 비동기 기능 자세히 보기</a>
+
+> Promise
+
+<p>Promise는 콜백 지옥 같은 코드가 형성되지 않게 하는 방안으로 ES6에 도입된 기능입니다. 앞에서 본 코드를 Promise를 사용하여 구현해 볼까요? 다음 예제를 확인해 봅시다.</p>
+
+```js
+📁 case 1 : 일반적인 promise 코드 사용
+function increase(number) {
+  const promise = new Promise((resolve, reject) => {
+    // resolve는 성공, reject는 실패
+    setTimeout(() => {
+      const result = number + 10;
+      if (result > 50) {
+        const e = new Error("NumberTooBig");
+        return reject(e);
+      }
+      resolve(result);
+    }, 1000);
+  });
+  return promise;
+}
+
+increase(0).then((number) => {
+  // Promise에서 resolve된 값은 .then을 통해 받아 올 수 있음
+  console.log(number);
+  return increase(number);
+});
+```
+
+<p>여러 작업을 연달아 처리한다고 해서 함수를 여러 번 감싸는 것이 아니라 .then을 사용하여 그다음 작업을 설정하기 때문에 콜백 지옥이 형성되지 않습니다.</p>
+
+> async/await
+
+<p>async/await는 Promise를 더욱 쉽게 사용할 수 있도록 해 주는 ES2017(ES8) 문법입니다. 이 문법을 사용하려면 함수의 앞부분에 async 키워드를 추가하고, 해당 함수 내부에서 Promise의 앞부분에 await 키워드를 사용합니다. 이렇게 하면 Promise가 끝날 때까지 기다리고, 결과 값을 특정 변수에 담을 수 있습니다.</p>
+
+```js
+function increase(number) {
+const promise = new Promise((resolve, reject) => {
+  // resolve는 성공, reject는 실패
+  setTimeout(() => {
+    const result = number + 10;
+    if (result > 50) { // 50보다 높으면 에러 발생시키기
+      const e = new Error(‘NumberTooBig‘);
+              return reject(e);
+    }
+          resolve(result); // number 값에 +10 후 성공 처리
+  }, 1000)
+});
+return promise;
+}
+
+...
+
+📁 case 1: 변수에 결과값 담기
+async function runTasks() {
+try { // try/catch 구문을 사용하여 에러를 처리합니다.
+  let result = await increment(0);
+  console.log(result);
+}catch(error){
+  console.error(error);
+}
+
+
+📁 case 2: 담긴 값을 바로 출력하기
+async function runTasks() {
+try { // try/catch 구문을 사용하여 에러를 처리합니다.
+  let result = await increment(0)
+  .then(()=> console.log(result));
+}catch(error){
+  console.error(error);
+}
+```
+
+> 실제 코드로 흐름 이해하기
+
+```js
+
+📁 요청하는 (함수를 호출하는) 코드
+
+ const onChangeValue = useCallback((e) => {
+    setSearchValue(e.target.value);
+    if (e.target.value !== '') {
+      (async () => {
+        await getSearchData(e.target.value).then((result) => {
+          setFetchedData(result);
+        });
+      })();
+    }
+  }
+
+  📁 요청받는 코드
+
+  export function getSearchData(keyword) {
+  try {
+    return new Promise((resolve) => {
+      ps.keywordSearch(keyword, (data, status) => {
+        if (status === kakao.maps.services.Status.OK) {
+          console.log('getSearchData 결과물 출력:', data);
+          resolve(data);
+        } else if (status === kakao.maps.services.Status.ERROR) {
+          alert('검색 결과 중 오류가 발생했습니다.');
+          return;
+        }
+      });
+    });
+  } catch (error) {
+    console.error(error);
+  }
+}
+```
+
+### axios로 API 호출해서 데이터 받아 오기
+
+> <a href="https://github.com/junh0328/TIL/blob/master/React/exams/src/pages/AxiosData/index.js">예제 코드 보기</a>
+
+<p>onClick 함수에서는 axios.get 함수를 사용했습니다. 이 함수는 파라미터로 전달된 주소에 GET 요청을 해 줍니다. 그리고 이에 대한 결과는 .then을 통해 비동기적으로 확인할 수 있습니다.</p>
+
+### newsapi API 키 발급받기
+
+<p>사용할 API 주소는 두 가지 형태입니다.</p>
+
+```js
+전체 뉴스 불러오기 - GET https://newsapi.org/v2/top-headlines?country=kr&apiKey=0a8c4202385d4ec1bb93b7e277b3c51f
+
+특정 카테고리 뉴스 불러오기 - GET https://newsapi.org/v2/top-headlines?country=kr&category=business&apiKey=0a8c4202385d4ec1bb93b7e277b3c51f
+```
+
+### 뉴스 뷰어 UI 만들기
+
+> <a href="https://github.com/junh0328/react-newsviewer">완성된 코드 보기</a>
+
+### 데이터 연동하기
+
+<p>useEffect를 사용하여 컴포넌트가 처음 렌더링되는 시점에 API를 요청하면 됩니다. 여기서 주의할 점은 useEffect에 등록하는 함수에 async를 붙이면 안 된다는 것입니다. useEffect에서 반환해야 하는 값은 뒷정리 함수이기 때문입니다. 따라서 useEffect 내부에서 async/await를 사용하고 싶다면, 함수 내부에 async 키워드가 붙은 또 다른 함수를 만들어서 사용해 주어야 합니다. 코드를 보면 훨씬 이해하기 편할 것입니다.</p>
+
+<p>추가로 loading이라는 상태도 관리하여 API 요청이 대기 중인지 판별할 것입니다. 요청이 대기 중일 때는 loading 값이 true가 되고, 요청이 끝나면 loading 값이 false가 되어야 합니다.</p>
+
+```js
+const NewsList = () => {
+  const [articles, setArticles] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    // async를 사용하는 함수 따로 선언, 위 문단의 주장에 대한 설명
+    fetchData();
+  }, []);
+
+   const fetchData = async () => {
+      setLoading(true);
+      try {
+        const response = await axios.get(
+          ‘https://newsapi.org/v2/top-headlines?country=kr&apiKey=0a8c4202385d4ec1bb93b7e277b3c51f‘,
+        );
+        setArticles(response.data.articles);
+      } catch (e) {
+        console.log(e);
+      }
+      setLoading(false);
+    };
+  // 대기 중일 때
+  if (loading) {
+    return <NewsListBlock>대기 중…</NewsListBlock>;
+  }
+  // 아직 articles 값이 설정되지 않았을 때
+  if (!articles) {
+    return null;
+  }
+
+  // articles 값이 유효할 때
+  return (
+    <NewsListBlock>
+      {articles.map(article => (
+        <NewsItem key={article.url} article={article} />
+      ))}
+    </NewsListBlock>
+  );
+};
+```
+
+<p>현재도 워낙 반복적으로 작업하고 있는 부분이고, 특별히 정리할 부분이 없어 해당 레포지토리 링크를 남겨 두었습니다.</p>
+
+> <a href="https://github.com/junh0328/movie_app_2020-2021">다른 예제 코드 보기: movie_app_2020-2021</a>
+
+## Chapter 16 리덕스 라이브러리 이해하기
+
+### 개념 미리 정리하기
+
+### 리액트 없이 쓰는 리덕스
+
+### 리덕스의 세 가지 규칙
