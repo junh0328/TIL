@@ -2039,7 +2039,7 @@ const Box = styled.div`
 `;
 ```
 
-<img src="./images/styledcomponents.gif" alt="styledcomponents">
+<img src="./images/styledcomponents.gif" alt="styledcomponents"/>
 
 <p>하지만 이렇게 작업한다면 일반 CSS에서 할 때랑 큰 차이가 없습니다. 그런데 이러한 작업을 여러 컴포넌트에서 반복해야 한다면 조금 귀찮을 수도 있습니다. 그럴 때는 이 작업을 함수화하여 간편하게 사용할 수 있습니다. styled-components 매뉴얼에서 제공하는 유틸 함수를 따라 사용해 봅시다.</p>
 
@@ -2078,3 +2078,248 @@ const Box = styled.div`
 ## Chapter 13 리액트 라우터로 SPA 개발하기
 
 ### SPA란?
+
+<p>SPA는 Single Page Application(싱글 페이지 애플리케이션)의 약어입니다. 말 그대로 한 개의 페이지로 이루어진 애플리케이션이라는 의미입니다. 전통적인 웹 페이지는 다음과 같이 여러 페이지로 구성되어 있습니다.</p>
+
+<img src="./images/MPA.png" alt="MPA"/>
+
+<p>기존에는 사용자가 다른 페이지로 이동할 때마다 새로운 html을 받아 오고, 페이지를 로딩할 때마다 서버에서 리소스를 전달받아 해석한 뒤 화면에 보여 주었습니다. 이렇게 사용자에게 보이는 화면은 서버 측에서 준비했습니다. 사전에 html 파일을 만들어서 제공하거나, 데이터에 따라 유동적인 html을 생성해주는 템플릿 엔진을 사용하기도 했죠.</p>
+
+<p>요즘에는 웹에서 제공되는 정보가 정말 많기 때문에 새로운 화면을 보여 주어야 할 때마다 서버 측에서 모든 뷰를 준비한다면 성능상의 문제가 발생할 수 있습니다. 예를 들어 트래픽이 너무 많이 나올 수도 있고, 사용자가 몰려 서버에 높은 부하가 쉽게 걸릴 수도 있습니다. 그래서 리액트 같은 라이브러리 혹은 프레임워크를 사용하여 뷰(View) 렌더링을 사용자의 브라우저가 담당하도록 하고, 우선 애플리케이션을 브라우저에 불러와서 실행시킨 후에 사용자와의 인터랙션이 발생하면 <b>필요한 부분만 자바스크립트를 사용하여 업데이트해 줍니다.</b> 만약 새로운 데이터가 필요하다면 서버 API를 호출하여 필요한 데이터만 새로 불러와 애플리케이션에서 사용할 수도 있습니다.</p>
+
+<img src="./images/SPA.png" alt="SPA"/>
+
+> 사용자와의 인터렉션이 발생하면 필요한 부분만 자바스크립트를 사용하여 업데이트 (JSON 형식으로 요청함)
+
+<img src="./images/SPAVSMPA.png" alt="SPAVSMPA"/>
+
+[출처 : https://babytiger.netlify.app/posts/SPA/]
+
+<p>싱글 페이지라고 해서 화면이 한 종류인 것은 아닙니다. SPA의 경우 서버에서 사용자에게 제공하는 페이지는 한 종류이지만, 해당 페이지에서 로딩된 자바스크립트와 현재 사용자 브라우저의 주소 상태에 따라 다양한 화면을 보여 줄 수 있습니다.</p>
+
+<p>다른 주소에 다른 화면을 보여 주는 것을 라우팅이라고 합니다. 리액트 라이브러리 자체에 이 기능이 내장되어 있지 않기 때문에, 브라우저의 API를 직접 사용하여 이를 관리하거나, 라이브러리를 사용하여 이 작업을 더욱 쉽게 구현할 수 있습니다.</p>
+
+<p>리액트 라우팅 라이브러리는 리액트 라우터(react-router), 리치 라우터(reach-router), Next.js 등 여러 가지가 있습니다. 이러한 리액트 라우팅 라이브러리는 클라이언트 사이드에서 이루어지는 라우팅을 아주 간단하게 구현할 수 있도록 해 줍니다. 더 나아가 나중에 서버 사이드 렌더링을 할 때도 라우팅을 도와주는 컴포넌트들을 제공해 줍니다.</p>
+
+> SPA의 단점
+
+<p>SPA의 단점은 앱의 규모가 커지면 자바스크립트 파일이 너무 커진다는 것입니다. 페이지 로딩 시 사용자가 실제로 방문하지 않을 수도 있는 페이지의 스크립트도 불러오기 때문이죠. 하지만 후에 배울 코드 스플리팅(code splitting)을 사용하면 라우트별로 파일들을 나누어서 트래픽과 로딩 속도를 개선할 수 있습니다.</p>
+
+<p>리액트 라우터처럼 브라우저에서 자바스크립트를 사용하여 라우팅을 관리하는 것은 자바스크립트를 실행하지 않는 일반 크롤러에서는 페이지의 정보를 제대로 수집해 가지 못한다는 잠재적인 단점이 따릅니다. 그렇기 때문에 구글, 네이버, 다음과 같은 검색 엔진의 검색 결과에 페이지가 잘 나타나지 않을 수도 있습니다. 또한, 자바스크립트가 실행될 때까지 페이지가 비어 있기 때문에 자바스크립트 파일이 로딩되어 실행되는 짧은 시간 동안 흰 페이지가 나타날 수 있다는 단점도 있습니다. 하지만 이런 문제점들은 다행히 나중에 배우게 될 서버 사이드 렌더링(server-side-rendering)을 통해 모두 해결할 수 있습니다.</p>
+
+### SSR? (Server Side Rendering)
+
+<p>리액트는 대표적인 CSR(client side rendering)입니다. 이러한 리액트의 CSR적인 부분에서 SSR 적으로 바꿔 주기 위해서 next.js와 같은 라이브러리를 사용합니다.</p>
+
+<p>SSR을 사용하는 가장 큰 이유는 효율적인 SEO를 위해서 입니다. 아래 문단에서 다루겠지만, SEO는 google, naver와 같은 검색 엔진들이 우리의 웹사이트에서 html 태그안의 내용을(title, meta-data 등등,,,) 분석하여 사용자가 입력한 정보를 바탕으로 알맞은(사용자가 원하는) 정보를 찾을 수 있게 하는 기능입니다. 리액트는 CSR으로 작동되는데, 사용자가 우리의 해당 도메인에 접속하면, 클라이언트 서버(사용자의 컴퓨터)가 html과 js 등의 파일을 다운받아 보여주는 형식입니다. CSR 상태에서는 사전에 html을 가지고 있지 않기 때문에 검색 엔진에 노출되는 빈도가 현저히 적거나, 브라우저에 따라 검색 엔진에 해당 정보가 노출되지 않아 검색을 해도 나오지 않을 수 있습니다.(도메인을 통해 접속하는 것은 가능해지는 정도, 해당 사이트에 관련된 정보를 검색 엔진이 크롤링하지 못할 수 있음)그래서 SSR을 통해 서버가 사전에 html과 일부 js 파일을 넘겨주게 되면, 검색 엔진에서 이를 캐치하여 사용자가 원하는 정보가 담긴 우리 사이트를 보여줄 수 있을 것입니다.</p>
+
+### SEO(Search Engine Optimization), 검색 엔진 최적화
+
+<p>SEO란, Search Engine Optimization의 약자로, SEO는 구글, 네이버와 같은 검색 엔진들이 서버에 등록된 웹사이트를 하나하나씩 돌아 다니면서 웹사이트의 HTML 문서를 분석해줍니다. 이때 HTML에 사용된 태그를 바탕으로 사용자가 검색할 때, 웹사이트를 빠르게 검색할 수 있게 도와줍니다. 하지만, CSR에서 사용되고있는 HTML의 body는 텅텅 비어 있다가(div id="root"의 리액트 특성), 사용자가 해당 도메인을 가진 페이지에 접근하면, 클라이언트 서버에서 js 밑 html 태그를 불러오는 형식이기 때문에 사전에 html 정보를 가지고 있지 않습니다. 그래서 검색 엔진이 해당 도메인에 접근할 때 어려움이 있습니다. (우리 사이트를 검색 엔진을 통해 다양한 키워드를 통해 유입되는 것이 힘들다 why? 검색 엔진이 우리 html 파일을 분석할 수 없기 때문에 why? CSR 형식은 사용자가 접근해야 html, js 등의 파일을 불러오기 때문에) 따라서, 검색 엔진을 통해 사용자가 입력하여 얻고자하는 정보를 입력했을때, 검색 엔진이 우리의 웹 사이트에서 해당 내용을 캐치하는데 어려움이 있습니다.</p>
+
+<p>따라서 우리는 SEO 즉, 검색 엔진 최적화를 해주기 위해, SSR을 사용하여 사전에 html 문서를 검색 엔진이 찾을 수 있도록 제공하여 SEO를 향상시킬 수 있게 됩니다. SSR은 서버에서 필요한 데이터를 가져와 사전에 html 파일을 만들게 되고 이렇게 만들어진 HTML 파일을 일부 초기 세팅에 필요한 js와 함께 클라이언트 서버에 보내주게 됩니다. 그러면 클라이언트 측에서는 서버에서 만들어준 문서를 받아 와서 바로 사용자에게 보여줄 수 있게 되는 거죠. 이렇게 SSR을 사용하게 되면 사전에 HTML 문서를 클라이언트 측으로 전달했기 때문에, 페이지 로딩이 빨라지고, 검색 엔진이 사용자의 요청에 따라 검색어를 찾을 때(데이터를 크롤링할 때), 우리의 웹사이트에 해당 검색어가 포함되어 있다면 우리 페이지를 보여주는 효율적인 SEO가 될 수 있습니다.</p>
+
+<p>하지만 SSR이 CSR의 모든 문제점에 해결책이 되지는 않습니다. 서버에서 데이터를 사전에 받아오는 것이기 때문에 첫 번째로 blinking issue가 여전히 존재하고(페이지가 넘어갈 때마다 깜빡임 why? html 및 js 파일을 새로 받아오기 때문에), 두 번째로 사용자가 증가함에 따라 서버는 사용자의 요청에 의해 더 많은 데이터를 가지고 와서 HTML을 만들어야 하므로 과부화가 올 수 있습니다. 마지막으로 가장 큰 문제는 사용자가 빠르게 웹사이트를 확인할 수는 있지만, SSR시 모든 js파일을 다운 받은 상태가 아니기 때문에, js파일이 완전히 다운로드 되지 않은 상태에서 페이지의 여러 부분을 클릭하면, 작동이 되지 않는 부분이 존재할 수 있습니다.</p>
+
+### TTV(Time To View) TTI(Time To Interact)
+
+> TTV는 보여지는 시점, TTI는 인터렉션 사용자와의 통신이 가능해지는 시점입니다
+
+<p>CSR은 사용자에게 보여짐과 동시에 모든 html과 js를 불러온 상태이기 때문에, TTV과 됨과 동시에 TTI 모든 동적인 행동을 할 수 있게 됩니다.</p>
+
+<img src="./images/CSR.png" alt="CSR">
+[출처: <a href="https://www.youtube.com/watch?v=iZ9csAfU5Os">유튜브, 드림 코딩 엘리님의 SSR 강의</a>]
+
+<p>하지만, SSR은 html과 일부 js파일은 서버로부터 사전에 받아 놓았기 때문에 TTV 상태에서도 TTI가 전부 활성화되어 있지는 않습니다</p>
+
+<img src="./images/SSR.png" alt="SSR">
+[출처: <a href="https://www.youtube.com/watch?v=iZ9csAfU5Os">유튜브, 드림 코딩 엘리님의 SSR 강의</a>]
+
+<p>최종적으로 CSR을 많이 사용한다면, 우리가 최종적으로 번들링하여 사용자게에 보내주는 js 파일을 어떻게 하면 효율적으로 많이 분할하여 첫 번째로 사용자가 보기 위해서 필요한 정말 필수적인 html 요소만 보낼 수 있을지 고민해봐야 하고, SSR의 경우 사용자가 보고, 인터렉션(TTI)하는 이 시간의 단차를 줄이기 위해서 어떤 노력을 할 수 있을지 고민해봐야 합니다. 예를 들면 어떻게 하면 조금 더 매끄러운 UI와 UX를 제공할 수 있을지에 대한 고민들이 포함됩니다.</p>
+
+<p>요즘에는 SSR, CSR 뿐만 아니라 SSG(Static Site Generation)또한 렌더링 방법으로 등장하였습니다. SSG는 리액트를 예로 들면 'Gatsby' 또는 'Next'와 같은 라이브러리를 추가적으로 사용하여 렌더링을 하는 것인데, 웹페이지를 정적으로 미리 생성해두고, 서버에 배포해놓는 것입니다. SSG에서도 자바스크립트 파일을 html 파일과 함께 가지고 있을 수 있기 때문에, 동적인 요소도 충분히 추가할 수 있습니다. Next에서는 SSR뿐만 아니라, static generation, no pre-rendering, pre-rendering상태를 모두 지원하기 때문에 리액트로 작업을 계속한다면 next.js를 배워보는 것도 매우 효과적일 겁니다.</p>
+
+<p>어떤 것이 최고다, 제일 낫다라는 판단 보다는 우리가 만들어야 하는 웹사이트 특성에 맞게 다양한 방식의 렌더링을 활용하여 페이지를 구성한다면 최선의 선택이 될 것입니다.</p>
+
+### 프로젝트에 리액트 라우터 적용하기
+
+<p>SPA에서 리액트 라우팅을 담당하는 라이브러리 중 하나인, react-router-dom을 사용하여 라우팅을 적용해보도록 하겠습니다</p>
+
+> <a href="https://reactrouter.com/web/example/basic">리액트 라우터 공식 홈페이지</a>
+
+<p>프로젝트에서 리액트 라우터를 적용할 때는 'react-router-dom'에 모듈에 내장되어 있는 'BrowserRouter'라는 컴포넌트를 사용하여 감싸면 됩니다. 이 컴포넌트는 웹 애플리케이션에서 HTML5의 History API를 사용하여 페이지를 새로고침하지 않고도 주소를 변경하고, 현재 주소에 관련된 정보를 props로 쉽게 조회하거나 사용할 수 있도록 해 줍니다</p>
+
+```js
+import React from ‘react‘;
+import ReactDOM from ‘react-dom‘;
+import { BrowserRouter } from ‘react-router-dom‘;
+import ‘./index.css‘;
+import App from ‘./App‘;
+import * as serviceWorker from ‘./serviceWorker‘;
+
+
+ReactDOM.render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>,
+  document.getElementById(‘root‘)
+);
+
+```
+
+> Route 컴포넌트로 특정 주소에 컴포넌트 연결
+
+<p>Route라는 컴포넌트를 사용하여 사용자의 현재 경로에 따라 다른 컴포넌트를 보여 주겠습니다. Route 컴포넌트를 사용하면 어떤 규칙을 가진 경로에 어떤 컴포넌트를 보여 줄지 정의할 수 있습니다</p>
+
+```js
+<Route path="주소규칙" component={보여 줄 컴포넌트} />
+```
+
+<p>/about 경로로 들어가면 About 컴포넌트만 나오기를 기대했지만, 예상과 다르게 두 컴포넌트가 모두 나타납니다. /about 경로가 / 규칙에도 일치하기 때문에 발생한 현상입니다. 이를 수정하려면 Home을 위한 Route 컴포넌트를 사용할 때 exact라는 props를 true로 설정하면 됩니다.</p>
+
+```js
+const App = () => {
+  return (
+    <div>
+      <Route path="/" component={Home} exact={true} />
+      <Route path="/about" component={About} />
+    </div>
+  );
+};
+```
+
+> Link 컴포넌트로 특정 주소로 이동하기
+
+<p>Link 컴포넌트는 클릭하면 다른 주소로 이동시켜 주는 컴포넌트입니다. 일반 웹 애플리케이션에서는 a 태그를 사용하여 페이지를 전환하는데요. 리액트 라우터를 사용할 때는 이 태그를 직접 사용하면 안 됩니다. 이 태그는 페이지를 전환하는 과정에서 페이지를 새로 불러오기 때문에 애플리케이션이 들고 있던 상태들을 모두 날려 버리게 됩니다. 렌더링된 컴포넌트들도 모두 사라지고 다시 처음부터 렌더링하게 되죠.</p>
+
+<p>Link 컴포넌트를 사용하여 페이지를 전환하면, 페이지를 새로 불러오지 않고 애플리케이션은 그대로 유지한 상태에서 HTML5 History API를 사용하여 페이지의 주소만 변경해 줍니다. Link 컴포넌트 자체는 a 태그로 이루어져 있지만, 페이지 전환을 방지하는 기능이 내장되어 있습니다.</p>
+
+```js
+<Link to="주소">내용</Link>
+```
+
+> Route 하나에 여러 개의 path 설정하기
+
+<p> Route를 두 번 사용하는 대신, path props를 배열로 설정해 주면 여러 경로에서 같은 컴포넌트를 보여 줄 수 있습니다.</p>
+
+```js
+...
+
+const App = () => {
+  return (
+    <div>
+      <Route path={["/about", "/info"]} component={About} />
+    </div>
+  );
+};
+```
+
+### URL 파라미터와 쿼리
+
+<p>페이지 주소를 정의할 때 가끔은 유동적인 값을 전달해야 할 때도 있습니다. 이는 파라미터와 쿼리로 나눌 수 있습니다.</p>
+
+```
+1. 파라미터 예시 : /profiles/velopert
+2. 쿼리 예시 : /about?details=true
+```
+
+<p>유동적인 값을 사용해야 하는 상황에서 파라미터를 써야 할지 쿼리를 써야 할지 정할 때, 무조건 따라야 하는 규칙은 없습니다. 다만 일반적으로 파라미터는 특정 아이디 혹은 이름을 사용하여 조회할 때 사용하고, 쿼리는 우리가 어떤 키워드를 검색하거나 페이지에 필요한 옵션을 전달할 때 사용합니다.</p>
+
+> 1.URL 파라미터
+
+<p>Profile 페이지에서 파라미터를 사용해 봅시다. /profile/velopert와 같은 형식으로 뒷부분에 유동적인 username 값을 넣어 줄 때 해당 값을 props로 받아 와서 조회하는 방법을 알아보겠습니다.</p>
+
+<p>URL 파라미터를 사용할 때는 라우트로 사용되는 컴포넌트에서 받아 오는 match라는 객체 안의 params 값을 참조합니다. match 객체 안에는 현재 컴포넌트가 어떤 경로 규칙에 의해 보이는지에 대한 정보가 들어 있습니다.</p>
+
+```js
+<Route path="/profile/:username" component={Profile} />
+```
+
+<p>이번에 사용할 path 규칙에는 /profiles/:username이라고 넣어 줍니다. 이렇게 설정하면 match.params.username 값을 통해 현재 username 값을 조회할 수 있습니다.</p>
+
+```js
+📁/pages/Profile;
+import React from "react";
+
+const data = {
+  leejunhee: {
+    name: "이준희",
+    description: "리액트를 좋아하는 개발자",
+  },
+  gildong: {
+    name: "홍길동",
+    description: "고전 소설 홍길동전의 주인공",
+  },
+};
+
+const Profile = ({ match }) => {    // match 객체를 통해 Route 처리에 담긴 :username에 접근할 수 있게됨
+  const { username } = match.params;
+  console.log("match: ", match);  // match 객체 확인
+  console.log("match.params ", match.params); // match.params 객체 확인
+  console.log("match.params.username: ", username); // // match.params.username 객체 확인
+  const profile = data[username];
+  if (!profile) {
+    return <div>존재하지 않는 사용자입니다.</div>;
+  }
+  return (
+    <div>
+      <h3>
+        {username}({profile.name})
+      </h3>
+      <p>{profile.description}</p>
+    </div>
+  );
+};
+
+export default Profile;
+```
+
+<img src="./images/PARAMETER.png" alt="PARAMETER"/>
+
+<p>match 객체 안에는 path, params, url 파라미터가 들어있습니다. 이 params를 통해 params 프로퍼티 내부의 username 프로퍼티에 접근하여 해당 값을 비교하게 됩니다</p>
+
+> 2.URL 쿼리
+
+<p>이번에는 About 페이지에서 쿼리를 받아 오겠습니다. 쿼리는 location 객체에 들어 있는 search 값에서 조회할 수 있습니다. location 객체는 라우트로 사용된 컴포넌트에게 props로 전달되며, 웹 애플리케이션의 현재 주소에 대한 정보를 지니고 있습니다.</p>
+
+> location의 형태는 다음과 같습니다.
+
+```
+{
+“pathname”: “/about”,
+“search”: “?detail=true”,
+“hash”: “”
+}
+```
+
+> 위 location 객체는 http://localhost:3000/about?detail=true 주소로 들어갔을 때의 값입니다.
+
+<p>URL 쿼리를 읽을 때는 위 객체가 지닌 값 중에서 search 값을 확인해야 합니다. 이 값은 문자열 형태로 되어 있습니다. URL 쿼리는 ?detail=true&another=1과 같이 문자열에 여러 가지 값을 설정해 줄 수 있습니다. search 값에서 특정 값을 읽어 오기 위해서는 이 문자열을 객체 형태로 변환해 주어야 합니다.</p>
+
+<p>쿼리 문자열을 객체로 변환할 때는 qs라는 라이브러리를 사용합니다.</p>
+
+> case 1 : url : http://localhost:3000/about [쿼리문 x]
+
+<img src="./images/query1.png" alt="nonQuery">
+
+> case 1 : url : http://localhost:3000/about?detail=true [쿼리문 o]
+
+<img src="./images/query2.png" alt="Query">
+
+### 서브 라우트
+
+<p>서브 라우트는 라우트 내부에 또 라우트를 정의하는 것을 의미합니다. 이 작업은 그렇게 복잡하지 않습니다. 그냥 라우트로 사용되고 있는 컴포넌트의 내부에 Route 컴포넌트를 또 사용하면 됩니다.</p>
+
+### Switch
+
+> <a href="https://github.com/junh0328/TIL/blob/master/React/exams/src/App.js">예제 코드 보기</a>
+
+<p>Switch 컴포넌트는 여러 Route를 감싸서 그중 일치하는 단 하나의 라우트만을 렌더링시켜 줍니다. Switch를 사용하면 모든 규칙과 일치하지 않을 때 보여 줄 Not Found 페이지도 구현할 수 있습니다.</p>
+
+### NavLink
+
+> <a href="https://github.com/junh0328/TIL/blob/master/React/exams/src/pages/Profiles/index.js">예제 코드 보기</a>
+
+<p>NavLink는 Link와 비슷합니다. 현재 경로와 Link에서 사용하는 경로가 일치하는 경우 특정 스타일 혹은 CSS 클래스를 적용할 수 있는 컴포넌트입니다.</p>
+
+<p>NavLink에서 링크가 활성화되었을 때의 스타일을 적용할 때는 activeStyle 값을, CSS 클래스를 적용할 때는 activeClassName 값을 props로 넣어 주면 됩니다</p>

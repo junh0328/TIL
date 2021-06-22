@@ -53,7 +53,8 @@
 - <a href="https://github.com/junh0328/TIL/blob/master/React/readme.md#Chapter-6-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EB%B0%98%EB%B3%B5">Chapter 6, 컴포넌트 반복</a>
 - <a href="https://github.com/junh0328/TIL/blob/master/React/readme.md#Chapter-7-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8%EC%9D%98-%EB%9D%BC%EC%9D%B4%ED%94%84%EC%82%AC%EC%9D%B4%ED%81%B4-%EB%A9%94%EC%84%9C%EB%93%9C">Chapter 7, 컴포넌트의 라이프사이클 메서드</a>
 - <a href="https://github.com/junh0328/TIL/tree/master/React#Chapter-8-Hooks">Chapter 8, Hooks</a>
-- <a>Chapter 9, 컴포넌트 스타일링</a>
+- <a href="https://github.com/junh0328/TIL/tree/master/React#Chapter-9-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EC%8A%A4%ED%83%80%EC%9D%BC%EB%A7%81">Chapter 9, 컴포넌트 스타일링</a>
+- <a href="https://github.com/junh0328/TIL/tree/master/React#Chapter-13-%EB%A6%AC%EC%95%A1%ED%8A%B8-%EB%9D%BC%EC%9A%B0%ED%84%B0%EB%A1%9C-SPA-%EA%B0%9C%EB%B0%9C%ED%95%98%EA%B8%B0">Chapter 13, 리액트 라우터로 SPA 개발하기</a>
 
 ### React에 타입스크립트 적용하기
 
