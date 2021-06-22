@@ -1,5 +1,5 @@
 import "./App.css";
-import LearningUseMemo from "./components/LearningUseMemo";
+import StyledComponents from "./components/StyledComponents";
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
         height: "100vh",
       }}
     >
-      <LearningUseMemo />
+      <StyledComponents />
     </div>
   );
 }

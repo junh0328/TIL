@@ -14,6 +14,8 @@
 - [Chapter 6, 컴포넌트 반복](#Chapter-6-컴포넌트-반복)
 - [Chapter 7, 컴포넌트의 라이프사이클 메서드](#Chapter-7-컴포넌트의-라이프사이클-메서드)
 - [Chapter 8, Hooks](#Chapter-8-Hooks)
+- [Chapter 9, 컴포넌트 스타일링](#Chapter-9-컴포넌트-스타일링)
+- [Chapter 13, 리액트 라우터로 SPA 개발하기](#Chapter-13-리액트-라우터로-SPA-개발하기)
 
 ## Chapter 1 리액트 시작
 
@@ -1877,3 +1879,202 @@ useMemo(() => {
 ### 다른 Hooks
 
 > <a href="https://nikgraf.github.io/react-hooks/">사용자 생성 커스텀 훅</a></br><a href="https://ko.reactjs.org/docs/hooks-custom.html">자신만의 Hook 만들기</a>
+
+## Chapter 9 컴포넌트 스타일링
+
+<p>리액트에서 컴포넌트를 스타일링할 때는 다양한 방식을 사용할 수 있습니다. 여러 방식 중에서 딱히 정해진 방식이란 없습니다. 회사마다 요구하는 스펙이 다르고, 개발자마다 각자 취향에 따라 선택하기 때문입니다. 이 장에서는 어떠한 방식이 있는지 알아보고, 자주 사용하는 방식을 하나하나 사용해 보겠습니다</p>
+
+> 대표적인 스타일링 방식은 다음과 같습니다
+
+- 일반 CSS: 컴포넌트를 스타일링하는 가장 기본적인 방식입니다.
+- Sass: 자주 사용되는 CSS 전처리(pre-processor)중 하나로 확장된 CSS 문법을 사용하여 CSS 코드를 더욱 쉽게 작성할 수 있도록 해 줍니다.
+- CSS Module: 스타일을 작성할 때 CSS 클래스가 다른 CSS 클래스의 이름과 절대 충돌하지 않도록 파일마다 고유한 이름을 자동으로 생성해 주는 옵션입니다.
+- styled-components: 스타일을 자바스크립트 파일에 내장시키는 방식으로 스타일을 작성함과 동시에 해당 스타일이 적용된 컴포넌트를 만들 수 있게 해줍니다.
+
+### 가장 흔한 방식, 일반 CSS
+
+```css
+.App {
+  text-align: center;
+}
+
+/.App 안에 들어 있는 .logo/ .App .logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+}
+
+/* .App 안에 들어 있는 header 
+   header 클래스가 아닌 header 태그 자체에
+   스타일을 적용하기 때문에 .이 생략되었습니다. */
+.App header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+/* .App 안에 들어 있는 a 태그 */
+.App a {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+```
+
+### styled-components
+
+<p>컴포넌트 스타일링의 또 다른 패러다임은 자바스크립트 파일 안에 스타일을 선언하는 방식입니다. 이 방식을 ‘CSS-in-JS’라고 부르는데요. 이와 관련된 라이브러리는 정말 많습니다. 라이브러리의 종류는 https://github.com/MicheleBertoli/css-in-js에서 확인할 수 있습니다.</p>
+
+> styled-components를 대체할 수 있는 라이브러리로는 현재 emotion이 대표적입니다. 작동 방식은 styled-components와 꽤 비슷합니다.
+
+<p>이 라이브러리를 통해 예제 컴포넌트를 한번 만들어 보겠습니다. styled-components를 사용하면 자바스크립트 파일 하나에 스타일까지 작성할 수 있기 때문에 .css 또는 .scss 확장자를 가진 스타일 파일을 따로 만들지 않아도 된다는 큰 이점이 있습니다.</p>
+
+> <a href="https://github.com/junh0328/TIL/blob/master/React/exams/src/components/StyledComponents/index.js">예제 코드 보기</a>
+
+<p>styled-components와 일반 classNames를 사용하는 CSS/Sass를 비교했을 때, 가장 큰 장점은 props 값으로 전달해 주는 값을 쉽게 스타일에 적용할 수 있다는 것입니다.</p>
+
+> 1.스타일링된 엘리먼트 만들기
+
+<p>styled-components를 사용하여 스타일링된 엘리먼트를 만들 때는 컴포넌트 파일의 상단에서 styled를 불러오고, styled.태그명을 사용하여 구현합니다.</p>
+
+```js
+import styled from "styled-components";
+
+const MyComponent = styled.div`
+  font-size: 2rem;
+`;
+```
+
+<p>하지만 사용해야 할 태그명이 유동적이거나 특정 컴포넌트 자체에 스타일링해 주고 싶다면 다음과 같은 형태로 구현할 수 있습니다.</p>
+
+```js
+const Myinput = styled("input")`
+  background: gray;
+`;
+
+// 이미 만들어진 Link 태그에 추가 커스텀 스타일링을 적용한다
+const StyledLink = styled(Link)`
+  color: blue;
+`;
+```
+
+> 2.스타일에서 props 조회하기
+
+<p>styled-components를 사용하면 스타일 쪽에서 컴포넌트에게 전달된 props 값을 참조할 수 있습니다.</p>
+
+```js
+const Box = styled.div`
+  /* props로 넣어 준 값을 직접 전달해 줄 수 있습니다. */
+  // <Box color="black"> color props가 없다면 기본 색상은 blue로 출력
+  background: ${(props) => props.color || "blue"};
+  padding: 1rem;
+  display: flex;
+`;
+
+...
+
+<Box color="black"></Box>
+
+```
+
+<p>이 코드를 보면 background 값에 props를 조회해서 props.color의 값을 사용하게 했습니다. 그리고 color 값이 주어지지 않았을 때는 blue를 기본 색상으로 설정했습니다.
+
+이렇게 만들어진 코드는 JSX에서 사용될 때 다음과 같이 color 값을 props로 넣어 줄 수 있습니다.</p>
+
+> 3.props에 따른 조건부 스타일링
+
+<p>일반 CSS 클래스를 사용하여 조건부 스타일링을 해야 할 때는 className을 사용하여 조건부 스타일링을 해 왔는데요. styled-components에서는 조건부 스타일링을 간단하게 props로도 처리할 수 있습니다.</p>
+
+```js
+// 여기서 props는 우리가 만든 StyledComponent에게 부여된 props입니다
+  ${(props) =>
+    // props를 만들어서 해당 조건에 따라 css를 지정해줄 수도 있습니다
+    props.inverted &&
+    css`
+      background: none;
+      border: 2px solid white;
+      color: white;
+
+      &:hover {
+        background: white;
+        color: black;
+      }
+    `}
+    ...
+
+    <Button inverted={true}>테두리만</Button>
+    // props.inverted 인 상황에서만 쓸 수 있는 조건부 css 스타일링을 구현하였습니다
+
+```
+
+> 4.반응형 디자인
+
+<p>이번에는 styled-components를 사용할 때 반응형 디자인을 어떻게 하는지 한번 알아봅시다. 브라우저의 가로 크기에 따라 다른 스타일을 적용하기 위해서는 일반 CSS를 사용할 때와 똑같이 media 쿼리(query)를 사용하면 됩니다. 조금 전 작성한 Box 컴포넌트를 다음과 같이 수정해 보세요.</p>
+
+```js
+const Box = styled.div`
+  background: ${(props) => props.color || "blue"};
+  padding: 1rem;
+  display: flex;
+  width: 1024px;
+  @media (max-width: 1024px) {
+    width: 768px;
+    background-color: salmon;
+  }
+  @media (max-width: 768px) {
+    width: 100%;
+    background-color: crimson;
+  }
+`;
+```
+
+<img src="./images/styledcomponents.gif" alt="styledcomponents">
+
+<p>하지만 이렇게 작업한다면 일반 CSS에서 할 때랑 큰 차이가 없습니다. 그런데 이러한 작업을 여러 컴포넌트에서 반복해야 한다면 조금 귀찮을 수도 있습니다. 그럴 때는 이 작업을 함수화하여 간편하게 사용할 수 있습니다. styled-components 매뉴얼에서 제공하는 유틸 함수를 따라 사용해 봅시다.</p>
+
+> 참고: <a href="https://www.styled-components.com/docs/advanced#media-templates">링크, 스타일드 컴포넌트</a>
+
+```js
+onst sizes = {
+  desktop: 1024,
+  tablet: 768,
+};
+
+// 위에 있는 size 객체에 따라 자동으로 media 쿼리 함수를 만들어 줍니다.
+
+const media = Object.keys(sizes).reduce((acc, label) => {
+  acc[label] = (...args) => css`
+    @media (max-width: ${sizes[label] / 16}em) {
+      ${css(...args)};
+    }
+  `;
+
+  return acc;
+}, {});
+
+const Box = styled.div`
+  /* props로 넣어 준 값을 직접 전달해 줄 수 있습니다. */
+  // <Box color="black"> color props가 없다면 기본 색상은 blue로 출력
+  background: ${(props) => props.color || "blue"};
+  padding: 1rem;
+  display: flex;
+  width: 1024px;
+  ${media.desktop`width: 768px;`}
+  ${media.tablet`width: 100%;`};
+`;
+```
+
+## Chapter 13 리액트 라우터로 SPA 개발하기
+
+### SPA란?
