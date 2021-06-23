@@ -55,8 +55,9 @@
 - <a href="https://github.com/junh0328/TIL/tree/master/React#Chapter-8-Hooks">Chapter 8, Hooks</a>
 - <a href="https://github.com/junh0328/TIL/tree/master/React#Chapter-9-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EC%8A%A4%ED%83%80%EC%9D%BC%EB%A7%81">Chapter 9, 컴포넌트 스타일링</a>
 - <a href="https://github.com/junh0328/TIL/tree/master/React#Chapter-13-%EB%A6%AC%EC%95%A1%ED%8A%B8-%EB%9D%BC%EC%9A%B0%ED%84%B0%EB%A1%9C-SPA-%EA%B0%9C%EB%B0%9C%ED%95%98%EA%B8%B0">Chapter 13, 리액트 라우터로 SPA 개발하기</a>
-- <a href="">Chapter 14, 외부 API를 연동하여 뉴스 뷰어 만들기</a>
-- <a href="">Chapter 16, 리덕스 라이브러리 이해하기</a>
+- <a href="https://github.com/junh0328/TIL/tree/master/React#Chapter-14-%EC%99%B8%EB%B6%80-API%EB%A5%BC-%EC%97%B0%EB%8F%99%ED%95%98%EC%97%AC-%EB%89%B4%EC%8A%A4-%EB%B7%B0%EC%96%B4-%EB%A7%8C%EB%93%A4%EA%B8%B0">Chapter 14, 외부 API를 연동하여 뉴스 뷰어 만들기</a>
+- <a href="https://github.com/junh0328/TIL/tree/master/React#Chapter-16-%EB%A6%AC%EB%8D%95%EC%8A%A4-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0">Chapter 16, 리덕스 라이브러리 이해하기</a>
+- <a href="">Chapter17, 리덕스를 사용한 리액트 상태 관리 애플리케이션</a>
 
 ### React에 타입스크립트 적용하기
 
