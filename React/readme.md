@@ -2743,9 +2743,105 @@ export default React.memo(TodosContainer);    // 컨테이너 컴포넌트를 Re
 
 ### 작업 환경 준비
 
+> <a href="https://github.com/junh0328/TIL/tree/master/React/redux-middleware/src">예제 코드 보기</a>
+
 ### 미들웨어란?
 
+<p>리덕스 미들웨어는 액션을 디스패치했을 때 리듀서에서 이를 처리하기에 앞서 사전에 지정된 작업들을 실행합니다. 미들웨어는 액션과 리듀서 사이의 중간자라고 볼 수 있습니다.</p>
+
+<img src="./images/middleware.png" alt="middleware"/>
+
+<p>리듀서가 액션을 처리하기 전에 미들웨어가 할 수 있는 작업은 여러 가지가 있습니다. 전달받은 액션을 단순히 콘솔에 기록하거나, 전달받은 액션 정보를 기반으로 액션을 아예 취소하거나, 다른 종류의 액션을 추가로 디스패치할 수도 있습니다.</p>
+
 ### 비동기 작업을 처리하는 미들웨어 사용
+
+<p>미들웨어가 어떤 방식으로 작동하는지 이해했나요? 이제 오픈 소스 커뮤니티에 공개된 미들웨어를 사용하여 리덕스를 사용하고 있는 프로젝트에서 비동기 작업을 더욱 효율적으로 관리해 보겠습니다.</p>
+
+<p>비동기 작업을 처리할 때 도움을 주는 미들웨어는 정말 다양합니다. 이 책에서 다룰 미들웨어는 다음과 같습니다.</p>
+
+- redux-thunk: 비동기 작업을 처리할 때 가장 많이 사용하는 미들웨어입니다. 객체가 아닌 함수 형태의 액션을 디스패치할 수 있게 해 줍니다.
+- redux-saga: redux-thunk 다음으로 가장 많이 사용되는 비동기 작업 관련 미들웨어 라이브러리입니다. 특정 액션이 디스패치되었을 때 정해진 로직에 따라 다른 액션을 디스패치시키는 규칙을 작성하여 비동기 작업을 처리할 수 있게 해 줍니다.
+
+> 트렌드로 동향 알아보기 (21년 06월 기준)
+
+<img src="./images/reduxTrends.png" alt="reduxTrends"/>
+
+### redux-thunk
+
+> <a href="https://github.com/reduxjs/redux-thunk">공식 깃헙 바로가기</a>
+
+> Thunk 란?
+
+<p>Thunk는 특정 작업을 나중에 할 수 있도록 미루기 위해 함수 형태로 감싼 것을 의미합니다. 예를 들어 주어진 파라미터에 1을 더하는 함수를 만들고 싶다면 다음과 같이 작성할 것입니다.</p>
+
+```js
+const addOne = (x) => x + 1;
+addOne(1); // 2
+```
+
+<p>이 코드를 실행하면 addOne을 호출했을 때 바로 1 + 1이 연산됩니다. 그런데 이 연산 작업을 나중에 하도록 미루고 싶다면 어떻게 해야 할까요?</p>
+
+```js
+case 1 : 함수 선언식 Thunk 사용
+const addOne = (x) => x + 1;
+function addOneThunk(x) {
+  const thunk = () => addOne(x);
+  return thunk;
+}
+
+case 2 : 화살표 함수로 Thunk 사용
+const addOne = x => x + 1;
+const addOneThunk = x => () => addOne(x);
+
+...
+const fn = addOneThunk(1);
+setTimeout(() => {
+  const value = fn(); // fn이 실행되는 시점에 연산
+  console.log(value);
+}, 1000);
+```
+
+<p>이렇게 하면 특정 작업을 나중에 하도록 미룰 수 있습니다. redux-thunk 라이브러리를 사용하면 thunk 함수를 만들어서 디스패치할 수 있습니다. 그러면 리덕스 미들웨어가 그 함수를 전달받아 store의 dispatch와 getState를 파라미터로 넣어서 호출해 줍니다.</p>
+
+> 다음은 redux-thunk에서 사용할 수 있는 예시 thunk 함수입니다.
+
+```js
+const sampleThunk = () => (dispatch, getState) => {
+  // 현재 상태를 참조할 수 있고,
+  // 새 액션을 디스패치할 수도 있습니다.
+};
+```
+
+> Thunk 생성 함수 만들기
+
+<p>전에는 redux-actions 모듈에서 사용하는 createAction 함수를 통해서 프레젠테이셔널 컴포넌트에서 보내지는 요청이 바로 리듀서를 업데이트 하는 과정이였습니다. Thunk를 사용하면서 increaseAsync, decreaseAsync 함수를 새로 작성하여 일정 기간이 흐른 뒤에 작업을 할 수 있도록 구현해 보았습니다. </p>
+
+```js
+import { createAction, handleActions } from "redux-actions";
+
+const INCREASE = "counter/INCREASE";
+const DECREASE = "counter/DECREASE";
+
+export const increase = createAction(INCREASE);
+export const decrease = createAction(DECREASE);
+
+// 1초 뒤에 increase 혹은 decrease 함수를 디스패치함
+export const increaseAsync = () => (dispatch) => {
+  console.log("increase Async!");
+  setTimeout(() => {
+    dispatch(increase());
+  }, 1000);
+};
+
+export const decreaseAsync = () => (dispatch) => {
+  console.log("decrease Async!");
+  setTimeout(() => {
+    dispatch(decrease());
+  }, 1000);
+};
+```
+
+### redux-saga
 
 ### 정리
 
