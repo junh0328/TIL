@@ -23,7 +23,7 @@ export const decreaseAsync = () => (dispatch) => {
 
 const initialState = 0; // 상태는 꼭 객체일 필요가 없습니다. 숫자도 작동해요.
 
-const Counter = handleActions(
+const counter = handleActions(
   {
     [INCREASE]: (state) => state + 1,
     [DECREASE]: (state) => state - 1,
@@ -31,4 +31,4 @@ const Counter = handleActions(
   initialState
 );
 
-export default Counter;
+export default counter;

@@ -1,8 +1,8 @@
-import SampleContainer from "./containers/SampleContainer";
 import "./App.css";
+import Counter from "./components/Counter";
 
 function App() {
-  return <SampleContainer />;
+  return <Counter />;
 }
 
 export default App;
