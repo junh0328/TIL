@@ -3174,7 +3174,7 @@ export default App;
 
 <img src="./images/SSRandCodeSplt.png" alt="SSRandCodeSplt">
 
-> - [TTV TTI](#TTV-TTI) 개념 다시 보기
+> - [TTV TTI 개념 다시 보기](#TTV-TTI)
 
 <p>이 책에서는 이 문제점을 다음과 같은 방법으로 해결합니다. Loadable Components 라이브러리에서 제공하는 기능을 써서 서버 사이드 렌더링 후 필요한 파일의 경로를 추출하여 렌더링 결과에 스크립트/스타일 태그를 삽입해 주는 방법입니다</p>
 
@@ -3183,3 +3183,9 @@ export default App;
 <p>서버 사이드 렌더링을 구현하려면 웹팩 설정을 커스터마이징해 주어야 합니다. CRA로 만든 프로젝트에서는 웹팩 관련 설정이 기본적으로 모두 숨겨져 있으니 yarn eject 명령어를 실행하여 밖으로 꺼내 주세요.</p>
 
 <p>해당 커밋을 먼저 남긴 후에 변화를 보겠습니다.</p>
+
+> <a href="https://github.com/junh0328/TIL/tree/master/React/loadblexams">예제 코드 바로가기</a>, 커밋: 0e549f9
+
+```
+$ yarn eject 명령어를 통해 CRA에 의해 숨겨진 웹팩 관련 설정을 다시 꺼내줍니다.
+```
