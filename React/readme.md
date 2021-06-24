@@ -2468,6 +2468,24 @@ try { // try/catch 구문을 사용하여 에러를 처리합니다.
 }
 ```
 
+> axios 요청 처리하기 (리턴편)
+
+```js
+case 1 함수의 실행 결과를 변수에 바인딩하고 변수를 리턴
+export const getPostAPI = (id) => {
+  let result = axios.get(`https://jsonplaceholder.typicode.com/posts/${id}`);
+  return result;
+};
+
+case 2 함수 결과값 리턴하기
+export const getPostAPI = (id) => {
+  return axios.get(`https://jsonplaceholder.typicode.com/posts/${id}`);
+};
+
+case 3 화살표 함수의 중괄호 { ... }와 리턴문 생략
+export const getPostAPI = (id) => axios.get(`https://jsonplaceholder.typicode.com/posts/${id}`);
+```
+
 ### axios로 API 호출해서 데이터 받아 오기
 
 > <a href="https://github.com/junh0328/TIL/blob/master/React/exams/src/pages/AxiosData/index.js">예제 코드 보기</a>
@@ -2839,6 +2857,39 @@ export const decreaseAsync = () => (dispatch) => {
     dispatch(decrease());
   }, 1000);
 };
+```
+
+> 리팩토링
+
+<p>API를 요청해야 할 때마다 17줄 정도 되는 thunk 함수를 작성하는 것과 로딩 상태를 리듀서에서 관리하는 작업은 귀찮을 뿐 아니라 코드도 길어지게 만듭니다. 그러므로 반복되는 로직을 따로 분리하여 코드의 양을 줄여 봅시다.</p>
+
+```js
+📁lib/createRequestThunk
+
+export default function createRequestThunk(type, request) {
+  // 성공 및 실패 액션 타입을 정의합니다.
+  const SUCCESS = `${type}_SUCCESS`;
+  const FAILURE = `${type}_FAILURE`;
+  return (params) => async (dispatch) => {
+    dispatch({ type }); // 시작됨
+    try {
+      const response = await request(params);
+      dispatch({
+        type: SUCCESS,
+        payload: response.data,
+      }); // 성공
+    } catch (e) {
+      dispatch({
+        type: FAILURE,
+        payload: e,
+        error: true,
+      }); // 에러 발생
+      throw e;
+    }
+  };
+}
+
+// 사용법: createRequestThunk(‘GET_USERS‘,api.getUsers);
 ```
 
 ### redux-saga
