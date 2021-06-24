@@ -60,6 +60,7 @@
 - <a href="https://github.com/junh0328/TIL/tree/master/React#Chapter-17-%EB%A6%AC%EB%8D%95%EC%8A%A4%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%9C-%EB%A6%AC%EC%95%A1%ED%8A%B8-%EC%83%81%ED%83%9C-%EA%B4%80%EB%A6%AC-%EC%95%A0%ED%94%8C%EB%A6%AC%EC%BC%80%EC%9D%B4%EC%85%98">Chapter 17, 리덕스를 사용한 리액트 상태 관리 애플리케이션</a>
 - <a href="https://github.com/junh0328/TIL/tree/master/React#Chapter-18-%EB%A6%AC%EB%8D%95%EC%8A%A4-%EB%AF%B8%EB%93%A4%EC%9B%A8%EC%96%B4%EB%A5%BC-%ED%86%B5%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0-%EC%9E%91%EC%97%85-%EA%B4%80%EB%A6%AC">Chapter 18, 리덕스 미들웨어를 통한 비동기 작업 관리</a>
 - <a href="https://github.com/junh0328/TIL/tree/master/React#Chapter-19-%EC%BD%94%EB%93%9C-%EC%8A%A4%ED%94%8C%EB%A6%AC%ED%8C%85">Chapter 19, 코드 스플리팅</a>
+- <a href="https://github.com/junh0328/TIL/tree/master/React#Chapter-20-%EC%84%9C%EB%B2%84-%EC%82%AC%EC%9D%B4%EB%93%9C-%EB%A0%8C%EB%8D%94%EB%A7%81">Chpater 20, 서버 사이드 렌더링</a>
 
 ### React에 타입스크립트 적용하기
 
