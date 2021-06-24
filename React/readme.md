@@ -2978,4 +2978,184 @@ const gen = function*(){
 
 ## Chapter 19 코드 스플리팅
 
+<p>리액트 프로젝트를 완성하여 사용자에게 제공할 때는 빌드 작업을 거쳐서 배포해야 합니다. 빌드 작업을 통해 프로젝트에서 사용되는 자바스크립트 파일 안에서 불필요한 주석, 경고 메시지, 공백 등을 제거하여 파일 크기를 최소화하기도 하고, 브라우저에서 JSX 문법이나 다른 최신 자바스크립트 문법이 원활하게 실행되도록 코드의 트랜스파일 작업도 할 수 있습니다. 만약 프로젝트 내에 이미지와 같은 정적 파일이 있다면 해당 파일을 위한 경로도 설정되지요.</p>
+
+<p>이 작업은 웹팩(webpack)이라는 도구가 담당합니다. 웹팩에서 별도의 설정을 하지 않으면 프로젝트에서 사용 중인 모든 자바스크립트 파일이 하나의 파일로 합쳐지고, 모든 CSS 파일도 하나의 파일로 합쳐집니다.</p>
+
+<p>CRA로 프로젝트를 빌드할 경우 최소 두 개 이상의 자바스크립트 파일이 생성되는데요. CRA의 기본 웹팩 설정에는 SplitChunks라는 기능이 적용되어 node_modules에서 불러온 파일, 일정 크기 이상의 파일, 여러 파일 간에 공유된 파일을 자동으로 따로 분리시켜서 캐싱의 효과를 제대로 누릴 수 있게 해 줍니다.</p>
+
+<p>프로젝트 디렉터리 안에 있는 build/static 디렉터리를 열어 보세요. 자바스크립트 파일 여러 개가 잘 만들어졌나요?</p>
+
+<img src="./images/buildDirectory.png" alt="buildDirectory">
+
+<p>파일 이름을 보면 ‘7b7f7f25’ 같은 해시(hash) 값이 포함되어 있습니다. 이 값은 빌드하는 과정에서 해당 파일의 내용에 따라 생성되며, 이를 통해 브라우저가 새로 파일을 받아야 할지 받지 말아야 할지를 알 수 있습니다.</p>
+
+<p>현재 <b>2</b>로 시작하는 파일에는 React, ReactDOM 등 node_modules에서 불러온 라이브러리 관련 코드가 들어 있고, <b>main</b>으로 시작하는 파일에는 직접 프로젝트에 작성하는 App 같은 컴포넌트에 대한 코드가 들어 있습니다. 한번 열어 보세요. 2로 시작하는 파일은 코드가 엄청나게 긴 반면, main으로 시작하는 파일은 코드가 매우 짧을 것입니다.</p>
+
+<p>조금 전 언급했던 SplitChunks라는 웹팩 기능을 통해 자주 바뀌지 않는 코드들이 2로 시작하는 파일에 들어 있기 때문에 캐싱의 이점을 더 오래 누릴 수 있습니다.</p>
+
+> 코드 스플리팅은 우리가 만든 프로젝트를 배포 시에 용량을 줄이기 위해 필요한 작업입니다.</br>
+> 하지만, 어플리케이션의 용량과 쓰임새에 따라 무조건적으로 코드 스플리팅이 필요한 것은 아니니, 코드스플리팅을 최우선으로 생각하지 않으셔도 괜찮습니다.
+
+### 코드스플리팅이 뭔데?
+
+<p>
+우리가 자바스크립트 또는 타입스크립트를 통해 어플리케이션을 개발하게 되면, 웹팩을 통한 빌드 과정을 통해 하나의 파일에 모든 로직들이 들어가게 됩니다. 그럼, 프로젝트의 규모가 커질수록 해당 파일의 크기가 커질 것입니다. 용량이 커지면, 인터넷을 사용하는 나라 혹은 환경에 따라 페이지의 로딩속도가 느려질 것입니다. <b>(평균적으로 볼 때, 사용자는 페이지 로딩시에 3초를 초과할 경우 흥미를 잃고 해당 서비스를 종료한다고 합니다.)</b> 프론트엔드 개발자로써 사용자의 반응과 경험을 기반으로 최적화된 환경을 제공해야 하기 때문에 간과하고 넘겨서는 안됩니다. </p>
+
+> <a href="https://nownews.seoul.co.kr/news/newsView.php?id=20180123601013">“웹사이트 접속자, 로딩시간 3초 넘으면 그냥 나간다”</a> [출처: 서울신문에서 제공하는 기사입니다.]
+
+<p>
+코드 스플리팅을 하게 되면, 지금 당장 필요한 코드가 아니라면 따로 분리시켜, 나중에 필요할 때 사용할 수 있습니다. 이러한 과정을 통해 페이지의 로딩 속도를 개선할 수 있는 것입니다.
+</p>
+
+### 코드스플리팅 어떻게 하는데?
+
+<p>코드 스플리팅을 위해 리액트에 내장된 기능으로 유틸 함수인 React.lazy와 컴포넌트인 Suspense가 있습니다. 이 기능은 리액트 16.6 버전부터 도입되었습니다. 이전 버전에서는 import 함수를 통해 불러온 다음, 컴포넌트 자체를 state에 넣는 방식으로 구현해야 합니다.</p>
+
+### React.lazy
+
+<p>React.lazy와 Suspense를 사용하면 코드 스플리팅을 하기 위해 state를 따로 선언하지 않고도 정말 간편하게 컴포넌트 코드 스플리팅을 할 수 있습니다. 먼저 사용 방법을 알아보고 우리가 만든 컴포넌트에 적용해 보겠습니다. React.lazy는 컴포넌트를 렌더링하는 시점에서 비동기적으로 로딩할 수 있게 해 주는 유틸 함수입니다. 사용 방법은 다음과 같습니다.</p>
+
+```js
+const SplitMe = React.lazy(() => import("./SplitMe"));
+```
+
+<p>Suspense는 리액트 내장 컴포넌트로서 코드 스플리팅된 컴포넌트를 로딩하도록 발동시킬 수 있고, 로딩이 끝나지 않았을 때 보여 줄 UI를 설정할 수 있습니다. 사용 방법은 다음과 같습니다.</p>
+
+```js
+import React, { Suspense } from 'react';
+
+...
+<Suspense fallback={<div>loading...</div>}>
+  <SplitMe />
+</Suspense>
+
+// fallback props 사용하여 로딩되지 않았을 때 보여질 JSX를 설정할 수 있습니다.
+```
+
+### @loadable/component
+
+<p>Loadable Components는 코드 스플리팅을 편하게 하도록 도와주는 서드파티 라이브러리입니다. 이 라이브러리의 이점은 서버 사이드 렌더링을 지원한다는 것입니다(React.lazy와 Suspense는 아직 서버 사이드 렌더링을 지원하지 않습니다). 또한, 렌더링하기 전에 필요할 때 스플리팅된 파일을 미리 불러올 수 있는 기능도 있습니다.</p>
+
+<p>서버 사이드 렌더링이란 웹 서비스의 초기 로딩 속도 개선, 캐싱 및 검색 엔진 최적화를 가능하게 해 주는 기술입니다. 서버 사이드 렌더링을 사용하면 웹 서비스의 초기 렌더링을 사용자의 브라우저가 아닌 서버 쪽에서 처리합니다. 사용자는 서버에서 렌더링한 html 결과물을 받아 와서 그대로 사용하기 때문에 초기 로딩 속도도 개선되고, 검색 엔진에서 크롤링할 때도 문제없지요. 이에 대한 자세한 내용은 다음 장에서 알아보고, 여기서는 서버 사이드 렌더링 없이 Loadable Components의 기본적인 사용법만 알아보겠습니다.</p>
+
+> <a href="https://loadable-components.com/">loadble 라이브러리 바로가기</a>
+
+</p>
+
+### 다운받기
+
+```
+$ npm install @loadable/component
+
+// 타입스크립트 환경이라면 추가적인 라이브러리를 받아줘야 합니다.
+$ npm install --save @types/loadable__component
+```
+
+### 사용하기
+
+```js
+const LogIn = loadable(() => import("Login 컴포넌트에 설정된 경로"));
+```
+
+### quick start! 공식 예제 코드
+
+```js
+import loadable from "@loadable/component";
+const OtherComponent = loadable(() => import("./OtherComponent"));
+function MyComponent() {
+  return (
+    <div>
+      <OtherComponent />
+    </div>
+  );
+}
+```
+
+### 실제 사용된 코드 보기
+
+```js
+import React, { useState } from "react";
+import loadable from "@loadable/component";
+
+const SplitMe = loadable(() => import("./SplitMe"));
+
+function App() {
+  const [visible, setVisible] = useState(false);
+
+  const onClick = () => {
+    setVisible(true);
+  };
+
+  return (
+    <div>
+      <p onClick={onClick}>Hello React!</p>
+      {visible && <SplitMe />}
+    </div>
+  );
+}
+
+export default App;
+```
+
+<p>로딩 중에 다른 UI를 보여 주고 싶다면 loadable을 사용하는 부분을 다음과 같이 수정합니다.</p>
+
+```js
+const SplitMe = loadable(() => import(‘./SplitMe‘), {
+  fallback: <div>loading…</div>
+});
+```
+
+<p>이번에는 컴포넌트를 미리 불러오는(preload) 방법을 알아보겠습니다. 코드를 다음과 같이 수정해 보세요.</p>
+
+```js
+import React, { useState } from "react";
+import loadable from "@loadable/component";
+
+const SplitMe = loadable(() => import("./SplitMe"), {
+  fallback: <div>loading…</div>,
+});
+
+function App() {
+  const [visible, setVisible] = useState(false);
+
+  const onClick = () => {
+    setVisible(true);
+  };
+  const onMouseOver = () => {
+    SplitMe.preload();
+  };
+  return (
+    <div>
+      <p onClick={onClick} onMouseOver={onMouseOver}>
+        Hello React!
+      </p>
+      {visible && <SplitMe />}
+    </div>
+  );
+}
+
+export default App;
+```
+
+<p>이렇게 수정하면 마우스 커서를 Hello React! 위에 올리기만 해도 로딩이 시작됩니다. 그리고 클릭했을 때 렌더링되지요. 브라우저에서 개발자 도구를 열고, 커서를 올리는 시점에 파일이 불러와지는지 확인해 보세요. 이런 기능을 구현하면 나중에 사용자에게 더 좋은 경험을 제공할 수 있습니다.</p>
+
+> 코드 스플리팅을 하지 않은 상태
+
+- CSR 환경에서 처음에 웹 브라우저에서 모든 js 파일을 다 받아온 상태에서 로딩이 되야 하기 때문에 파일이 커질 경우 파일을 불러올 때 매우 느려질 수 있다
+
+<img src="./images/nonsplitting.gif" alt="nonsplitting"/>
+
+> 코드 스플리팅을 한 상태
+
+- 필요한 부분만 먼저 불러온 후에 다음 사용자의 인터렉션에 따라 스플리팅된 부분을 새로 요청에서 받아온다
+
+<img src="./images/splitting.gif" alt="splitting"/>
+
+### 결과
+
+<img width="960" alt="analyze_build" src="https://user-images.githubusercontent.com/54658162/113091642-573e1b80-9227-11eb-8d1f-508c7fcf20fa.png">
+
+<p>원래 리액트의 구조라면 app.js를 기반으로 모두 들어있어야 하지만, 766.js/ 740.js 등으로 분리된 것을 알 수 있습니다. 이렇게 파일을 좀 더 세분화하여 초기 로딩 속도를 높이고 사용자의 기대(즉각적인 반응)에 무리없이 반응할 수 있을 것입니다.</p>
+
 ## Chapter 20 서버 사이드 렌더링
