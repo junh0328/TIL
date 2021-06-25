@@ -27,7 +27,7 @@
 
 ### 왜 리액트인가?
 
-<p>최근 몇 년간 전 세계 개발자는 자바스크립트에 뜨겁게 열광하고 있습니다. 한때 자바스크립트는 웹 브라우저에서 간단한 연산을 하거나 시각적인 효과를 주는 단순한 스크립트 언어에 불과했지만, 현재는 웹 어플리케이션에서 가장 핵심적인 역할을 합니다. 더 나아가 영역을 확장하여 서버 사이드는 물론 모바일, 데스크톱 애플리케이션에서도 엄처나게 활약합니다.</p>
+<p>최근 몇 년간 전 세계 개발자는 자바스크립트에 뜨겁게 열광하고 있습니다. 한때 자바스크립트는 웹 브라우저에서 간단한 연산을 하거나 시각적인 효과를 주는 단순한 스크립트 언어에 불과했지만, 현재는 웹 어플리케이션에서 가장 핵심적인 역할을 합니다. 더 나아가 영역을 확장하여 서버 사이드는 물론 모바일, 데스크톱 애플리케이션에서도 엄청나게 활약합니다.</p>
 
 <p>이제는 자바스크립트만으로도 규모가 큰 애플리케이션을 만들 수 있는 시대가 왔습니다. 대규모 애플리케이션 중 프런트엔드 사이드에서 돌아가는 애플리케이션 구조를 관리하려면 어떻게 해야 할까요? 솔직히 이런 애플리케이션을 특별한 도구 없이 순수하게 자바스크립트로만 관리하려면 골치 아프겠죠? 지금까지 수많은 프레임워크가 조금씩 다른 관점에서 이를 해결하려고 노력해 왔습니다.</p>
 
@@ -49,6 +49,49 @@
 <p>리액트는 자바스크립트 라이브러리로 사용자 인터페이스를 만드는데 사용합니다. 구조가 MVC, MVW 등인 프레임워크와 달리, 오직 V(View)에만 신경 쓰는 라이브러리입니다. 리액트 프로젝트에서 특정 부분이 어떻게 생길지 정하는 선언체가 있는데, 이를 컴포넌트라고 합니다. 컴포넌트는 다른 프레임워크에서 사용자 인터페이스를 다룰 때 사용하는 템플릿과는 다른 개념입니다. 템플릿은 보통 데이터셋이 주어지면 HTML 태그 형식을 문자열로 반환하는데, 이와 달리 컴포넌트는 재사용이 가능한 API로 수많은 기능들을 내장하고 있으며, 컴포넌트 하나에서 해당 컴포넌트의 생김새와 작동 방식을 정의합니다.</p>
 
 <p>사용자 화면에 뷰를 보여 주는 것을 렌더링이라고 합니다. 리액트 라이브러리는 뷰를 어떻게 렌더링하길래 데이터가 변할 때마다 새롭게 리렌더링하면서 성능을 아끼고, 최적의 사용자 경험을 제공할 수 있을까요? 이 비밀을 파악하려면 리액트 컴포넌트가 최초로 실행한 '초기 렌더링'과 컴포넌트의 데이터 변경으로 다시 실행되는 '리렌더링' 개념을 이해해야 합니다.</p>
+
+### 라이브러리 프레임워크의 차이
+
+> 해당 문단은 권윤학님의 <a href="https://web-front-end.tistory.com/63">프레임워크와 라이브러리의 차이</a>를 바탕으로 만들어졌습니다.
+
+<p>리액트는 자바스크립트의 라이브러리라고 봐야 할까요 아니면, 프레임 워크라고 봐야 할까요?우선 라이브러리와 프레임 워크의 개념에 대해서 간단하게 설명해 보겠습니다.</p>
+
+> 1.프레임워크
+
+<p>
+프레임워크는 Application 개발시 코드의 품질, 필수적인 코드, 알고리즘, 암호화, 데이터베이스 연동 같은 기능들을 어느정도 구성이 되어있는 뼈대(구조)를 제공하도록 만들어진걸 프레임워크라고합니다.
+
+조금 어렵게 설명드렸는데, 개발 구조나 설계 시 제공되는 인터페이스의 집합입니다. 완성된 어플리케이션은 아니지만 어느정도 프로그래머가 제공된 프레임워크의 구조에서 어플리케이션을 개발해야합니다.</p>
+
+> 2.라이브러리
+
+<p>
+라이브러리는 특정 기능에 대한 API(도구 / 함수)를 모은 집합을 라이브러리라고 합니다.
+
+그 기능을 사용하기위해 불러와서 호출하는 방식을 생각하시면 쉬울듯 합니다.</p>
+
+> 3.프레임워크와 라이브러리의 차이
+
+<p>위의 내용으로만 봤을때는 단순히 라이브러리가 모이면 프레임워크처럼 보일 수 있습니다.
+
+저도 그렇게 생각하고 있었고요 그리고 크게 틀린 생각도 아닌거 같습니다만
+
+자료를 찾아보니 <b>토비의 스프링</b>에 아래와 같은 내용이 있습니다.</p>
+
+```
+프레임워크는 단지 미리 만들어 둔 반제품이나, 확장해서 사용할 수 있도록 준비된 추상 라이브러리의 집합이 아니다.
+프레임워크가 어떤 것인지 이해하려면 라이브러리와 프레임워크가 어떻게 다른지 알아야 한다.
+
+라이브러리를 사용하는 애플리케이션 코드는 애플리케이션 흐름을 직접 제어한다.
+단지 동작하는 중에 필요한 기능이 있을 때 능동적으로 라이브러리를 사용할 뿐이다.
+
+반면에 프레임워크는 거꾸로 애플리케이션 코드가 프레임워크에 의해 사용된다.
+프레임워크에는 분명한 제어의 역전 개념이 적용되어 있어야 합니다.
+
+애플리케이션 코드는 프레임워크가 짜놓은 틀에서 수동적으로 동작해야 합니다.
+```
+
+<p>어플리케이션의 flow를 누가 제어하는냐가 프레임워크인지 라이브러리인지 구분할 수 있었습니다.</p>
 
 > 초기 렌더링
 
@@ -112,7 +155,7 @@ render(){ ...}
 
 ### 기타 특징
 
-<p>일부 웹 프레임워크가 MVC 또는 MVW 등의 구조를 지향하는 것과 달리 리액트는 오직 뷰만 담당합니다. 다시 한 번 강조하면 리액트는 프레임워크가 아니라 라이브러리입니다. 다른 웹 프레임워크가 Ajax, 데이터 모델링, 라우팅 등과 같은 기능을 내장하고 있는 반면, 리액트는 정말 뷰만 신경 쓰는 라이브러리이므로 기타 기능은 직접 구현하여 사용해야 합니다. 하지만, 너무 걱정할 필요는 없습니다. 다른 개발자들이 만든 라이브러리, 즉 라우팅에는 리액트 라우터, Ajax 처리에는 axios, fetch, 상태 관리에는 리덕스나, MobX를 사용하여 빈 자리를 채우면 됩니다. 해당 분야에서 마음에 드는 라이브러리를 사용하면 되니까 자신의 취향대로 스택을 설정할 수 있다는 장점이 있지만, 여러 라이브러리를 접해야 한다는 단점도 있습니다.</p>
+<p>일부 웹 프레임워크가 MVC(Model View Controller) 또는 MVW(Model View Whatever) 등의 구조를 지향하는 것과 달리 리액트는 오직 뷰만 담당합니다. 다시 한 번 강조하면 리액트는 프레임워크가 아니라 라이브러리입니다. 다른 웹 프레임워크가 Ajax, 데이터 모델링, 라우팅 등과 같은 기능을 내장하고 있는 반면, 리액트는 정말 뷰만 신경 쓰는 라이브러리이므로 기타 기능은 직접 구현하여 사용해야 합니다. 하지만, 너무 걱정할 필요는 없습니다. 다른 개발자들이 만든 라이브러리, 즉 라우팅에는 리액트 라우터, Ajax 처리에는 axios, fetch, 상태 관리에는 리덕스나, MobX를 사용하여 빈 자리를 채우면 됩니다. 해당 분야에서 마음에 드는 라이브러리를 사용하면 되니까 자신의 취향대로 스택을 설정할 수 있다는 장점이 있지만, 여러 라이브러리를 접해야 한다는 단점도 있습니다.</p>
 
 ## Chapter 2 JSX
 
@@ -145,6 +188,8 @@ import "./App.css";
 
 ### JSX란? (Java Script XML)
 
+> 'XML'은 'eXtensible Markup Language' 의 약어입니다
+
 <p>JSX는 자바스크립트의 확장 문법이며 XML과 매우 비슷하게 생겼습니다. 이런 형식으로 작성한 코드는 브라우저에서 실행되기 전에 코드가 번들링되는 과정에서 바벨을 이용하여 일반 자바스크립트 형태의 코드로 변환됩니다.</p>
 
 ```js
@@ -164,7 +209,12 @@ function App() {
 
 ```js
 function App() {
-return React.createElement(“div“, null, “Hello “, React.createElement(“b“, null, “react“));
+  return React.createElement(
+    "div",
+    null,
+    "Hello ",
+    React.createElement("b", null, "react")
+  );
 }
 ```
 
@@ -242,11 +292,14 @@ export default App;
 
 <p>JSX가 단순히 DOM 요소를 렌더링하는 기능밖에 없었다면 뭔가 좀 아쉬웠을 것입니다. JSX 안에서는 자바스크립트 표현식을 쓸 수 있습니다. 자바스크립트 표현식을 작성하려면 JSX 내부에서 코드를 <b>{ }</b>로 감싸면 됩니다.</p>
 
+> <a href="https://github.com/junh0328/upgrade_javascript/tree/master/BASIC#%ED%91%9C%ED%98%84%EC%8B%9D%EA%B3%BC-%EA%B5%AC%EB%AC%B8">표현식 자세히 알아보기</a>
+
 ```js
 import React from "react";
 
 function App() {
   const name = "리액트";
+  // const name = "리액트" name에 "리액트"라는 문자열을 할당한 표현식
   return (
     <>
       <h1>{name} 안녕!</h1>
@@ -263,6 +316,8 @@ export default App;
 <p>const는 ES6 문법에서 새로 도입되었으며 한번 지정하고 나면 변경이 불가능한 상수를 선언할 때 사용하는 키워드입니다. let은 동적인 값을 담을 수 있는 변수를 선언할 때 사용하는 키워드입니다.</p>
 
 <p>ES6 이전에는 값을 담는 데 var 키워드를 사용했는데요. var 키워드는 scope(해당 값을 사용할 수 있는 코드 영역)가 함수 단위입니다. 해당 함수 내에서 전역(글로벌)으로 불러와 사용할 수 있다는 뜻이겠죠?</p>
+
+> <a href="https://github.com/junh0328/upgrade_javascript/tree/master/BASIC#%EB%B0%94%EC%9D%B8%EB%94%A9%EA%B3%BC-%EB%B2%94%EC%9C%84">스코프 자세히 알아보기</a>
 
 ```js
 function myFunction() {
@@ -351,6 +406,8 @@ function App() {
 
 <p>리액트를 사용하여 애플리케이션의 인터페이스를 설계할 때 사용자가 볼 수 있는 요소는 여러 가지 컴포넌트로 구성되어 있습니다. 예를 들어 뒤에서 만들어 볼 일정 관리 애플리케이션을 미리 살펴봅시다.</p>
 
+> <a href="https://github.com/junh0328/upgrade_javascript/tree/master/BASIC#%EC%BA%A1%EC%8A%90%ED%99%94">인터페이스 자세히 알아보기</a>
+
 <img src="./images/TODOLIST.png" alt="TODOLIST">
 
 <p>위 프로젝트는 총 네 가지 컴포넌트를 사용하여 구성했습니다.</p>
@@ -386,7 +443,7 @@ export default App;
 ```
 
 <p>
-클래스형 컴포넌트로 바뀌었지만 역할은 이전에 보았던 함수형 컴포넌트와 똑같습니다. 클래스형 컴포넌트와 함수형 컴포넌트의 차이점은 클래스형 컴포넌트의 경우 이후 배울 state 기능 및 라이프사이클 기능을 사용할 수 있다는 것과 임의 메서드를 정의할 수 있다는 것입니다.  클래스형 컴포넌트안에서는 render 함수가 꼭 있어야 하고, 그 안에서 보여 주어야 할 JSX를 반환해야 합니다.</p>
+클래스형 컴포넌트로 바뀌었지만 역할은 이전에 보았던 함수형 컴포넌트와 똑같습니다. <b>클래스형 컴포넌트와 함수형 컴포넌트의 차이점</b>은 클래스형 컴포넌트의 경우 이후 배울 state 기능 및 라이프사이클 기능을 사용할 수 있다는 것과 임의 메서드를 정의할 수 있다는 것입니다.  클래스형 컴포넌트안에서는 render 함수가 꼭 있어야 하고, 그 안에서 보여 주어야 할 JSX를 반환해야 합니다.</p>
 
 > ES6의 클래스 문법
 
@@ -464,6 +521,8 @@ setTimeout(() => {
 }), 1000);
 ```
 
+> <a href="https://github.com/junh0328/learning_typescript#arrow-function%EC%9C%BC%EB%A1%9C-%EB%B3%80%ED%99%98">다양한 방식의 화살표 함수 문법 더 알아보기</a>
+
 <p>이 문법이 기존 function을 대체할 수 없는 것은 용도가 다르기 때문입니다. 무엇보다 서로 가리키고 있는 this 값이 다릅니다.</p>
 
 > 다음 코드를 한번 확인해 보세요
@@ -508,7 +567,7 @@ whiteDog.bark(); // 흰둥이: 멍멍! why? 화살표 함수는 자신이 종속
 
 > JSX 내부에서 props 렌더링
 
-<p>우선 MyComponent 컴포넌트를 수정하여 해당 컴포넌트에서 name이라는 props를 렌더링하도록 설정해 봅시다. props 값은 컴포넌트 함수의 파라미터로 받아 와서 사용할 수 있습니다. props를 렌더링할 때 2장에서 배웠던 것처럼 JSX 내부에서 { } 기호로 감싸 주면 됩니다.</p>
+<p>우선 자식 컴포넌트인 MyComponent 컴포넌트를 수정하여 해당 컴포넌트에서 name이라는 props를 렌더링하도록 설정해 봅시다. props 값은 컴포넌트 함수의 파라미터로 받아 와서 사용할 수 있습니다. props를 렌더링할 때 2장에서 배웠던 것처럼 JSX 내부에서 { } 기호로 감싸 주면 됩니다.</p>
 
 ```js
 import React from ‘react‘;
@@ -522,7 +581,7 @@ export default MyComponent;
 
 > 컴포넌트를 사용할 때 props 값 지정하기
 
-<p>App 컴포넌트에서 MyComponent의 props 값을 지정해 보겠습니다. App.js의 코드를 다음과 같이 수정해 보세요.</p>
+<p>부모 컴포넌트인 App 컴포넌트에서 MyComponent의 props 값을 지정해 보겠습니다. App.js의 코드를 다음과 같이 수정해 보세요.</p>
 
 ```js
 import React from "react";
@@ -535,7 +594,7 @@ const App = () => {
 export default App;
 ```
 
-<p>상위 컴포넌트인 App에서 MyComponent라는 컴포넌트를 렌더링 해주는데 props로 React라는 키값을 가진 name을 보내주었습니다. 따라서 MyComponent에서는 props.name으로 상위 컴포넌트에서 props를 통해 넘겨준 해당 값을 렌더링 담아 사용하는 것을 알 수 있습니다.</p>
+<p>부모 컴포넌트인 App에서 MyComponent라는 컴포넌트를 렌더링 해주는데 props로 "React"라는 키값을 가진 name props를 보내주었습니다. 따라서 MyComponent에서는 props.name으로 부모 컴포넌트에서 props를 통해 넘겨준 해당 값을 렌더링 담아 사용하는 것을 알 수 있습니다.</p>
 
 <img src="./images/PROPS.png" alt="PROPS">
 
@@ -548,6 +607,14 @@ return <MyComponent />;
 ```
 
 <p>위와 같이 props를 내려주지 않는다면, MyComponent는 렌더링될 때 '안녕하세요 제 이름은 입니다.'라는 내용이 보일 것입니다. 따라서 기본 값을 하위 컴포넌트에서 설정하기 위해서는 defaultProps를 사용합니다</p>
+
+> defaultProps는 내장 함수이기 때문에 따로 import 할 필요가 없습니다.
+
+```
+해당 컴포넌트명.defaultProps = {
+  넘겨 받은 props: "초기 지정할 값"
+}
+```
 
 ```js
 import React from "react";
@@ -569,7 +636,7 @@ export default MyComponent;
 
 > 태그 사이의 내용을 보여 주는 children
 
-<p>리액트 컴포넌트를 사용할 때 컴포넌트 태그 사이의 내용을 보여 주는 props가 있는데요. 바로 children입니다.</p>
+<p>리액트 컴포넌트를 사용할 때 컴포넌트 태그 사이의 내용을 보여 주는 props가 있는데요. 바로 children입니다. 상위 컴포넌트에서 &lt;&gt; ... &lt;/&gt; 사이에 사용할 수 있습니다.</p>
 
 ```js
 📁src/App.js
@@ -622,6 +689,8 @@ export default MyComponent;
 📁 case 1 : 비구조화 할당 문법 사용하기
 const MyComponent = (props) => {
   const { name, children } = props;
+  // const name = props.name
+  // const children = props.children 을 비구조화 할당으로 더욱 간단하게 표현하였습니다.
   return (
     <div>
       안녕하세요, 제 이름은 {name}입니다. <br />
@@ -742,7 +811,7 @@ class MyComponent extends Component {
 
 ### state
 
-<p>리액트에서 state는 컴포넌트 내부에서 바뀔 수 있는 값을 의미합니다. props는 컴포넌트가 사용되는 과정에서 부모 컴포넌트가 설정하는 값이며, 컴포넌트 자신은 해당 props를 읽기 전용으로만 사용할 수 있습니다. props를 바꾸려면 무조건 부모 컴포넌트에서 바꾸어 주어야 합니다. 리액트에는 두 가지 종류의 state가 있습니다. 하나는 클래스형 컴포넌트가 지니고 있는 state 이고, 다른 하나는 함수형 컴포넌트에서 useState라는 훅 함수를 통해 사용하는 state입니다.</p>
+<p>리액트에서 state는 <b>컴포넌트 내부에서 바뀔 수 있는 값</b>을 의미합니다. props는 컴포넌트가 사용되는 과정에서 부모 컴포넌트가 설정하는 값이며, 컴포넌트 자신은 해당 props를 읽기 전용으로만 사용할 수 있습니다. props를 바꾸려면 무조건 부모 컴포넌트에서 바꾸어 주어야 합니다. 리액트에는 두 가지 종류의 state가 있습니다. 하나는 클래스형 컴포넌트가 지니고 있는 state 이고, 다른 하나는 함수형 컴포넌트에서 useState라는 훅 함수를 통해 사용하는 state입니다.</p>
 
 > 클래스형 컴포넌트의 state
 
@@ -785,9 +854,14 @@ export default Counter;
 > 이벤트로 설정할 함수를 호출하는 것이 아닌 직접 넣어 줄 때는 화살표 함수 문법을 사용하여 넣어 주어야 합니다
 
 ```js
-<button onClick={()=> this.setState({ number: number + 1}; )}>
+case 1: 작동하지 않는 문법
+<button onClick={this.setState({ number: number + 1})}>  (x)
+
+case 2: 작동하는 문법
+<button onClick={()=> this.setState({ number: number + 1}; )}>  (o)
 
 or
+case 3: 아예 함수로 빼주고 해당 함수를 불러 사용한다.
 
 const plusNum = (number) => {
   setState(number : number + 1);
@@ -839,7 +913,7 @@ const [one, two] = array;
 import React, { useState } from ‘react‘;
 
 const Say = () => {
-  const [message, setMessage] = useState(“);
+  const [message, setMessage] = useState(");
   const onClickEnter = () => setMessage(‘안녕하세요!’);
   const onClickLeave = () => setMessage(‘안녕히 가세요!’);
 
@@ -894,9 +968,9 @@ nextArray.map(item => (item.id === 1 ? { ...item, value: false } : item)); // id
 
 <p>객체에 대한 사본을 만들 때는 spread 연산자라 불리는 ...을 사용하여 처리하고, 배열에 대한 사본을 만들 때는 배열의 내장 함수들을 활용합니다</p>
 
-### 정리
+### 정리, props와 state의 차이
 
-<p>props와 state는 둘 다 컴포넌트에서 사용하거나 렌더링할 데이터를 담고 있으므로 비슷해 보일 수 있지만, 그 역할은 매우 다릅니다. props는 부ㅜ모 컴포넌트가 설정하고, state는 컴포넌트 자체적으로 지닌 값으로 컴포넌트 내부에서 값을 업데이트할 수 있습니다.</p>
+<p>props와 state는 둘 다 컴포넌트에서 사용하거나 렌더링할 데이터를 담고 있으므로 비슷해 보일 수 있지만, 그 역할은 매우 다릅니다. props는 부모 컴포넌트가 설정하고, state는 컴포넌트 자체적으로 지닌 값으로 컴포넌트 내부에서 값을 업데이트할 수 있습니다.</p>
 
 <p>props를 사용한다고 해서 값이 무조건 고정적이지는 않습니다. 부모 컴포넌트의 state를 자식 컴포넌트의 props로 전달하고, 자식 컴포넌트에서 특정 이벤트가 발생할 때 부모 컴포넌트의 메서드를 호출하면 props도 유동적으로 사용할 수 있습니다. 이후 만들어 볼 일정 관리 애플리케이션에서 이러한 구조로 프로젝트를 설계하게 됩니다.</p>
 
@@ -943,9 +1017,9 @@ class EventPractice extends Component {
       <div>
         <h1>이벤트 연습</h1>
         <input
-          type=“text“
-          name=“message“
-          placeholder=“아무거나 입력해 보세요“
+          type="text"
+          name="message"
+          placeholder="아무거나 입력해 보세요"
           onChange={
             (e) => {
               console.log(e); // console.log(e.target.value)
@@ -975,7 +1049,7 @@ import React, { Component } from ‘react‘;
 class EventPractice extends Component {
 
 state = {
-    message: “
+    message: ""
   }
 
 constructor(props) {
@@ -994,7 +1068,7 @@ handleChange(e) {
 handleClick() {
     alert(this.state.message);
     this.setState({
-      message: “
+      message: ""
     });
   }
 
@@ -1003,9 +1077,9 @@ render() {
       <div>
         <h1>이벤트 연습</h1>
         <input
-          type=“text“
-          name=“message“
-          placeholder=“아무거나 입력해 보세요“
+          type="text"
+          name="message"
+          placeholder="아무거나 입력해 보세요"
           value={this.state.message}
           onChange={this.handleChange}
         />
@@ -1091,16 +1165,16 @@ const EventPractice = () => {
     <div>
       <h1>이벤트 연습</h1>
       <input
-        type=“text”
-        name=“username“
-        placeholder=“사용자명“
+        type="text”
+        name="username"
+        placeholder="사용자명"
         value={username}
         onChange={onChangeUsername}
       />
       <input
-        type=“text“
-        name=“message“
-        placeholder=“아무거나 입력해 보세요“
+        type="text"
+        name="message"
+        placeholder="아무거나 입력해 보세요"
         value={message}
         onChange={onChangeMessage}
         onKeyPress={onKeyPress}
@@ -1117,26 +1191,26 @@ export default EventPractice;
 <p>일반 HTML에서 DOM 요소에 이름을 달 때는 id 선택자를 사용합니다.</p>
 
 ```html
-<div id="“my-element“"></div>
+<div id=""my-element""></div>
 ```
 
 <p>특정 DOM 요소에 어떤 작업을 해야 할 때 이렇게 요소에 id를 달면 CSS에서 특정 id에 특정 스타일을 적용하거나 자바스크립트에서 해당 id를 가진 요소를 찾아서 작업할 수 있겠죠. 이 책에서 다루는 리액트 프로젝트에 사용하는 public/index.html 파일에도 id가 root인 div 요소가 있습니다.</p>
 
 ```html
-<html lang="“en“">
+<html lang=""en"">
   <head>
-    <meta charset="“utf-8“" />
+    <meta charset=""utf-8"" />
     <meta
-      name="“viewport“"
-      content="“width"
+      name=""viewport""
+      content=""width"
       ="device-width,"
-      initial-scale="1“"
+      initial-scale="1""
     />
-    <link rel=“shortcut icon“ href=“%PUBLIC_URL%/favicon.ico“>
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
     <title>React App</title>
   </head>
   <body>
-    <div id="“root“"></div>
+    <div id=""root""></div>
   </body>
 </html>
 ```
@@ -1235,10 +1309,11 @@ export default ValidationSample;
 
 ### ref 사용
 
-<p>ref를 사용하는 방법은 두 가지입니다.</p>
+<p>ref를 사용하는 방법은 세 가지입니다.</p>
 
 - 콜백 함수를 통한 ref 설정
 - createRef를 통한 ref 설정
+- useRef 훅 함수를 통한 ref 설정
 
 > 콜백 함수를 통한 ref(레퍼런스) 설정
 
@@ -1279,6 +1354,30 @@ export default RefSample;
 <p>createRef를 사용하여 ref를 만들려면 우선 컴포넌트 내부에서 멤버 변수로 React.createRef()를 담아 주어야 합니다. 그리고 해당 멤버 변수를 ref를 달고자 하는 요소에 ref props로 넣어 주면 ref 설정이 완료됩니다.</p>
 
 <p>설정한 뒤 나중에 ref를 설정해 준 DOM에 접근하려면 this.input.current를 조회하면 됩니다. 콜백 함수를 사용할 때와 다른 점은 이렇게 뒷부분에 .current를 넣어 주어야 한다는 것입니다.</p>
+
+> useRef를 통한 ref 설정
+
+```js
+import React, { useRef, Component } from "react";
+
+class RefSample extends Component {
+  input = useRef();
+
+  handleFocus = () => {
+    this.input.current.focus();
+  };
+
+  render() {
+    return (
+      <div>
+        <input ref={input} />
+      </div>
+    );
+  }
+}
+
+export default RefSample;
+```
 
 ### 컴포넌트에 ref 달기
 
@@ -1347,7 +1446,9 @@ arr.map(callback, [thisArg])
 case 1 : 기본 문법으로 map 활용하기
 
 var numbers = [1, 2, 3, 4, 5];
-var result = numbers.map(function (num) {  // 파라미터 자리에 콜백으로 함수를 작성한 모습입니다
+var result = numbers.map(function (num) {
+  // 파라미터 자리에 콜백으로 함수를 작성한 모습입니다
+  // num이라는 우리가 지정한 변수를 통해서 각 변수에 접근할 수 있습니다.
   return num * num;
 });
 
@@ -1813,6 +1914,8 @@ useEffect(() => {
 
 <p>컴포넌트가 언마운트되기 전이나 업데이트되기 직전에 어떠한 작업을 수행하고 싶다면 useEffect에서 뒷정리(cleanup) 함수를 반환해 주어야 합니다.</p>
 
+<p>언마운트 시에 작업할 코드를 넣어준다고 생각하면 됩니다.</p>
+
 ```js
 useEffect(() => {
     console.log("렌더링이 완료되었습니다!");
@@ -1828,7 +1931,7 @@ useEffect(() => {
 
 ### useMemo
 
-> <a href="https://github.com/junh0328/TIL/blob/master/React/exams/src/components/LearningUseMemo/index.js">예제 코드 보기</a>
+> <a href="https://github.com/junh0328/TIL/blob/master/React/exams/src/components/LearningUseMemo/index.js">예제 코드 보기</a> > <a href="https://github.com/junh0328/nextjs-aws-service/tree/renew/prepare/front#-antd-%EC%BB%A4%EC%8A%A4%ED%84%B0%EB%A7%88%EC%9D%B4%EC%A7%95%ED%95%98%EA%B8%B0">styling 시에 useMemo 사용하기</a>
 
 <p>useMemo를 사용하면 함수형 컴포넌트 내부에서 발생하는 연산을 최적화할 수 있습니다. 먼저 리스트에 숫자를 추가하면 추가된 숫자들의 평균을 보여 주는 함수형 컴포넌트를 작성해 봅시다.</p>
 
@@ -2259,6 +2362,7 @@ const data = {
 };
 
 const Profile = ({ match }) => {    // match 객체를 통해 Route 처리에 담긴 :username에 접근할 수 있게됨
+  // const username = match.params.username 을 구조 분해 할당 문법으로 불러옴
   const { username } = match.params;
   console.log("match: ", match);  // match 객체 확인
   console.log("match.params ", match.params); // match.params 객체 확인
@@ -2292,9 +2396,9 @@ export default Profile;
 
 ```
 {
-“pathname”: “/about”,
-“search”: “?detail=true”,
-“hash”: “”
+"pathname”: "/about”,
+"search”: "?detail=true”,
+"hash”: "”
 }
 ```
 
@@ -2360,6 +2464,65 @@ Hello World!
 
 > Promise
 
+> MDN 예시코드 보기
+
+```js
+"use strict";
+var promiseCount = 0;
+
+function testPromise() {
+  var thisPromiseCount = ++promiseCount;
+
+  var log = document.getElementById("log");
+  log.insertAdjacentHTML(
+    "beforeend",
+    thisPromiseCount + ") 시작 (<small>동기적 코드 시작</small>)<br/>"
+  );
+
+  // 새 프로미스 생성 - 프로미스의 생성 순서를 전달하겠다는 약속을 함 (3초 기다린 후)
+  var p1 = new Promise(
+    // 실행 함수는 프로미스를 이행(resolve)하거나
+    // 거부(reject)할 수 있음
+    function (resolve, reject) {
+      log.insertAdjacentHTML(
+        "beforeend",
+        thisPromiseCount +
+          ") 프로미스 시작 (<small>비동기적 코드 시작</small>)<br/>"
+      );
+      // setTimeout은 비동기적 코드를 만드는 예제에 불과
+      window.setTimeout(function () {
+        // 프로미스 이행 !
+        resolve(thisPromiseCount);
+      }, Math.random() * 2000 + 1000);
+    }
+  );
+
+  // 프로미스를 이행했을 때 할 일은 then() 호출로 정의하고,
+  // 거부됐을 때 할 일은 catch() 호출로 정의
+  p1.then(
+    // 이행 값 기록
+    function (val) {
+      log.insertAdjacentHTML(
+        "beforeend",
+        val + ") 프로미스 이행 (<small>비동기적 코드 종료</small>)<br/>"
+      );
+    }
+  ).catch(
+    // 거부 이유 기록
+    function (reason) {
+      console.log("여기서 거부된 프로미스(" + reason + ")를 처리하세요.");
+    }
+  );
+
+  log.insertAdjacentHTML(
+    "beforeend",
+    thisPromiseCount + ") 프로미스 생성 (<small>동기적 코드 종료</small>)<br/>"
+  );
+}
+```
+
+<img src="./images/promisegif.gif" alt="promisegif"/>
+
 <p>Promise는 콜백 지옥 같은 코드가 형성되지 않게 하는 방안으로 ES6에 도입된 기능입니다. 앞에서 본 코드를 Promise를 사용하여 구현해 볼까요? 다음 예제를 확인해 봅시다.</p>
 
 ```js
@@ -2384,6 +2547,39 @@ increase(0).then((number) => {
   console.log(number);
   return increase(number);
 });
+```
+
+> setTimeout() 콜백을 return 될 Promise 반환 값보다 위에 두면 resolve 되지 않습니다.
+
+```js
+const wrongCallMe = () => {
+  setTimeout(() => {
+    return new Promise(function (resolve, reject) {
+      var data = "와우와우왕";
+      resolve(data);
+    }, 300);
+  });
+};
+
+wrongCallMe().then((resolvedData) => {
+  console.log(resolvedData);
+});
+```
+
+> 콘솔 창에서 에러 확인하기, 정상적으로 resolve 되지 않음을 알 수 있습니다.
+
+```
+wrongCallMe().then((resolvedData) => {
+TypeError: Cannot read property 'then' of undefined
+    at Object.<anonymous> (/Users/leejunhee/junheeDB/CaptainP/TIL/ex.js:46:14)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)
+    at internal/main/run_main_module.js:17:47
+leejunhee@JunHees-MacBook TIL %
+
 ```
 
 <p>여러 작업을 연달아 처리한다고 해서 함수를 여러 번 감싸는 것이 아니라 .then을 사용하여 그다음 작업을 설정하기 때문에 콜백 지옥이 형성되지 않습니다.</p>
@@ -2441,7 +2637,7 @@ try { // try/catch 구문을 사용하여 에러를 처리합니다.
     if (e.target.value !== '') {
       (async () => {
         await getSearchData(e.target.value).then((result) => {
-          setFetchedData(result);
+          setFetchedData(result); // const result 등과 같은 변수에 담지 않고, .then()을 활용하여 useState로 바로 관리할 수 있도록 넘겨주었습니다
         });
       })();
     }
@@ -3002,7 +3198,7 @@ const gen = function*(){
 <p>
 우리가 자바스크립트 또는 타입스크립트를 통해 어플리케이션을 개발하게 되면, 웹팩을 통한 빌드 과정을 통해 하나의 파일에 모든 로직들이 들어가게 됩니다. 그럼, 프로젝트의 규모가 커질수록 해당 파일의 크기가 커질 것입니다. 용량이 커지면, 인터넷을 사용하는 나라 혹은 환경에 따라 페이지의 로딩속도가 느려질 것입니다. <b>(평균적으로 볼 때, 사용자는 페이지 로딩시에 3초를 초과할 경우 흥미를 잃고 해당 서비스를 종료한다고 합니다.)</b> 프론트엔드 개발자로써 사용자의 반응과 경험을 기반으로 최적화된 환경을 제공해야 하기 때문에 간과하고 넘겨서는 안됩니다. </p>
 
-> <a href="https://nownews.seoul.co.kr/news/newsView.php?id=20180123601013">“웹사이트 접속자, 로딩시간 3초 넘으면 그냥 나간다”</a> [출처: 서울신문에서 제공하는 기사입니다.]
+> <a href="https://nownews.seoul.co.kr/news/newsView.php?id=20180123601013">"웹사이트 접속자, 로딩시간 3초 넘으면 그냥 나간다”</a> [출처: 서울신문에서 제공하는 기사입니다.]
 
 <p>
 코드 스플리팅을 하게 되면, 지금 당장 필요한 코드가 아니라면 따로 분리시켜, 나중에 필요할 때 사용할 수 있습니다. 이러한 과정을 통해 페이지의 로딩 속도를 개선할 수 있는 것입니다.
