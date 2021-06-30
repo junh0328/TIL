@@ -94,6 +94,7 @@
 
 ## Team Project
 
-- <a>
+- <a href="https://github.com/junh0328/TIL/tree/master/Chore#%EC%B2%AB-%EB%B2%88%EC%A7%B8-usestate%EB%A1%9C-%EB%A7%89%EB%8C%80-%EA%B7%B8%EB%9E%98%ED%94%84-%EB%B9%84%EC%9C%A8-%EA%B4%80%EB%A6%AC%ED%95%98%EA%B8%B0">첫 번째 useState로 막대 그래프 비율 관리하기
+  </A>
 
 ## Code Review
