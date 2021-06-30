@@ -7,6 +7,7 @@
 ## 목차
 
 - [첫 번째 useState로 막대 그래프 비율 관리하기](#첫-번째-useState로-막대-그래프-비율-관리하기)
+- [두 번째 잊지 말자, useCallback 상황 소개](#두-번째-잊지-말자,-useCallback-상황-소개)
 
 ## 첫 번째 useState로 막대 그래프 비율 관리하기
 
@@ -231,3 +232,91 @@ return Math.floor((pepsiArr.length / reviewList.length) * 100); // 펩시의 백
 - <a href="https://taehoblog.netlify.app/react/radiobutton/">리액트 라디오 버튼</a>
 - <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Math/floor">MDN: Math.floor</a>
 - <a href="https://www.google.com/search?q=%EB%B0%B0%EC%97%B4+%ED%94%84%EB%A1%9C%ED%8D%BC%ED%8B%B0+%EC%B6%94%EC%B6%9C%ED%95%98%EA%B8%B0&rlz=1C5CHFA_enKR920KR920&sxsrf=ALeKk03bnq9RNoznCQVXOJzP2L2OczMNTg%3A1625054492051&ei=HF3cYLPPAse2mAWmrJrICw&oq=%EB%B0%B0%EC%97%B4+%ED%94%84%EB%A1%9C%ED%8D%BC%ED%8B%B0+%EC%B6%94%EC%B6%9C%ED%95%98%EA%B8%B0&gs_lcp=Cgdnd3Mtd2l6EANKBAhBGAFQ2wpYghBgwhFoAXAAeACAAaYCiAHLC5IBBTEuMS41mAEAoAEBqgEHZ3dzLXdpesABAQ&sclient=gws-wiz&ved=0ahUKEwizzfTdp7_xAhVHG6YKHSaWBrkQ4dUDCA4&uact=5">키워드로 검색: 배열 프로퍼티 추출하기</a>
+
+## 두 번째 잊지 말자, useCallback 상황 소개
+
+<p>콜라맵 프로젝트를 진행하는 중에, input 값을 추출하여 서버에 데이터를 전송하는 부분이 있었다. 카카오 API에서 제공하는 가게의 고유 id와, 가게의 이름, 글쓴이, 카테고리, 댓글(코멘트)를 서버에 넘겨줘야하는 상황이다. form 태그를 통해서 실제로 컨트롤하는 것은 카테고리 분류에 대한 값과 댓글을 처리하는 방법이다. 이를 각각 useState와 useRef를 사용하여 처리하였다.</p>
+
+```js
+const Store = () => {
+  // 카테고리 관리
+  const [inputStatus, setInputStatus] = useState("");
+  // 파라미터를 통해 가게 고유 아이디와 가게 이름을 넘겨받음
+  const { title, id } = useParams();
+  // 댓글 (코멘트)관리
+  const commentRef = useRef();
+  ...
+
+  // input button type radio에게 useState를 부여할 함수(handleClickRadioButton)
+  const handleClickRadioButton = useCallback((radioBtnName) => {
+    setInputStatus(radioBtnName);
+  }, []);
+
+  // form 태그의 메서드 onSubmit={onSubmitForm}에 들어가는 함수
+  ...
+  const onSubmitForm = useCallback(
+    (e) => {
+      e.preventDefault();
+      const comment = commentRef.current;
+      if (comment.value.trim() === '' || inputStatus === '') {
+        alert('게시글을 입력 또는 카테고리 선택을 완료해야 합니다');
+        comment.focus();
+        return;
+      }
+      alert(
+        `가게id: ${id} \n가게이름: ${title}\n커멘트: ${comment.value}\n카테고리: ${inputStatus ? inputStatus : '없음'}`,
+      );
+      comment.value = '';
+    },
+    [],
+  );
+};
+```
+
+<img src="./images/callbackError.png" alt="callbackError"/>
+
+<p>분명히 useEffect와 useState를 통해서 카테고리의 값이 변경될 때마다 감지가 되는데, form 태그로 해당 state를 전달하지 못하는 것이였다. 전에도 이런적이 있었는데, 리뷰를 받고 어영부영 넘겨서 해결했던 부분이여서 또 까먹었던 것 같다. 구글링을 계속 해보았는데, 내가 원하는 정보는 찾을 수 없었다. 하지만, 슬랙에서 다른 프론트 엔드 파트 인원분들께 여쭤보니, useCallback()을 사용할 때 두 번째 파라미터에 우리가 감지하고 싶어하는 state를 넣어 주지 않았다는 것을 알 수 있다.</p>
+
+> useCallback 의 첫번째 파라미터에는 우리가 생성해주고 싶은 함수를 넣어주고, 두번째 파라미터에는 배열을 넣어주면 되는데 이 배열에는 어떤 값이 바뀌었을 때 함수를 새로 생성해주어야 하는지 명시해주어야 합니다.
+
+<p>지금 찾아보니 지금 이 정리본에도 적혀 있는 내용인데, 이미 안다고 생각하고 대충 보고 넘긴 경향이 있는 것 같다.</p>
+
+> 바꾼 로직
+
+```js
+const Store = () => {
+  // 카테고리 관리
+  const [inputStatus, setInputStatus] = useState("");
+  // 파라미터를 통해 가게 고유 아이디와 가게 이름을 넘겨받음
+  const { title, id } = useParams();
+  // 댓글 (코멘트)관리
+  const commentRef = useRef();
+  ...
+
+  // input button type radio에게 useState를 부여할 함수(handleClickRadioButton)
+  const handleClickRadioButton = useCallback((radioBtnName) => {
+    setInputStatus(radioBtnName);
+  }, []);
+
+  // form 태그의 메서드 onSubmit={onSubmitForm}에 들어가는 함수
+  ...
+  const onSubmitForm = useCallback(
+    (e) => {
+      e.preventDefault();
+      const comment = commentRef.current;
+      if (comment.value.trim() === '' || inputStatus === '') {
+        alert('게시글을 입력 또는 카테고리 선택을 완료해야 합니다');
+        comment.focus();
+        return;
+      }
+      alert(
+        `가게id: ${id} \n가게이름: ${title}\n커멘트: ${comment.value}\n카테고리: ${inputStatus ? inputStatus : '없음'}`,
+      );
+      comment.value = '';
+    },
+    [inputStatus],
+    // inputStatus를 추가 > onSubmitForm 함수가 useState를 통해 관리되는 state의 업데이트 값을 인식하지 못한다.
+    // 추가적으로 의존성을 띄게 되는 state가 있다면 [] 파라미터에 의존성을 추가해줄 것
+  );
+};
+```
