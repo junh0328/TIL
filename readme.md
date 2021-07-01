@@ -18,7 +18,7 @@
 <p>Netflix clone project</p>
 
 - [x] netflix 클론 프로젝트 부족한 부분 정리하기
-- [ ] netflix 클론 프로젝트 타입스크립트 환경에서 리덕스 사가 적용하기
+- [x] netflix 클론 프로젝트 타입스크립트 환경에서 리덕스 사가 적용하기
 - [ ] netflix 클론 프로젝트 배포하기 (netflify)
 
 <p>colamap project</p>
@@ -31,11 +31,11 @@
 
 <p>JavaScript</p>
 
-- [ ] 부족한 부분 꾸준히 정리
+- [ ] 부족한 부분 꾸준히 정리 (개강 전 까지)
 
 <p>Algorithm</p>
 
-- [ ] 바닐라 JS를 사용하여 알고리즘 공부 시작
+- [ ] 바닐라 JS를 사용하여 알고리즘 공부 시작 (개강 전 까지 1회독)
 
 <p>colamap project</p>
 
@@ -99,3 +99,43 @@
 - <a href="https://github.com/junh0328/TIL/tree/master/Chore#%EB%91%90-%EB%B2%88%EC%A7%B8-%EC%9E%8A%EC%A7%80-%EB%A7%90%EC%9E%90,-useCallback-%EC%83%81%ED%99%A9-%EC%86%8C%EA%B0%9C">두 번째 잊지 말자, useCallback 상황 소개</a>
 
 ## Code Review
+
+## Algorithm
+
+### 기본 문제 풀이
+
+1. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section1#%EC%84%B8-%EC%88%98-%EC%A4%91-%EC%B5%9C%EC%86%9F%EA%B0%92">세 수 중 최솟값</a>
+2. 삼각형 판별하기
+3. 연필개수
+4. 1부터 N까지의 합
+5. 최솟값 구하기
+6. 홀수
+7. 10부제
+8. 일곱난쟁이
+9. A를 #으로
+10. 문자 찾기
+11. 대문자 찾기
+12. 대문자로 통일
+13. 대소문자변환
+14. 가장 긴 문자열
+15. 가운데 문자 출력(substring, substr)
+16. 중복문자제거(indexOf)
+17. 중복단어제거
+
+### 1, 2차원 배열 탐색
+
+### 문자열 탐색
+
+### 완전탐색(블루투포스)
+
+### 효율성(투포인터 알고리즘, 슬라이딩윈도우, 해쉬)
+
+### 자료구조(스택, 큐)
+
+### 정렬과 그리디, 결정알고리즘(이분검색)
+
+### 재귀함수와 완전탐색(DFS:깊이우선탐색)
+
+### 그래프와 탐색(DFS, BFS:넓이우선탐색)
+
+### Dynamic programming(동적계획법 )

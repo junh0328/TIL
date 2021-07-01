@@ -43,6 +43,6 @@
 </html>
 ```
 
-> <a href="">정답 코드 보러 가기</a>
+> <a href="https://github.com/junh0328/TIL/blob/master/Algorithm%20/Section1/01%EC%B5%9C%EC%86%8C%EA%B0%92.html">정답 코드 보러 가기</a>
 
 > 내가 쓴 풀이
