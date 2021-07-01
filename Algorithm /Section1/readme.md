@@ -3,6 +3,7 @@
 ## 목차
 
 - [세 수 중 최솟값](#세-수-중-최솟값)
+- [삼각형 판별하기](#삼각형-판별하기)
 
 ## 세 수 중 최솟값
 
@@ -20,7 +21,8 @@
 ▣ 출력예제 1 5
 ```
 
-> 기본 세팅
+<details>
+<summary> 기본 세팅 </summary>
 
 ```html
 <html>
@@ -43,8 +45,45 @@
 </html>
 ```
 
-> <a href="https://github.com/junh0328/TIL/blob/master/Algorithm%20/Section1/01%EC%B5%9C%EC%86%8C%EA%B0%92.html">정답 코드 보러 가기</a>
+</details>
 
-> 내가 쓴 풀이
+<details>
+<summary> 내가 쓴 풀이 </summary>
+<img width="400" src="./images/01.jpg" alt="최솟값"/>
+</details>
 
-<img src="./images/01.jpg" alt="최솟값"/>
+<details>
+<summary> 정답 코드 보러 가기 </summary>
+
+```html
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(a, b, c) {
+        let answer;
+        if (a > b) {
+          answer = b;
+        } else {
+          answer = a;
+        }
+
+        if (answer > c) {
+          answer = c;
+        }
+        return answer;
+      }
+      console.log(solution(6, 1, 11));
+    </script>
+  </body>
+</html>
+```
+
+</details>
+
+<br/>
+
+## 삼각형 판별하기
