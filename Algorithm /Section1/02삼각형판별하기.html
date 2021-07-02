@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(a, b, c){
+                let answer="YES", max;
+                // 일단 제일 큰 수를 맥스로 넣어야 함
+                // 그 다음 나머지 파라미터 두 개의 합이 맥스보다 작으면 오답이됨 (NO)
+
+                // 1. a가 맥스
+                if(a > b){
+                  max = a;
+                  if( max > b + c){
+                    answer = "YES";
+                  }
+                  else {
+                    answer = "NO";
+                  }
+
+                // 2. b가 맥스
+                }else {
+                  max = b;
+                  if(max > a + c){
+                    answer = "YES";
+                  }else{
+                    answer = "NO"
+                  }
+                }
+                return answer;
+            }
+            console.log(solution(13, 33, 19));
+        </script>
+    </body>
+</html>

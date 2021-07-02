@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(a, b, c){
+                let answer="YES", max;
+                let sum=a+b+c;
+                if(a>b) max=a;
+                else max=b;
+                if(c>max) max=c;
+                // 세 막대의 합(sum)에서 가장 큰 막대(max)의 길이를 뺐을 때
+                // 두 막대기 길이의 합(sum -max)이 가장 큰 막대의 길이(max)보다 작을 경우 거짓
+                if((sum-max)<=max) answer="NO";
+             
+                return answer;
+            }
+            console.log(solution(6,7,11));
+        </script>
+    </body>
+</html>

@@ -1,9 +1,16 @@
 # 기본 문제 풀이
 
+## 확인하는 법
+
+1. 해당 섹션 다운로드 또는 html 코드 복사
+2. vs code 확장프로그램 live server 실행
+3. 콘솔창을 통해 결과 확인
+
 ## 목차
 
 - [세 수 중 최솟값](#세-수-중-최솟값)
 - [삼각형 판별하기](#삼각형-판별하기)
+- [연필 개수](#연필-개수)
 
 ## 세 수 중 최솟값
 
@@ -87,3 +94,163 @@
 <br/>
 
 ## 삼각형 판별하기
+
+```
+길이가 서로 다른 A, B, C 세 개의 막대 길이가 주어지면 이 세 막대로 삼각형을 만들 수 있 으면 “YES"를 출력하고, 만들 수 없으면 ”NO"를 출력한다.
+
+▣ 입력설명
+첫 번째 줄에 100이하의 서로 다른 A, B, C 막대의 길이가 주어진다.
+
+▣ 출력설명
+첫 번째 줄에 “YES", "NO"를 출력한다.
+
+▣ 입력예제 1
+6 7 11
+
+▣ 출력예제 1
+YES
+
+▣ 입력예제 1
+13 33 17
+
+▣ 출력예제 1
+NO
+
+```
+
+<details>
+<summary> 기본 세팅 </summary>
+
+```html
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(a, b, c) {
+        let answer = "YES";
+        let max;
+
+        return answer;
+      }
+      console.log(solution(13, 33, 17));
+    </script>
+  </body>
+</html>
+```
+
+</details>
+
+<details>
+<summary> 내가 쓴 풀이 </summary>
+
+```html
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(a, b, c) {
+        let answer = "YES",
+          max;
+        // 일단 제일 큰 수를 맥스로 넣어야 함
+        // 제일 큰 수(max) 보다 나머지 두 파라미터의 값이 커야 참 (YES)
+        // 그 다음 나머지 파라미터 두 개의 합이 맥스보다 작으면 오답이됨 (NO)
+
+        // 1. a가 맥스
+        if (a > b) {
+          max = a;
+          if (max > b + c) {
+            answer = "YES";
+          } else {
+            answer = "NO";
+          }
+
+          // 2. b가 맥스
+        } else {
+          max = b;
+          if (max > a + c) {
+            answer = "YES";
+          } else {
+            answer = "NO";
+          }
+        }
+        return answer;
+      }
+      console.log(solution(13, 33, 19));
+    </script>
+  </body>
+</html>
+```
+
+</details>
+
+<details>
+<summary> 선생님 풀이 보러 가기 </summary>
+
+```html
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(a, b, c) {
+        let answer = "YES",
+          max;
+        let sum = a + b + c;
+        if (a > b) max = a;
+        else max = b;
+        if (c > max) max = c;
+        // 세 막대의 합(sum)에서 가장 큰 막대(max)의 길이를 뺐을 때
+        // 두 막대기 길이의 합(sum -max)이 가장 큰 막대의 길이(max)보다 작을 경우 거짓
+        if (sum - max <= max) answer = "NO";
+
+        return answer;
+      }
+      console.log(solution(6, 7, 11));
+    </script>
+  </body>
+</html>
+```
+
+</details>
+
+<details>
+<summary>차이점은?</summary>
+
+```
+변수가 주어지지 않더라도 새롭게 만들어 쓸 수 있는 생각을 할 필요가 있다 (변수 max를 새로 선언하는 경우)
+결과값은 같더라도 코드의 길이를 줄일 수 있는 방법을 더 생각하면 좋을 것 같다.
+```
+
+</details>
+
+## 연필 개수
+
+```
+연필 1 다스는 12자루입니다. 학생 1인당 연필을 1자루씩 나누어 준다고 할 때 N명이 학생수 를 입력하면 필요한 연필의 다스 수를 계산하는 프로그램을 작성하세요.
+
+▣ 입력설명
+첫 번째 줄에 1000 이하의 자연수 N이 입력된다.
+
+▣ 출력설명
+첫 번째 줄에 필요한 다스 수를 출력합니다.
+
+▣ 입력예제 1
+25
+
+▣ 출력예제 1
+3
+
+▣ 입력예제 2
+178
+
+▣ 출력예제 2
+15
+```

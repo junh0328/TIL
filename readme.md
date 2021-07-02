@@ -105,7 +105,7 @@
 ### 기본 문제 풀이
 
 1. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section1#%EC%84%B8-%EC%88%98-%EC%A4%91-%EC%B5%9C%EC%86%9F%EA%B0%92">세 수 중 최솟값</a>
-2. 삼각형 판별하기
+2. <a>삼각형 판별하기</a>
 3. 연필개수
 4. 1부터 N까지의 합
 5. 최솟값 구하기
