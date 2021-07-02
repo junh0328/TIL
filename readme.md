@@ -105,8 +105,8 @@
 ### 기본 문제 풀이
 
 1. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section1#%EC%84%B8-%EC%88%98-%EC%A4%91-%EC%B5%9C%EC%86%9F%EA%B0%92">세 수 중 최솟값</a>
-2. <a>삼각형 판별하기</a>
-3. 연필개수
+2. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section1#%EC%82%BC%EA%B0%81%ED%98%95-%ED%8C%90%EB%B3%84%ED%95%98%EA%B8%B0">삼각형 판별하기</a>
+3. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section1#%EC%97%B0%ED%95%84-%EA%B0%9C%EC%88%98">연필개수</a>
 4. 1부터 N까지의 합
 5. 최솟값 구하기
 6. 홀수

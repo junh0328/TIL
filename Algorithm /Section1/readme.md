@@ -11,6 +11,7 @@
 - [세 수 중 최솟값](#세-수-중-최솟값)
 - [삼각형 판별하기](#삼각형-판별하기)
 - [연필 개수](#연필-개수)
+- [1부터 N까지 합 출력하기](#1부터-N까지-합-출력하기)
 
 ## 세 수 중 최솟값
 
@@ -253,4 +254,117 @@ NO
 
 ▣ 출력예제 2
 15
+```
+
+<details>
+<summary> 기본 세팅 </summary>
+
+```html
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(n) {
+        let answer;
+
+        return answer;
+      }
+      console.log(solution(178));
+    </script>
+  </body>
+</html>
+```
+
+</details>
+
+<details>
+<summary> 내가 쓴 풀이 </summary>
+
+```html
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(n) {
+        // 한 다스는 열두자루
+        // 연필의 다스 수이므로, floor 메서드를 통해 처리
+        let answer;
+        answer = Math.floor(n / 12) + 1;
+        return answer;
+      }
+      console.log(solution(13));
+    </script>
+  </body>
+</html>
+```
+
+</details>
+
+<details>
+<summary> 선생님 풀이 보러 가기 </summary>
+
+```html
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(n) {
+        let answer;
+        answer = Math.ceil(n / 12);
+        return answer;
+      }
+      console.log(solution(178));
+    </script>
+  </body>
+</html>
+```
+
+</details>
+
+<details>
+<summary> 차이점은? </summary>
+
+```
+Math 객체를 두 가지 방법이 있음
+
+floor()를 통해서 나머지를 버리고 + 1 을 하거나,
+ceil()을 통해 나머지가 있을 경우 올림 하는 경우
+
+Math.random()을 사용하여 floor로 버리는 난 수 만드는 방법을 사용해서 ceil() 메서드의 존재 유무조차 몰랐음
+MDN에서 math 객체 내장 메서드 공부를 좀 더 해야 겠다
+```
+
+</details>
+
+## 1부터 N까지 합 출력하기
+
+```
+자연수 N이 입력되면 1부터 N까지의 합을 출력하는 프로그램을 작성하세요.
+
+▣ 입력설명
+첫 번째 줄에 20이하의 자연수 N이 입력된다..
+
+▣ 출력설명
+첫 번째 줄에 1부터 N까지의 합을 출력한다.
+
+▣ 입력예제 1
+6
+
+▣ 출력예제 1
+21
+
+▣ 입력예제 2
+10
+
+▣ 출력예제 2
+55
 ```
