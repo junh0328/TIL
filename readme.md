@@ -108,11 +108,11 @@
 2. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section1#%EC%82%BC%EA%B0%81%ED%98%95-%ED%8C%90%EB%B3%84%ED%95%98%EA%B8%B0">삼각형 판별하기</a>
 3. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section1#%EC%97%B0%ED%95%84-%EA%B0%9C%EC%88%98">연필개수</a>
 4. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section1#1%EB%B6%80%ED%84%B0-n%EA%B9%8C%EC%A7%80-%ED%95%A9-%EC%B6%9C%EB%A0%A5%ED%95%98%EA%B8%B0">1부터 N까지의 합</a>
-5. <a>최솟값 구하기</a>
-6. <a>홀수</a>
-7. 10부제
-8. 일곱난쟁이
-9. A를 #으로
+5. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section1#%EC%B5%9C%EC%86%9F%EA%B0%92-%EA%B5%AC%ED%95%98%EA%B8%B0">최솟값 구하기</a>
+6. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section1#%ED%99%80%EC%88%98">홀수</a>
+7. <a>10부제</a>
+8. <a>일곱난쟁이</a>
+9. <a>A를 #으로</a>
 10. 문자 찾기
 11. 대문자 찾기
 12. 대문자로 통일

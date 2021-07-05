@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(s){
+                let answer=s;
+
+                console.log('prev',answer);
+                answer.replace(/A/g, '#');  // 안 바뀜, answer가 string인 것을 인식을 못하는 것 같음
+
+                return answer;
+            }
+            
+            let str="BANANA";
+            console.log(solution(str));
+        </script>
+    </body>
+</html>

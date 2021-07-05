@@ -14,6 +14,9 @@
 - [1부터 N까지 합 출력하기](#1부터-N까지-합-출력하기)
 - [최솟값 구하기](#최솟값-구하기)
 - [홀수](#홀수)
+- [10부제](#10부제)
+- [일곱 난쟁이](#-일곱-난쟁이)
+- [A를 #으로](#-A를-#으로)
 
 ## 세 수 중 최솟값
 
@@ -744,6 +747,366 @@ xx
 
 ```
 코드의 간소화를 위해서 if (홀수값 sum 구하기) 문 내부에서 if(홀수의 최소값 구하기)문을 다시 돌렸다.
+```
+
+</details>
+
+## 10부제
+
+```
+서울시는 6월 1일부터 교통 혼잡을 막기 위해서 자동차 10부제를 시행한다. 자동차 10부제는 자동차 번호의 일의 자리 숫자와 날짜의 일의 자리 숫자가 일치하면 해당 자동차의 운행을 금 지하는 것이다. 예를 들어, 자동차 번호의 일의 자리 숫자가 7이면 7일, 17일, 27일에 운행하 지 못한다. 또한, 자동차 번호의 일의 자리 숫자가 0이면 10일, 20일, 30일에 운행하지 못한다.
+
+여러분들은 일일 경찰관이 되어 10부제를 위반하는 자동차의 대수를 세는 봉사활동을 하려고 한다. 날짜의 일의 자리 숫자가 주어지고 7대의 자동차 번호의 끝 두 자리 수가 주어졌을 때 위반하는 자동차의 대수를 출력하는 프로그램을 작성하세요.
+
+▣ 입력설명
+첫 줄에는 날짜의 일의 자리 숫자가 주어지고 두 번째 줄에는 7대의 자동차 번호의 끝 두 자 리 숫자가 주어진다.
+
+▣ 출력설명
+주어진 날짜와 자동차의 일의 자리 숫자를 보고 10부제를 위반하는 차량의 대수를 출력합니다.
+
+▣ 입력예제 1
+3
+25 23 11 47 53 17 33
+
+▣ 출력예제 1
+3
+
+▣ 입력예제 2
+0
+12 20 54 30 87 91 30
+
+▣ 출력예제 2
+3
+```
+
+<details>
+<summary> 기본 세팅 </summary>
+
+```html
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(day, arr) {
+        let answer = 0;
+
+        return answer;
+      }
+
+      arr = [25, 23, 11, 47, 53, 17, 33];
+      console.log(solution(3, arr));
+    </script>
+  </body>
+</html>
+```
+
+</details>
+
+<details>
+<summary> 내가 쓴 풀이 </summary>
+
+```html
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(day, arr) {
+        let answer = 0;
+        // 각각 배열을 돌면서 day를 10으로 나눴을 때 해당하는 arr[i] 원소의 값과 같으면 answer를 증가
+        for (let value of arr) {
+          if (value % 10 == day) answer++;
+        }
+        return answer;
+      }
+
+      arr = [25, 23, 11, 47, 53, 17, 33];
+      console.log(solution(3, arr));
+    </script>
+  </body>
+</html>
+```
+
+</details>
+
+<details>
+<summary> 선생님 풀이 보러 가기 </summary>
+
+```html
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(day, arr) {
+        let answer = 0;
+        for (let x of arr) {
+          if (x % (10 === day)) answer++;
+        }
+        return answer;
+      }
+
+      arr = [25, 23, 11, 47, 53, 17, 33];
+      console.log(solution(3, arr));
+    </script>
+  </body>
+</html>
+```
+
+</details>
+
+<details>
+<summary> 차이점은? </summary>
+
+```
+없음, 예~
+```
+
+</details>
+
+<details>
+<summary> 레퍼런스(참고사항) </summary>
+
+<a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/for...of">MDN, for of 문</a>
+<a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach">MDN, for each문</a>
+
+</details>
+
+## 일곱 난쟁이
+
+```
+왕비를 피해 일곱 난쟁이들과 함께 평화롭게 생활하고 있던 백설공주에게 위기가 찾아왔다. 일과를 마치고 돌아온 난쟁이가 일곱 명이 아닌 아홉 명이었던 것이다.
+아홉 명의 난쟁이는 모두 자신이 "백설 공주와 일곱 난쟁이"의 주인공이라고 주장했다. 뛰어난 수학적 직관력을 가지고 있던 백설공주는, 다행스럽게도 일곱 난쟁이의 키의 합이 100이 됨을 기억해 냈다.
+
+아홉 난쟁이의 키가 주어졌을 때, 백설공주를 도와 일곱 난쟁이를 찾는 프로그램을 작성하시오.
+
+▣ 입력설명
+아홉 개의 줄에 걸쳐 난쟁이들의 키가 주어진다. 주어지는 키는 100을 넘지 않는 자연수이며, 아홉 난쟁이의 키는 모두 다르며, 가능한 정답이 여러 가지인 경우에는 아무거나 출력한다.
+
+▣ 출력설명
+입력된 순서대로 일곱 난쟁이의 키를 출력한다.
+
+▣ 입력예제 1
+20 7 23 19 10 15 25 8 13
+
+▣ 출력예제 1
+20 7 23 19 10 8 13
+```
+
+<details>
+<summary> 기본 세팅 </summary>
+
+```html
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        let answer = arr;
+
+        return answer;
+      }
+
+      let arr = [20, 7, 23, 19, 10, 15, 25, 8, 13];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
+```
+
+</details>
+
+<details>
+<summary> 내가 쓴 풀이 </summary>
+
+```html
+<!-- 실패, 무슨 소리인지 접근 방법을 모르겠다. -->
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        let answer = arr;
+
+        return answer;
+      }
+
+      let arr = [20, 7, 23, 19, 10, 15, 25, 8, 13];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
+```
+
+</details>
+
+<details>
+<summary> 선생님 풀이 보러 가기 </summary>
+
+```
+얍
+```
+
+</details>
+
+<details>
+<summary> 차이점은? </summary>
+
+```
+얍
+```
+
+</details>
+
+## A를 #으로
+
+```
+대문자로 이루어진 영어단어가 입력되면 단어에 포함된 ‘A'를 모두 ’#‘으로 바꾸어 출력하는 프로그램을 작성하세요.
+
+▣ 입력설명
+첫 번째 줄에 문자열이 입력된다.
+
+▣ 출력설명
+첫 번째 줄에 바뀐 단어를 출력한다.
+
+▣ 입력예제 1 BANANA
+
+▣ 출력예제 1 B#N#N#
+```
+
+<details>
+<summary> 기본 세팅 </summary>
+
+```html
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer = s;
+
+        return answer;
+      }
+
+      let str = "BANANA";
+      console.log(solution(str));
+    </script>
+  </body>
+</html>
+```
+
+</details>
+
+<details>
+<summary> 내가 쓴 풀이 </summary>
+
+```html
+<!-- 실패 🥲 -->
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer = s;
+
+        console.log("prev", answer); // BANANA 정상 출력
+        // answer = String.replace(/A/g, "#"); 도 안됨
+        answer.replace(/A/g, "#");
+        // 안 바뀜, answer가 string인 것을 인식을 못하는 것 같음
+
+        return answer;
+      }
+
+      let str = "BANANA";
+      console.log(solution(str));
+    </script>
+  </body>
+</html>
+```
+
+</details>
+
+<details>
+<summary> 선생님 풀이 보러 가기 </summary>
+
+```html
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer = "";
+        for (let x of s) {
+          console.log(x); // for of 문은 문자도 배열과 같이 탐색이 된다.
+          if (x == "A") answer += "#";
+          else answer += x;
+        }
+        return answer;
+      }
+
+      let str = "BANANA";
+      console.log(solution(str));
+    </script>
+  </body>
+</html>
+```
+
+> string의 메서드 replace 사용하기
+
+```html
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer = s;
+        /* s = s.replace(/A/g, "#"); >> x 
+        why? 문자열은 주소를 참조하는 것이 아닌 값이 복사되는 것이다
+        s는 s 대로 answer와 다른 고유한 주소를 가지고 있을 것
+        */
+        answer = answer.replace(/A/g, "#"); // replace를 사용하기 위해서는 얕은 복사가 필요하다
+        return answer;
+      }
+
+      let str = "BANANA";
+      console.log(solution(str));
+    </script>
+  </body>
+</html>
+```
+
+</details>
+
+<details>
+<summary> 차이점은? </summary>
+
+```
+값을 재 할당하기 위한 얕은 복사, 깊은 복사 등 해당 개념이 부족한 것 같다
 ```
 
 </details>
