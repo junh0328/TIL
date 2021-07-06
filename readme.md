@@ -110,12 +110,12 @@
 4. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section1#1%EB%B6%80%ED%84%B0-n%EA%B9%8C%EC%A7%80-%ED%95%A9-%EC%B6%9C%EB%A0%A5%ED%95%98%EA%B8%B0">1부터 N까지의 합</a>
 5. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section1#%EC%B5%9C%EC%86%9F%EA%B0%92-%EA%B5%AC%ED%95%98%EA%B8%B0">최솟값 구하기</a>
 6. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section1#%ED%99%80%EC%88%98">홀수</a>
-7. <a>10부제</a>
-8. <a>일곱난쟁이</a>
-9. <a>A를 #으로</a>
-10. 문자 찾기
-11. 대문자 찾기
-12. 대문자로 통일
+7. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section1#10%EB%B6%80%EC%A0%9C">10부제</a>
+8. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section1#%EC%9D%BC%EA%B3%B1-%EB%82%9C%EC%9F%81%EC%9D%B4">일곱난쟁이</a>
+9. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section1#a%EB%A5%BC-%EC%9C%BC%EB%A1%9C">A를 #으로</a>
+10. <a>문자 찾기</a>
+11. <a>대문자 찾기</a>
+12. <a>대문자로 통일</a>
 13. 대소문자변환
 14. 가장 긴 문자열
 15. 가운데 문자 출력(substring, substr)

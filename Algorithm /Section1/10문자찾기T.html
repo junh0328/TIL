@@ -1,0 +1,42 @@
+<!-- <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(s, t){
+                let answer=0;
+                for(let x of s){
+                    if(x===t)answer++;
+                }
+                return answer;
+            }
+            
+            let str="COMPUTERPROGRAMMING";
+            console.log(solution(str, 'R'));
+        </script>
+    </body>
+</html> -->
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(s, t){
+                let answer=s.split(t);
+                console.log('splited answer: ', answer);
+                // ["COMPUTE", "P", "OG", "AMMING"] 이기 때문에 맨 뒤의 문자열에는 R이 포함되어 있지 않아 -1을 해준다
+                answer= answer.length-1;
+                console.log('answer.length: ', answer);
+                return answer;
+            }
+            
+            let str="COMPUTERPROGRAMMING";
+            console.log(solution(str, 'R'));
+        </script>
+    </body>
+</html>

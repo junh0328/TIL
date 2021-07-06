@@ -15,8 +15,11 @@
 - [최솟값 구하기](#최솟값-구하기)
 - [홀수](#홀수)
 - [10부제](#10부제)
-- [일곱 난쟁이](#-일곱-난쟁이)
-- [A를 #으로](#-A를-#으로)
+- [일곱 난쟁이](#일곱-난쟁이)
+- [A를 #으로](#A를-#으로)
+- [문자 찾기](#문자-찾기)
+- [대문자 찾기](#대문자-찾기)
+- [대문자로 통일하기](#대문자로-통일하기)
 
 ## 세 수 중 최솟값
 
@@ -940,6 +943,21 @@ xx
     <script>
       function solution(arr) {
         let answer = arr;
+        let sum;
+        const jogun = 100;
+        // 아홉 난쟁이들의 키의 합을 구함
+        sum = answer.reduce(function (x, i) {
+          return x + i;
+        });
+        console.log("sum:", sum);
+        if (sum !== jogun) {
+          // answer - 두 난쟁이의 키의 합 = jogun
+          arr = arr.filter(function (v, i) {
+            // 난쟁이의 합(sum)이 조건(100)과 같도록 필터링
+            return (sum = 100);
+          });
+          console.log(sum);
+        }
 
         return answer;
       }
@@ -1107,6 +1125,474 @@ xx
 
 ```
 값을 재 할당하기 위한 얕은 복사, 깊은 복사 등 해당 개념이 부족한 것 같다
+```
+
+</details>
+
+## 문자 찾기
+
+```
+한 개의 문자열을 입력받고, 특정 문자를 입력받아 해당 특정문자가 입력받은 문자열에 몇 개 존재하는지 알아내는 프로그램을 작성하세요.
+
+문자열의 길이는 100을 넘지 않습니다.
+
+▣ 입력설명
+첫 줄에 문자열이 주어지고, 두 번째 줄에 문자가 주어진다.
+
+▣ 출력설명
+첫 줄에 해당 문자의 개수를 출력한다.
+
+▣ 입력예제 1
+COMPUTERPROGRAMMING R
+
+▣ 출력예제 1
+3
+```
+
+<details>
+<summary> 기본 세팅 </summary>
+
+```html
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s, t) {
+        let answer;
+
+        return answer;
+      }
+      let str = "COMPUTERPROGRAMMING";
+      console.log(solution(str, "R"));
+    </script>
+  </body>
+</html>
+```
+
+</details>
+
+<details>
+<summary> 내가 쓴 풀이 </summary>
+
+```html
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s, t) {
+        let answer;
+        let count = 0;
+        for (v of s) {
+          if (v === t) count++;
+        }
+        answer = count;
+        return answer;
+      }
+
+      let str = "COMPUTERPROGRAMMING";
+      console.log(solution(str, "R"));
+    </script>
+  </body>
+</html>
+```
+
+</details>
+
+<details>
+<summary> 선생님 풀이 보러 가기 </summary>
+
+```html
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s, t) {
+        let answer = 0;
+        for (let x of s) {
+          if (x === t) answer++;
+        }
+        return answer;
+      }
+
+      let str = "COMPUTERPROGRAMMING";
+      console.log(solution(str, "R"));
+    </script>
+  </body>
+</html>
+```
+
+> split 사용하기
+
+```html
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s, t) {
+        let answer = s.split(t);
+        console.log("splited answer: ", answer);
+        // ["COMPUTE", "P", "OG", "AMMING"] 이기 때문에 맨 뒤의 문자열에는 R이 포함되어 있지 않아 -1을 해준다
+        answer = answer.length - 1;
+        console.log("answer.length: ", answer);
+        return answer;
+      }
+
+      let str = "COMPUTERPROGRAMMING";
+      console.log(solution(str, "R"));
+    </script>
+  </body>
+</html>
+```
+
+</details>
+
+<details>
+<summary> 차이점은? </summary>
+
+```
+x, split의 활용법을 배웠으나, 개수를 구하는 식에서는 후위 증감 연산자(++)를 통해 계산하는 것이 더욱 효율적으로 보임
+```
+
+</details>
+
+## 대문자 찾기
+
+```
+한 개의 문자열을 입력받아 해당 문자열에 알파벳 대문자가 몇 개 있는지 알아내는 프로그램 을 작성하세요.
+
+▣ 입력설명
+첫 줄에 문자열이 입력된다. 문자열의 길이는 100을 넘지 않습니다.
+
+▣ 출력설명
+첫 줄에 대문자의 개수를 출력한다.
+
+▣ 입력예제 1
+KoreaTimeGood
+
+▣ 출력예제 1
+3
+```
+
+<details>
+<summary> 기본 세팅 </summary>
+
+```html
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer;
+
+        return answer;
+      }
+
+      let str = "KoreaTimeGood";
+      console.log(solution(str));
+    </script>
+  </body>
+</html>
+```
+
+</details>
+
+<details>
+<summary> 내가 쓴 풀이 </summary>
+
+> 배열의 길이를 리턴하기
+
+```html
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer;
+        let arr = [];
+        var regex = /[A-Z]/g;
+        console.log("s:", s);
+        for (let v of s) {
+          if ((v = v.match(regex))) arr.push(v);
+        }
+        console.log(arr.length);
+        answer = arr.length;
+        return answer;
+      }
+
+      let str = "KoreaTimeGood";
+      console.log(solution(str));
+    </script>
+  </body>
+</html>
+```
+
+> count 변수로 카운트하기
+
+```html
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer;
+        let count = 0;
+        var regex = /[A-Z]/g;
+        console.log("s:", s);
+        for (let v of s) {
+          if ((v = v.match(regex))) count++;
+        }
+        answer = count;
+        return answer;
+      }
+
+      let str = "KoreaTimeGood";
+      console.log(solution(str));
+    </script>
+  </body>
+</html>
+```
+
+</details>
+
+<details>
+<summary> 선생님 풀이 보러 가기 </summary>
+
+```html
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer = 0;
+        for (let x of s) {
+          if (x === x.toUpperCase()) answer++;
+        }
+        return answer;
+      }
+      let str = "KoreaTimeGood";
+      console.log(solution(str));
+    </script>
+  </body>
+</html>
+```
+
+> 아스키 코드로 확인해보기
+
+```html
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer = 0;
+        for (let x of s) {
+          let num = x.charCodeAt();
+          if (num >= 65 && num <= 90) answer++;
+        }
+        return answer;
+      }
+      let str = "KoreaTimeGood";
+      console.log(solution(str));
+    </script>
+  </body>
+</html>
+```
+
+</details>
+
+<details>
+<summary> 차이점은? </summary>
+
+```
+    대문자 [A-Z] 아스키 코드 65 ~ 90
+    소문자 [a-z] 아스키 코드 97 ~ 122
+```
+
+</details>
+
+## 대문자로 통일하기
+
+```
+대문자와 소문자가 같이 존재하는 문자열을 입력받아 대문자로 모두 통일하여 문자열을 출력 하는 프로그램을 작성하세요.
+
+▣ 입력설명
+첫 줄에 문자열이 입력된다. 문자열의 길이는 100을 넘지 않습니다.
+
+▣ 출력설명
+첫 줄에 대문자로 통일된 문자열이 출력된다.
+
+▣ 입력예제 1
+ItisTimeToStudy
+
+▣ 출력예제 1
+ITISTIMETOSTUDY
+```
+
+<details>
+<summary> 기본 세팅 </summary>
+
+```html
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer = s;
+      }
+      let str = "ItisTimeToStudy";
+      console.log(solution(str));
+    </script>
+  </body>
+</html>
+```
+
+</details>
+
+<details>
+<summary> 내가 쓴 풀이 </summary>
+
+```html
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer = s;
+        answer = answer.toUpperCase();
+        return answer;
+      }
+      let str = "ItisTimeToStudy";
+      console.log(solution(str));
+    </script>
+  </body>
+</html>
+```
+
+</details>
+
+<details>
+<summary> 선생님 풀이 보러 가기 </summary>
+
+```html
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer = "";
+        for (let x of s) {
+          if (x === x.toLowerCase()) {
+            answer += x.toUpperCase();
+          } else answer += x;
+        }
+
+        return answer;
+      }
+      let str = "ItisTimeToStudy";
+      console.log(solution(str));
+    </script>
+  </body>
+</html>
+```
+
+</details>
+
+<details>
+<summary> 차이점은? </summary>
+
+```
+오히려 나의 답이 더 간소화된 것으로 보일 수 있다
+선생님은 소문자에 대해서 대문자로 바꿔주고 기존 대문자는 그대로 유지하는 방법을 사용하였음
+```
+
+</details>
+
+## 대소문자 변환
+
+```
+대문자와 소문자가 같이 존재하는 문자열을 입력받아 대문자는 소문자로 소문자는 대문자로 변환하여 출력하는 프로그램을 작성하세요.
+
+▣ 입력설명
+첫 줄에 문자열이 입력된다. 문자열의 길이는 100을 넘지 않습니다.
+
+▣ 출력설명
+첫 줄에 대문자는 소문자로, 소문자는 대문자로 변환된 문자열을 출력합니다.
+
+▣ 입력예제 1
+StuDY
+
+▣ 출력예제 1
+sTUdy
+```
+
+<details>
+<summary> 기본 세팅 </summary>
+
+```html
+
+```
+
+</details>
+
+<details>
+<summary> 내가 쓴 풀이 </summary>
+
+```
+
+```
+
+</details>
+
+<details>
+<summary> 선생님 풀이 보러 가기 </summary>
+
+```html
+
+```
+
+</details>
+
+<details>
+<summary> 차이점은? </summary>
+
+```
+
 ```
 
 </details>

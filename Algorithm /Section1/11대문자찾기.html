@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(s){         
+                let answer;
+                let arr =[];
+                var regex = /[A-Z]/g
+                console.log('s:',s);
+                for(let v of s){
+                    if(v=v.match(regex)) arr.push(v);
+                }
+                console.log(arr.length);
+                answer = arr.length;
+                return answer;
+            }
+
+            let str="KoreaTimeGood";
+            console.log(solution(str));
+        </script>
+    </body>
+</html>
+
+<!-- 
+
+  <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(s){         
+                let answer;
+                let count=0;
+                var regex = /[A-Z]/g
+                console.log('s:',s);
+                for(let v of s){
+                    if(v=v.match(regex)) count++;
+                }
+                answer = count;
+                return answer;
+            }
+
+            let str="KoreaTimeGood";
+            console.log(solution(str));
+        </script>
+    </body>
+</html>
+ -->
