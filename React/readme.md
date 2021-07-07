@@ -22,6 +22,7 @@
 - [Chapter 18, 리덕스 미들웨어를 통한 비동기 작업 관리](#Chapter-18-리덕스-미들웨어를-통한-비동기-작업-관리)
 - [Chapter 19, 코드 스플리팅](#Chapter-19-코드-스플리팅)
 - [Chapter 20, 서버 사이드 렌더링](#Chapter-20-서버-사이드-렌더링)
+- [Chapter 23, JWT를 통한 회원 인증 시스템 구현하기](#Chapter-23-JWT를-통한-회원-인증-시스템-구현하기)
 
 ## Chapter 1 리액트 시작
 
@@ -3491,3 +3492,308 @@ module.exports = {
 ### 정리
 
 <p>서버 사이드 렌더링은 프로젝트를 만들 때 꼭 해야 하는 작업은 아닙니다. 하지만 여러분이 만든 서비스를 사용하는 사람이 많아진다면, 또 검색 엔진 최적화 및 사용자 경험을 향상시키길 원한다면 도입을 고려해 볼 만한 가치가 있는 기술입니다. 단, 이를 도입하면 프로젝트가 조금 복잡해질 수는 있습니다.</p>
+
+## Chapter 23, JWT를 통한 회원 인증 시스템 구현하기
+
+### JWT의 이해
+
+<p>JWT는 JSON Web Token의 약자로, 데이터가 JSON으로 이루어져 있는 토큰을 의미합니다. 두 개체가 서로 안전하게 정보를 주고받을 수 있도록 웹 표준으로 정의된 기술이지요.</p>
+
+> 세션 기반 인증과 토큰 기반 인증의 차이
+
+<p>사용자의 로그인 상태를 서버에서 처리하는 데 사용할 수 있는 대표적인 두 가지 인증 방식이 있습니다. 하나는 세션을 기반으로 인증하는 것이고, 다른 하나는 토큰을 기반으로 인증하는 것입니다.</p>
+
+> 세션 기반 인증 시스템
+
+<p>세션을 기반으로 인증 시스템을 만든다는 것은 서버가 사용자가 로그인 중임을 기억하고 있다는 뜻입니다.</p>
+
+<img src="./images/session.png" alt="세션 기반 인증 시스템"/>
+
+<p>세션 기반 인증 시스템에서 사용자가 로그인을 하면, 서버는 세션 저장소에 사용자의 정보를 조회하고 세션 id를 발급합니다. 발급된 id는 주로 브라우저의 쿠키에 저장합니다. 그다음에 사용자가 다른 요청을 보낼 때마다 서버는 세션 저장소에서 세션을 조회한 후 로그인 여부를 결정하여 작업을 처리하고 응답을 합니다. 세션 저장소는 주로 메모리, 디스크, 데이터베이스 등을 사용합니다.</p>
+
+<p>세션 기반 인증의 단점은 서버를 확장하기가 번거로워질 수 있다는 점입니다. 만약 서버의 인스턴스가 여러 개가 된다면, 모든 서버끼리 같은 세션을 공유해야 하므로 세션 전용 데이터베이스를 만들어야 할 뿐 아니라 신경 써야 할 것도 많습니다.</p>
+
+> 토큰 기반 인증 시스템
+
+<p>토큰은 로그인 이후 서버가 만들어 주는 문자열입니다. 해당 문자열 안에는 사용자의 로그인 정보가 들어 있고, 해당 정보가 서버에서 발급되었음을 증명하는 서명이 들어 있습니다. 서명 데이터는 해싱 알고리즘을 통해 만들어지는데, 주로 HMAC SHA256 혹은 RSA SHA256 알고리즘이 사용됩니다.</p>
+
+<img src="./images/token.png" alt="토큰 기반 인증 시스템"/>
+
+<p>서버에서 만들어 준 토큰은 서명이 있기 때문에 무결성이 보장됩니다. 여기서 무결성이란 정보가 변경되거나 위조되지 않았음을 의미하는 성질입니다. 사용자가 로그인을 하면 서버에서 사용자에게 해당 사용자의 정보를 지니고 있는 토큰을 발급해 주고, 추후 사용자가 다른 API를 요청하게 될 때 발급받은 토큰과 함께 요청하게 됩니다. 그러면 서버는 해당 토큰이 유효한지 검사하고, 결과에 따라 작업을 처리하고 응답합니다.</p>
+
+<p>토큰 기반 인증 시스템의 장점은 서버에서 사용자 로그인 정보를 기억하기 위해 사용하는 리소스가 적다는 것입니다. 사용자 쪽에서 로그인 상태를 지닌 토큰을 가지고 있으므로 서버의 확장성이 매우 높습니다. 서버의 인스턴스가 여러 개로 늘어나도 서버끼리 사용자의 로그인 상태를 공유하고 있을 필요가 없지요.</p>
+
+### 프록시(proxy) 설정
+
+<p>현재 백엔드 서버는 4000 포트, 리액트 개발 서버는 3000 포트로 열려 있기 때문에 별도의 설정 없이 API를 호출하려고 하면 오류가 발생합니다. 이 오류를 CORS(Cross Origin Request) 오류라고 부르는데요. 네트워크 요청을 할 때 주소가 다른 경우에 발생합니다. 이 오류를 해결하려면 다른 주소에서도 API를 호출할 수 있도록 서버 쪽 코드를 수정해야 합니다. 그런데 최종적으로 프로젝트를 다 완성하고 나면 결국 리액트 앱도 같은 호스트에서 제공할 것이기 때문에 이러한 설정을 하는 것은 불필요합니다.</p>
+
+<p>그 대신 프록시(proxy)라는 기능을 사용할 것입니다. 웹팩 개발 서버에서 지원하는 기능인데요. 개발 서버로 요청하는 API들을 우리가 프록시로 정해 둔 서버로 그대로 전달해 주고 그 응답을 웹 애플리케이션에서 사용할 수 있게 해 줍니다.</p>
+
+<img src="./images/proxy.png" alt="proxy"/>
+
+> CRA로 만든 프로젝트에서 프록시를 설정할 때는 package.json 파일을 수정하면 됩니다. 해당 파일을 열어서 다음 내용을 추가하세요.
+
+```js
+📁 package.json
+{
+  "name": "blog-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    (...)
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "proxy": "http://localhost:4000/" // 해당 프록시 설정을 해 줄 백엔드 포트 번호
+}
+
+```
+
+<p>이제 리액트 애플리케이션에서 client.get('/api/posts')를 하면, 웹팩 개발 서버가 프록시 역할을 해서 http://localhost:4000/api/posts에 대신 요청한 뒤 결과물을 응답해 줍니다</p>
+
+### saga 액션타입 한 번에 선언하기
+
+<p>함수를 사용하여 리덕스 모듈에서 API를 사용할 수 있도록 구현하려면 다음과 같이 추가적인 액션 타입을 선언해야 합니다.</p>
+
+```js
+📁 modules/auth.js
+const CHANGE_FIELD = 'auth/CHANGE_FIELD';
+const INITIALIZE_FORM = 'auth/INITIALIZE_FORM';
+
+const REGISTER = 'auth/REGISTER';
+const REGISTER_SUCCESS = 'auth/REGISTER_SUCCESS';
+const REGISTER_FAILURE = 'auth/REGISTER_FAILURE';
+
+const LOGIN = 'auth/LOGIN';
+const LOGIN_SUCCESS = 'auth/LOGIN_SUCCESS';
+const LOGIN_FAILURE = 'auth/LOGIN_FAILURE';
+(...)
+```
+
+<p>각 요청마다 액션 타입을 세 개 선언해야 하는데, 같은 작업이 조금 반복됩니다. 코드를 반복해서 작성하는 것이 사람에 따라 조금 귀찮을 수도 있겠지요? 이와 같은 경우 액션 타입을 한꺼번에 만드는 함수를 선언하는 방법도 있습니다. 위 코드를 한번 리팩토링해 봅시다.</p>
+
+> lib/createRequestSaga
+
+```js
+export const createRequestActionTypes = type => {
+  const LOADING = ${type}_LOADING;
+  const SUCCESS = ${type}_SUCCESS;
+  const FAILURE = ${type}_FAILURE;
+  return [type, LOADING, SUCCESS, FAILURE];
+};
+```
+
+<p>이 함수를 사용하면 요청에 관련된 액션 타입들을 선언할 때 다음과 같이 작성할 수 있습니다.</p>
+
+```js
+import { createRequestActionTypes } from ‘../lib/createRequestSaga‘;
+
+...
+const [REGISTER_LOADING, REGISTER_SUCCESS, REGISTER_FAILURE] = createRequestActionTypes(
+  'REGISTER',
+);
+
+const [LOGIN_LOADING, LOGIN_SUCCESS, LOGIN_FAILURE] = createRequestActionTypes(
+  'LOGIN',
+);
+
+...
+ // 회원가입 성공
+    [REGISTER_SUCCESS]: (state, { payload: auth }) => ({
+      …state,
+      authError: null,
+      auth,
+    }),
+    // 회원가입 실패
+    [REGISTER_FAILURE]: (state, { payload: error }) => ({
+      …state,
+      authError: error,
+    }),
+    // 로그인 성공
+    [LOGIN_SUCCESS]: (state, { payload: auth }) => ({
+      …state,
+      authError: null,
+      auth,
+    }),
+
+```
+
+### 로그인 상태를 보여 주고 유지하기
+
+<!-- <p>로그인 상태를 유지하기 위해 브라우저에 내장되어 있는 localStorage를 사용하겠습니다.</p>
+
+```js
+/*
+user는 useSelector로 관리되는 내 정보이다.
+BOM의 history를 통해 정보가 있을 시, 메인 페이지로 보내주게 되는데 그런 과정에서 localStorage에 useSelector로 관리하는 user 정보를 JSON 형식으로 저장한다.
+*/
+📁/LoginForm
+
+useEffect(() => {
+    if (user) {
+      history.push(‘/‘);
+      try {
+        localStorage.setItem(‘user‘, JSON.stringify(user));
+      } catch (e) {
+        console.log(‘localStorage is not working‘);
+      }
+    }
+  }, [history, user]);
+```
+
+```js
+/*
+회원가입 시에도 로그인과 같이 브라우저 API의 내장 객체인 localStorage에 user 정보를 JSON형식으로 변환하여 저장한다.
+*/
+📁/RegisterForm
+  useEffect(() => {
+    if (user) {
+      history.push(‘/‘); // 홈 화면으로 이동
+      try {
+        localStorage.setItem(‘user‘, JSON.stringify(user));
+      } catch (e) {
+        console.log(‘localStorage is not working‘);
+      }
+    }
+  }, [history, user]);
+```
+
+<p>회원가입 및 로그인을 하면 사용자 정보를 localStorage에 저장하도록 작업해 주었습니다. 페이지를 새로고침했을 때도 로그인 상태를 유지하려면, 리액트 앱이 브라우저에서 맨 처음 렌더링될 때 localStorage에서 값을 불러와 리덕스 스토어 안에 넣도록 구현해 주어야 합니다.</p>
+
+<p>이 작업은 App 컴포넌트에서 useEffect를 사용하여 처리하거나, App 컴포넌트를 클래스형 컴포넌트로 변환하여 componentDidMount 메서드를 만들고 그 안에서 처리해도 됩니다. 하지만 여기서는 프로젝트의 엔트리 파일인 index.js에서 처리해 주겠습니다.</p>
+
+<p>왜냐하면, componentDidMount와 useEffect는 컴포넌트가 한 번 렌더링된 이후에 실행되기 때문입니다. 이 경우에는 사용자가 아주 짧은 깜박임 현상(로그인이 나타났다가 로그아웃이 나타나는 현상)을 경험할 수도 있습니다. index.js에서 사용자 정보를 불러오도록 처리하고 컴포넌트를 렌더링하면 이러한 깜박임 현상이 발생하지 않습니다.</p>
+
+> index.js에 다음과 같이 추가해보세요
+
+```js
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import { createStore, applyMiddleware } from "redux";
+import { Provider } from "react-redux";
+import { composeWithDevTools } from "redux-devtools-extension";
+import createSagaMiddleware from "redux-saga";
+import rootReducer from "./reducers";
+import rootSaga from "./sagas";
+
+
+import reportWebVitals from "./reportWebVitals";
+
+const sagaMiddleware = createSagaMiddleware();
+
+const store = createStore(
+  rootReducer,
+  composeWithDevTools(applyMiddleware(sagaMiddleware))
+);
+
+// 추가된 loadUser() 함수
+function loadUser(){
+  try{
+    const user = localStorage.getItem('user');
+    if(!user) return; // 로그인 상태가 아니라면 아무것도 안함
+
+    // 그렇지 않다면
+    store.dispatch({
+      type: LOGIN_REQUEST
+      data: user
+    })
+  }catch(err){
+    console.log('localStorage is not working');
+  }
+}
+
+sagaMiddleware.run(rootSaga);
+loadUser();
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById("root")
+);
+
+reportWebVitals();
+```
+
+<p>위 코드를 작성할 때는 sagaMiddleware.run이 호출된 이후에 loadUser 함수를 호출하는 것이 중요합니다. loadUser 함수를 먼저 호출하면 CHECK 액션을 디스패치했을 때 사가에서 이를 제대로 처리하지 않습니다. 이제 로그인하고 나서 새로고침을 해 보세요. 로그인 상태가 잘 유지되나요? 리덕스 개발자 도구를 통해 어떤 액션이 디스패치되었는지, 리덕스 스토어는 어떤 상태를 가지고 있는지 확인해 보세요.현재 페이지가 새로고침될 때 localStorage에 사용자 정보가 들어 있다면 그 사용자 값을 리덕스 스토어에 넣습니다. 그러고 나서 정말 사용자가 로그인 상태인지 LOGIN_REQUEST 액션을 디스패치하여 검증하도록 했지요.</p>
+
+<p>LOGIN_REQUEST 액션이 디스패치되면 사가를 통해 /api/check API를 호출합니다. 이 API는 성공할 수도 있고, 실패할 수도 있습니다. 만약 실패하면, 사용자 상태를 초기화해야 하고 localStorage에 들어 있는 값도 지워 주어야 합니다.</p>
+
+```js
+function clearStorage() {
+  try {
+    localStorage.removeItem(‘user‘); // localStorage에서 user를 제거
+  } catch (e) {
+    console.log(‘localStorage is not working‘);
+  }
+}
+
+export function* userSaga() {
+  ...
+  yield takeLatest(LOGIN_FAILURE, clearStorage);
+}
+``` -->
+
+> 선수지식 <a href="https://velog.io/@yaytomato/%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%90%EC%84%9C-%EC%95%88%EC%A0%84%ED%95%98%EA%B2%8C-%EB%A1%9C%EA%B7%B8%EC%9D%B8-%EC%B2%98%EB%A6%AC%ED%95%98%EA%B8%B0">프론트에서 안전하게 로그인 처리하기</a>: 출처 velog
+
+> 클라이언트에서 처리하기
+
+<p>React 최상단 index.js에서 axios에 withCredentials를 true로 설정해줘야 refreshToken cookie를 주고받을 수 있다.</p>
+
+```js
+index.js;
+
+import React from "react";
+import ReactDOM from "react-dom";
+import axios from "axios";
+
+import App from "./App";
+
+axios.defaults.baseURL = "https://www.abc.com";
+axios.defaults.withCredentials = true;
+```
+
+<p>로그인 로직은 간단하다</p>
+
+```js
+onLogin = (email, password) => {
+  const data = {
+    email,
+    password,
+  };
+  axios
+    .post("/login", data)
+    .then((response) => {
+      const { accessToken } = response.data;
+
+      // API 요청하는 콜마다 헤더에 accessToken 담아 보내도록 설정
+      axios.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
+
+      // accessToken을 localStorage, cookie 등에 저장하지 않는다!
+    })
+    .catch((error) => {
+      // ... 에러 처리
+    });
+};
+```
