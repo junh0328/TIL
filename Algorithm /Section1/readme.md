@@ -1660,12 +1660,13 @@ beautiful
   <body>
     <script>
       function solution(s) {
-        let answer = "";
+        let answer = "",
+          max = Number.MIN_SAFE_INTEGER;
 
         return answer;
       }
-
-      console.log(solution("StuDY"));
+      let str = ["teacher", "time", "student", "beautiful", "good"];
+      console.log(solution(str));
     </script>
   </body>
 </html>
@@ -1748,12 +1749,10 @@ oo
   <body>
     <script>
       function solution(s) {
-        let answer = "";
-
+        let answer;
         return answer;
       }
-
-      console.log(solution("StuDY"));
+      console.log(solution("study"));
     </script>
   </body>
 </html>
