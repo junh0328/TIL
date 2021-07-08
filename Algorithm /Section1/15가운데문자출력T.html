@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(s){  
+                let answer;
+                let mid=Math.floor(s.length/2); //내림
+                if(s.length%2===1)answer=s.substring(mid, mid+1);   // substring은 인덱스를 기준으로, substring(2,3(번 인덱스 전까지))라는 의미이다.
+                else answer=s.substring(mid-1, mid+1);      // mid=3, length >> ng
+
+                return answer;
+            }
+            console.log(solution("study"));
+        </script>
+    </body>
+</html>
+
+<!-- 
+substr 사용
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(s){  
+                let answer;
+                let mid=Math.floor(s.length/2); //내림
+                if(s.length%2===1)answer=s.substr(mid, 1);   
+                else answer=s.substr(mid-1, 2);      
+
+                return answer;
+            }
+            console.log(solution("study"));
+        </script>
+    </body>
+</html>
+
+ -->
+
+<!-- 
+    substring(i, i+1) i번 인덱스부터, i+1번 인덱스전까지 뽑아내라
+    substr(i, n)    i번 인덱스부터 n개를 뽑아내라
+ -->

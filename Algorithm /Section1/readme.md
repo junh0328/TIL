@@ -20,6 +20,9 @@
 - [문자 찾기](#문자-찾기)
 - [대문자 찾기](#대문자-찾기)
 - [대문자로 통일하기](#대문자로-통일하기)
+- [대소문자 변환](#대소문자-변환)
+- [가장 긴 문자열](#가장-긴-문자열)
+- [가운데 문자 출력](#가운데-문자-출력)
 
 ## 세 수 중 최솟값
 
@@ -1565,7 +1568,23 @@ sTUdy
 <summary> 기본 세팅 </summary>
 
 ```html
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer = "";
 
+        return answer;
+      }
+
+      console.log(solution("StuDY"));
+    </script>
+  </body>
+</html>
 ```
 
 </details>
@@ -1573,9 +1592,7 @@ sTUdy
 <details>
 <summary> 내가 쓴 풀이 </summary>
 
-```
-
-```
+<img width="400" src="./images/13.jpg" alt="13"/>
 
 </details>
 
@@ -1583,7 +1600,224 @@ sTUdy
 <summary> 선생님 풀이 보러 가기 </summary>
 
 ```html
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer = "";
+        for (let x of s) {
+          if (x === x.toUpperCase()) answer += x.toLowerCase();
+          else answer += x.toUpperCase();
+        }
+        return answer;
+      }
 
+      console.log(solution("StuDY"));
+    </script>
+  </body>
+</html>
+```
+
+</details>
+
+## 가장 긴 문자열
+
+```
+N개의 문자열이 입력되면 그 중 가장 긴 문자열을 출력하는 프로그램을 작성하세요.
+
+▣ 입력설명
+첫 줄에 자연수 N이 주어진다.(3<=N<=30)
+두 번째 줄부터 N개의 문자열이 주어진다. 문자열의 길이는 100을 넘지 않습니다. 각 문자열의 길이는 서로 다릅니다.
+
+▣ 출력설명
+첫 줄에 가장 긴 문자열을 출력한다.
+
+▣ 입력예제 1
+5
+teacher
+time
+student
+beautiful
+good
+
+▣ 출력예제 1
+beautiful
+```
+
+<details>
+<summary> 기본 세팅 </summary>
+
+```html
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer = "";
+
+        return answer;
+      }
+
+      console.log(solution("StuDY"));
+    </script>
+  </body>
+</html>
+```
+
+</details>
+
+<details>
+<summary> 내가 쓴 풀이 </summary>
+
+<img width="400" src="./images/14.jpg" alt="14"/>
+
+</details>
+
+<details>
+<summary> 선생님 풀이 보러 가기 </summary>
+
+```html
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer = "",
+          max = Number.MIN_SAFE_INTEGER;
+        for (let x of s) {
+          if (x.length > max) {
+            max = x.length;
+            answer = x;
+          }
+        }
+        return answer;
+      }
+      let str = ["teacher", "time", "student", "beautiful", "good"];
+      console.log(solution(str));
+    </script>
+  </body>
+</html>
+```
+
+</details>
+
+## 가운데 문자 출력
+
+```
+소문자로 된 단어(문자열)가 입력되면 그 단어의 가운데 문자를 출력하는 프로그램을 작성하세 요.
+단 단어의 길이가 짝수일 경우 가운데 2개의 문자를 출력합니다.
+
+▣ 입력설명
+첫 줄에 문자열이 입력된다. 문자열의 길이는 100을 넘지 않습니다.
+
+▣ 출력설명
+첫 줄에 가운데 문자를 출력합니다.
+
+▣ 입력예제 1
+study
+
+▣ 출력예제 1
+u
+
+▣ 입력예제 2
+good
+
+▣ 출력예제 2
+oo
+```
+
+<details>
+<summary> 기본 세팅 </summary>
+
+```html
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer = "";
+
+        return answer;
+      }
+
+      console.log(solution("StuDY"));
+    </script>
+  </body>
+</html>
+```
+
+</details>
+
+<details>
+<summary> 내가 쓴 풀이 </summary>
+
+<img width="400" src="./images/15.jpg" alt="15"/>
+
+</details>
+
+<details>
+<summary> 선생님 풀이 보러 가기 </summary>
+
+> substring 사용
+
+```html
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer;
+        let mid = Math.floor(s.length / 2); //내림
+        if (s.length % 2 === 1) answer = s.substring(mid, mid + 1);
+        // substring은 인덱스를 기준으로, substring(2,3(번 인덱스 전까지))라는 의미이다.
+        else answer = s.substring(mid - 1, mid + 1); // mid=3, length >> ng
+
+        return answer;
+      }
+      console.log(solution("study"));
+    </script>
+  </body>
+</html>
+```
+
+> substr 사용
+
+```html
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer;
+        let mid = Math.floor(s.length / 2); //내림
+        if (s.length % 2 === 1) answer = s.substr(mid, 1);
+        else answer = s.substr(mid - 1, 2);
+
+        return answer;
+      }
+      console.log(solution("study"));
+    </script>
+  </body>
+</html>
 ```
 
 </details>
@@ -1592,7 +1826,8 @@ sTUdy
 <summary> 차이점은? </summary>
 
 ```
-
+    substring(i, i+1) i번 인덱스부터, i+1번 인덱스전까지 뽑아내라
+    substr(i, n) i번 인덱스부터 n개를 뽑아내라
 ```
 
 </details>

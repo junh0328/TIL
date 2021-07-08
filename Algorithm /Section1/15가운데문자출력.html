@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(s){  
+                let answer;
+                let length =(Math.floor(s.length/2));
+                console.log('length: ',length);
+                console.log('s[length].value: ',s[length]);
+                for(let x of s){
+                 if(s.length % 2 === 1) answer=s[length];
+                 else answer=s[length-1]+s[length]
+                }
+                return answer;
+            }
+            console.log(solution("banana"));
+        </script>
+    </body>
+</html>

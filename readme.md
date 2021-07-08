@@ -117,8 +117,8 @@
 11. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section1#%EB%8C%80%EB%AC%B8%EC%9E%90-%EC%B0%BE%EA%B8%B0">대문자 찾기</a>
 12. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section1#%EB%8C%80%EB%AC%B8%EC%9E%90%EB%A1%9C-%ED%86%B5%EC%9D%BC%ED%95%98%EA%B8%B0">대문자로 통일</a>
 13. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section1#%EB%8C%80%EC%86%8C%EB%AC%B8%EC%9E%90-%EB%B3%80%ED%99%98">대소문자변환</a>
-14. 가장 긴 문자열
-15. 가운데 문자 출력(substring, substr)
+14. <a>가장 긴 문자열</a>
+15. <a>가운데 문자 출력(substring, substr)</a>
 16. 중복문자제거(indexOf)
 17. 중복단어제거
 
