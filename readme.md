@@ -31,7 +31,7 @@
 
 <p>JavaScript</p>
 
-- [ ] 부족한 부분 꾸준히 정리 (개강 전 까지)
+- [ ] 모던 자바스크립트 Deep Dive 1회독 및 정리(개강 전 까지)
 
 <p>Algorithm</p>
 
@@ -104,6 +104,9 @@
 
 ### 기본 문제 풀이
 
+<details>
+<summary>목차 보기</summary>
+
 1. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section1#%EC%84%B8-%EC%88%98-%EC%A4%91-%EC%B5%9C%EC%86%9F%EA%B0%92">세 수 중 최솟값</a>
 2. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section1#%EC%82%BC%EA%B0%81%ED%98%95-%ED%8C%90%EB%B3%84%ED%95%98%EA%B8%B0">삼각형 판별하기</a>
 3. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section1#%EC%97%B0%ED%95%84-%EA%B0%9C%EC%88%98">연필개수</a>
@@ -119,23 +122,60 @@
 13. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section1#%EB%8C%80%EC%86%8C%EB%AC%B8%EC%9E%90-%EB%B3%80%ED%99%98">대소문자변환</a>
 14. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section1#%EA%B0%80%EC%9E%A5-%EA%B8%B4-%EB%AC%B8%EC%9E%90%EC%97%B4">가장 긴 문자열</a>
 15. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section1#%EA%B0%80%EC%9A%B4%EB%8D%B0-%EB%AC%B8%EC%9E%90-%EC%B6%9C%EB%A0%A5">가운데 문자 출력(substring, substr)</a>
-16. 중복문자제거(indexOf)
-17. 중복단어제거
+16. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section1#%EC%A4%91%EB%B3%B5-%EB%AC%B8%EC%9E%90-%EC%A0%9C%EA%B1%B0">중복 문자 제거(indexOf)</a>
+17. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section1#%EC%A4%91%EB%B3%B5-%EB%8B%A8%EC%96%B4-%EC%A0%9C%EA%B1%B0">중복 단어 제거</a>
+</details>
 
 ### 1, 2차원 배열 탐색
 
+<details>
+<summary>목차 보기</summary>
+</details>
+
 ### 문자열 탐색
+
+<details>
+<summary>목차 보기</summary>
+</details>
 
 ### 완전탐색(블루투포스)
 
+<details>
+<summary>목차 보기</summary>
+</details>
+
 ### 효율성(투포인터 알고리즘, 슬라이딩윈도우, 해쉬)
+
+<details>
+<summary>목차 보기</summary>
+</details>
 
 ### 자료구조(스택, 큐)
 
+<details>
+<summary>목차 보기</summary>
+</details>
+
 ### 정렬과 그리디, 결정알고리즘(이분검색)
+
+<details>
+<summary>목차 보기</summary>
+</details>
 
 ### 재귀함수와 완전탐색(DFS:깊이우선탐색)
 
+<details>
+<summary>목차 보기</summary>
+</details>
+
 ### 그래프와 탐색(DFS, BFS:넓이우선탐색)
 
-### Dynamic programming(동적계획법 )
+<details>
+<summary>목차 보기</summary>
+</details>
+
+### Dynamic programming(동적계획법)
+
+<details>
+<summary>목차 보기</summary>
+</details>
