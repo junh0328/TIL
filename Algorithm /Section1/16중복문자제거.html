@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(s){  
+                let answer="";
+                for(a of s){
+                  // 순서대로 들어오되 이미 answer안에 a에 해당하는 문자가 있으면 넘어간다.
+                  if(!answer.match(a))answer += a;
+                }
+                return answer;
+            }
+            console.log(solution("ksekkset"));
+        </script>
+    </body>
+</html>

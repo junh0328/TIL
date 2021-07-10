@@ -1,0 +1,43 @@
+<!-- <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(s){  
+                let answer="";
+                // console.log('s.indexof(k): ',s.indexOf('k')) // indexOf는 해당 문자가 포함되어 있는 가장 첫 번째 인덱스를 출력한다.
+                // for of로 하게 되면 엘리먼트(요소의) index에 대해 접근할 수 없기 때문에 for 문을 사용해야 한다.
+                // for of는 count와 같이 요소의 개수를 셀 때 적합하다고 볼 수 있다.
+                for(var i=0; i<s.length; i++){
+                    console.log(s[i], i , s.indexOf(s[i]));
+                    if(i == s.indexOf(s[i]))answer += s[i];
+                }
+                return answer;
+            }
+            console.log(solution("ksekkset"));
+        </script>
+    </body>
+</html> -->
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(s){  
+                let answer="";
+                let pos=s.indexOf('k'); // 문자열 s에서 k라는 문자열이 포함된 인덱스를 찾아줘
+                while(pos !== -1){
+                    answer++;
+                    pos=s.indexOf('k', pos+1);
+                }
+                return answer;
+            }
+            console.log(solution("ksekkset"));
+        </script>
+    </body>
+</html> 

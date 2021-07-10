@@ -23,6 +23,8 @@
 - [대소문자 변환](#대소문자-변환)
 - [가장 긴 문자열](#가장-긴-문자열)
 - [가운데 문자 출력](#가운데-문자-출력)
+- [중복 문자 제거](#중복-문자-제거)
+- [중복 단어 제거](#중복-단어-제거)
 
 ## 세 수 중 최솟값
 
@@ -977,17 +979,46 @@ xx
 <details>
 <summary> 선생님 풀이 보러 가기 </summary>
 
-```
-얍
-```
+```html
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        let answer = arr;
+        let sum = arr.reduce((a, b) => a + b); // 총합, 140
+        // console.log(sum);
+        console.log("arr:", arr);
+        for (let i = 0; i < arr.length - 1; i++) {
+          // 이중 for 문을 돌기 때문에 맨 마지막 요소까지 접근하면 안됨
+          for (let j = i + 1; j < arr.length; j++) {
+            // console.log(arr[i], arr[j]); 확인해보기
+            if (sum - (arr[i] + arr[j]) === 100) {
+              // console.log(arr[i], arr[j]);
+              arr.splice(i, 1);
+              arr.splice(j - 1, 1);
+            }
+          }
+        }
 
-</details>
+        return answer;
+      }
 
-<details>
-<summary> 차이점은? </summary>
+      let arr = [20, 7, 23, 19, 10, 15, 25, 8, 13];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
 
-```
-얍
+<!-- 
+1. 변수 arr에 [...] 배열을 넣어 선언과 동시에 초기화 한다.
+2. 배열은 객체타입이므로 실제 값(숫자)이 아닌 메모리 주소를 참조값으로 가진다.
+3. 얕은 복사를 통해 변수 answer에 arr과 동일한 참조값(메모리 주소)을 복사하였다.
+4. 따라서 어느 한 배열의 요소를 조작하더라도 둘 다 같이 바뀐다 (why? 동일한 참조값을 가지기 때문에) 
+-->
 ```
 
 </details>
@@ -1827,6 +1858,306 @@ oo
 ```
     substring(i, i+1) i번 인덱스부터, i+1번 인덱스전까지 뽑아내라
     substr(i, n) i번 인덱스부터 n개를 뽑아내라
+```
+
+</details>
+
+## 중복 문자 제거
+
+```
+소문자로 된 한개의 문자열이 입력되면 중복된 문자를 제거하고 출력하는 프로그램을 작성하세요.
+
+제거된 문자열의 각 문자는 원래 문자열의 순서를 유지합니다.
+
+▣ 입력설명
+첫 줄에 문자열이 입력됩니다.
+
+▣ 출력설명
+첫 줄에 중복문자가 제거된 문자열을 출력합니다.
+
+▣ 입력예제 1
+ksekkset
+
+▣ 출력예제 1
+kset
+```
+
+<details>
+<summary> 예제 코드 보기 </summary>
+
+```html
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer;
+
+        return answer;
+      }
+      console.log(solution("ksekkset"));
+    </script>
+  </body>
+</html>
+```
+
+</details>
+
+<details>
+<summary> 나의 작성 코드 보기 </summary>
+
+```html
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer = "";
+        for (a of s) {
+          // 순서대로 들어오되 이미 answer안에 a에 해당하는 문자가 있으면 넘어간다.
+          if (!answer.match(a)) answer += a;
+        }
+        return answer;
+      }
+      console.log(solution("ksekkset"));
+    </script>
+  </body>
+</html>
+```
+
+</details>
+
+<details>
+<summary> 선생님 코드 보기 </summary>
+
+> case 1 : indexOf 메서드 사용
+
+```html
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer = "";
+        for (var i = 0; i < s.length; i++) {
+          console.log(s[i], i, s.indexOf(s[i]));
+        }
+        return answer;
+      }
+      console.log(solution("ksekkset"));
+    </script>
+  </body>
+</html>
+```
+
+> case 2: k의 개수를 찾기
+
+```html
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer = "";
+        let pos = s.indexOf("k"); // 문자열 s에서 k라는 문자열이 포함된 인덱스를 찾아줘
+        while (pos !== -1) {
+          answer++;
+          pos = s.indexOf("k", pos + 1);
+        }
+        return answer;
+      }
+      console.log(solution("ksekkset"));
+    </script>
+  </body>
+</html>
+```
+
+</details>
+
+<details>
+<summary> String.prototype.indexOf() </summary>
+
+```
+indexOf() 메서드는 호출한 String 객체에서 주어진 값과 일치하는 첫 번째 인덱스를 반환합니다. 일치하는 값이 없으면 -1을 반환합니다.
+
+참고: Array에서는 Array.prototype.indexOf() 메서드가 같은 역할을 합니다.
+
+str.indexOf(searchValue[, fromIndex])
+
+1. searchValue
+찾으려는 문자열. 아무 값도 주어지지 않으면 문자열 "undefined"를 찾으려는 문자열로 사용합니다.
+
+
+2. fromIndex (Optional)
+문자열에서 찾기 시작하는 위치를 나타내는 인덱스 값입니다. 어떤 정수값이라도 가능합니다. 기본값은 0이며, 문자열 전체를 대상으로 찾게 됩니다. 만약 fromIndex 값이 음의 정수이면 전체 문자열을 찾게 됩니다. 만약 fromIndex >= str.length 이면, 검색하지 않고 바로 -1을 반환합니다. searchValue가 공백 문자열이 아니라면, str.length를 반환합니다.
+```
+
+```js
+function solution(s) {
+  let answer = "";
+  for (var i = 0; i < s.length; i++) {
+    console.log(s[i], i, s.indexOf(s[i]));
+    if (i == s.indexOf(s[i])) answer += s[i];
+  }
+  return answer;
+}
+console.log(solution("ksekkset"));
+```
+
+</details>
+
+## 중복 단어 제거
+
+```
+N개의 문자열이 입력되면 중복된 문자열은 제거하고 출력하는 프로그램을 작성하세요. 출력하는 문자열은 원래의 입력순서를 유지합니다.
+
+▣ 입력설명
+첫 줄에 자연수 N이 주어진다.(3<=N<=30)
+두 번째 줄부터 N개의 문자열이 주어진다. 문자열의 길이는 100을 넘지 않습니다.
+
+▣ 출력설명
+첫 줄부터 중복이 제거된 문자열을 차례로 출력한다.
+
+▣ 입력예제 1
+5
+good
+time
+good
+time
+student
+
+▣ 출력예제 1
+good
+time
+student
+```
+
+<details>
+<summary> 예제 코드 보기 </summary>
+
+```html
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer = "";
+        return answer;
+      }
+      let str = ["good", "time", "good", "time", "student"];
+      console.log(solution(str));
+    </script>
+  </body>
+</html>
+```
+
+</details>
+
+<details>
+<summary> 나의 작성 코드 보기 </summary>
+
+```html
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer = [];
+        for (var i = 0; i < s.length; i++) {
+          // console.log(s[i], i, s.indexOf(s[i]));
+          if (i === s.indexOf(s[i])) answer.push(s[i]);
+        }
+        return answer;
+      }
+      let str = ["good", "time", "good", "time", "student"];
+      console.log(solution(str));
+    </script>
+  </body>
+</html>
+```
+
+</details>
+
+<details>
+<summary> 선생님 코드 보기 </summary>
+
+```html
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer;
+        // console.log(s.indexOf("time"));
+        answer = s.filter(function (v, i) {
+          // v 는 객체 s의 value 값이고, i는 인덱스 번호이다.
+          // console.log(v,i);
+          return s.indexOf(v) === i; // s.indexOf(v) === i가 참인 요소에 대해 걸러서 보여준다.
+        });
+
+        return answer;
+      }
+      let str = ["good", "time", "good", "time", "student"];
+      console.log(solution(str));
+    </script>
+  </body>
+</html>
+```
+
+</details>
+
+<details>
+<summary> Array.prototpye.indxOf() </summary>
+
+> 레퍼런스 : <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">Array.prototpye.indxOf()</a>
+
+```
+Array.prototype.indexOf()를 사용
+
+indexOf() 메서드는 배열에서 지정된 요소를 찾을 수 잇는 첫 번째 인덱스를 반환하고 존재하지 않으면 -1을 반환합니다.
+
+arr.indexOf(searchElement[, fromIndex])
+
+1. searchElement
+배열에서 찾을 요소입니다.
+
+2. fromIndex (Optional)
+검색을 시작할 색인입니다. 인덱스가 배열의 길이보다 크거나 같은 경우 -1이 반환되므로 배열이 검색되지 않습니다. 제공된 색인 값이 음수이면 배열 끝에서부터의 오프셋 값으로 사용됩니다. 참고 : 제공된 색인이 음수이면 배열은 여전히 앞에서 뒤로 검색됩니다. 계산 된 인덱스가 0보다 작 으면 전체 배열이 검색됩니다. 기본값 : 0 (전체 배열 검색).
+```
+
+```js
+const beasts = ["ant", "bison", "camel", "duck", "bison"];
+
+console.log(beasts.indexOf("bison"));
+// expected output: 1
+
+// start from index 2
+console.log(beasts.indexOf("bison", 2));
+// expected output: 4
+
+console.log(beasts.indexOf("giraffe"));
+// expected output: -1
 ```
 
 </details>

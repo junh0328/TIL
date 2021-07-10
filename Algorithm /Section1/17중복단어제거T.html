@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(s){  
+                let answer;
+                // console.log(s.indexOf("time"));
+                answer=s.filter(function(v,i){      // v 는 객체 s의 value 값이고, i는 인덱스 번호이다.
+                    // console.log(v,i);
+                    return s.indexOf(v) === i;  // s.indexOf(v) === i가 참인 요소에 대해 걸러서 보여준다.
+                });
+
+                return answer;
+            }
+            let str=["good", "time", "good", "time", "student"];
+            console.log(solution(str));
+        </script>
+    </body>
+</html>
+
