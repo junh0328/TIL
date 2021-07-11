@@ -545,6 +545,32 @@ xx
 </html>
 ```
 
+> 다시 풀기
+
+```html
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        let answer,
+          min = Number.MAX_SAFE_INTEGER;
+        for (var x = 0; x < arr.length; x++) {
+          if (arr[x] < min) min = arr[x];
+        }
+        answer = min;
+        return answer;
+      }
+      let arr = [5, 7, 1, 3, 2, 9, 20];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
+```
+
 </details>
 
 <details>
@@ -1095,6 +1121,29 @@ xx
 </html>
 ```
 
+> 다시 풀기
+
+```html
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer = s;
+        answer = answer.replace(/A/g, "#");
+        return answer;
+      }
+
+      let str = "BANANA";
+      console.log(solution(str));
+    </script>
+  </body>
+</html>
+```
+
 </details>
 
 <details>
@@ -1159,6 +1208,18 @@ xx
 
 ```
 값을 재 할당하기 위한 얕은 복사, 깊은 복사 등 해당 개념이 부족한 것 같다
+
+answer (공부 내용)
+
+자바스크립트에서 데이터의 타입은 원시 타입과 객체 타입으로 나눌 수 있다.
+원시 타입의 값은 변하지 않는 성질 즉, 불변성을 가지며, 객체 타입은 언제든지 변경이 가능하다.
+그렇기 떄문에 원시 값을 가진 변수의 값을 변경하기 위해서는 원래 값으로 선언했된 (기존 메모리 주소가 가지고 있는) 원시 값을 바꾸는 것이 아닌,
+새로운 메모리 주소에 값을 재할당하는 개념으로 봐야한다.
+
+answer.replace(/A/g, "#") 와 같은 문은 실행될 수 없다.
+
+왜냐하면 answer는 원시 타입인 string 타입으로 타입추론된 상태이기 때문이다. (원시 타입은 불변성으로 인해 값을 변경할 수 없음)
+따라서 answer = answer.replace(/A/g, '#')을 통해서 answer에 새로운 값을 재할당해야 원하는 의도대로 사용할 수 있다.
 ```
 
 </details>
@@ -1948,8 +2009,12 @@ kset
     <script>
       function solution(s) {
         let answer = "";
+        // console.log('s.indexof(k): ',s.indexOf('k')) // indexOf는 해당 문자가 포함되어 있는 가장 첫 번째 인덱스를 출력한다.
+        // for of로 하게 되면 엘리먼트(요소의) index에 대해 접근할 수 없기 때문에 for 문을 사용해야 한다.
+        // for of는 count와 같이 요소의 개수를 셀 때 적합하다고 볼 수 있다.
         for (var i = 0; i < s.length; i++) {
           console.log(s[i], i, s.indexOf(s[i]));
+          if (i == s.indexOf(s[i])) answer += s[i];
         }
         return answer;
       }
@@ -2001,7 +2066,10 @@ str.indexOf(searchValue[, fromIndex])
 
 
 2. fromIndex (Optional)
-문자열에서 찾기 시작하는 위치를 나타내는 인덱스 값입니다. 어떤 정수값이라도 가능합니다. 기본값은 0이며, 문자열 전체를 대상으로 찾게 됩니다. 만약 fromIndex 값이 음의 정수이면 전체 문자열을 찾게 됩니다. 만약 fromIndex >= str.length 이면, 검색하지 않고 바로 -1을 반환합니다. searchValue가 공백 문자열이 아니라면, str.length를 반환합니다.
+문자열에서 찾기 시작하는 위치를 나타내는 인덱스 값입니다.
+어떤 정수값이라도 가능합니다. 기본값은 0이며, 문자열 전체를 대상으로 찾게 됩니다.
+만약 fromIndex 값이 음의 정수이면 전체 문자열을 찾게 됩니다. 만약 fromIndex >= str.length 이면, 검색하지 않고 바로 -1을 반환합니다.
+searchValue가 공백 문자열이 아니라면, str.length를 반환합니다.
 ```
 
 ```js
@@ -2143,7 +2211,11 @@ arr.indexOf(searchElement[, fromIndex])
 배열에서 찾을 요소입니다.
 
 2. fromIndex (Optional)
-검색을 시작할 색인입니다. 인덱스가 배열의 길이보다 크거나 같은 경우 -1이 반환되므로 배열이 검색되지 않습니다. 제공된 색인 값이 음수이면 배열 끝에서부터의 오프셋 값으로 사용됩니다. 참고 : 제공된 색인이 음수이면 배열은 여전히 앞에서 뒤로 검색됩니다. 계산 된 인덱스가 0보다 작 으면 전체 배열이 검색됩니다. 기본값 : 0 (전체 배열 검색).
+검색을 시작할 색인입니다.
+인덱스가 배열의 길이보다 크거나 같은 경우 -1이 반환되므로 배열이 검색되지 않습니다.
+제공된 색인 값이 음수이면 배열 끝에서부터의 오프셋 값으로 사용됩니다.
+참고 : 제공된 색인이 음수이면 배열은 여전히 앞에서 뒤로 검색됩니다.
+계산 된 인덱스가 0보다 작 으면 전체 배열이 검색됩니다. 기본값 : 0 (전체 배열 검색).
 ```
 
 ```js
@@ -2161,3 +2233,52 @@ console.log(beasts.indexOf("giraffe"));
 ```
 
 </details>
+
+## 고차 함수 알아보기
+
+<details>
+<summary>코드 보기</summary>
+
+> forEach, map
+
+<img src="./images/gocha1.jpg" alt="고차함수 알아보기1"/>
+
+> filter, reduce
+
+<img src="./images/gocha2.jpg" alt="고차함수 알아보기2"/>
+
+</details>
+
+## 정리
+
+(✔️) 다시 보면 좋은 함수들
+
+```
+Math
+
+Math.floor()  // 내림
+Math.ceil() // 올림
+Math.min()  // 최솟값 출력
+
+Number
+Number.MAX_SAFE_INTEGER // INTEGER 최대 값 출력
+
+Array
+Array.prototype.push()
+✔️ Array.prototype.indexOf()
+✔️ Array.prototype.forEach()
+Array.prototype.reduce()
+Array.prototype.filter()
+✔️ Array.prototype.splice()
+✔️ Array.prototype.indexOf()
+
+String
+String.prototype.replace()
+✔️ String.prototype.split()
+✔️ String.prototype.match()
+String.prototype.toUpperCase()
+String.prototype.toLowerCase()
+String.prototype.substring()
+✔️ String.prototype.substr()
+✔️ String.prototype.indexOf()
+```
