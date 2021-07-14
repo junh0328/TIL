@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>  
+        <script>
+            function solution(arr){  
+                let n=arr.length;
+                let answer = [1,1,1,1,1];
+                // let answer = Array.from({ length: n}, () => 1);
+
+                for(let i=0; i<n; i++){
+                    for(let j=0; j<n; j++){
+                        // i가 주인공이다
+                        // i를 기준으로 arr[j]가 arr[i] 보다 크다면, answer[i] 번째 요소에 값을 더한다
+                         if(arr[j]>arr[i]) answer[i]++;
+                    }
+                }
+
+      
+                return answer;
+            }
+
+            let arr=[87, 92, 92, 100, 76];
+            console.log(solution(arr));
+        </script>
+    </body>
+</html>
+
+
+<!-- 
+    Array.from
+
+ -->

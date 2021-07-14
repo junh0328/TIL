@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(arr){  
+                let answer=Number.MIN_SAFE_INTEGER;
+                let n=arr.length;
+                // console.log(arr.length);
+                let hang = 0;
+                let yeol = 0;
+                for(let i=0; i<n; i++){
+                    hang=yeol=0;
+                    for(let j=0; j<n; j++){
+                        // 행 탐색, 열 탐색을 이중 for문으로 진행한다
+                        hang+=arr[i][j];    //j가 돈다. 01 02 03 04
+                        yeol+=arr[j][i];    //j가 돈다. 10 20 30 40
+                    }
+                    answer=Math.max(answer, hang, yeol);    // answer에는 인수 세개 중 가장 큰 수 저장된다
+                }
+                hang=yeol=0;
+                for(let i =0; i<n; i++){
+                    hang+=arr[i][i];    // 00, 11, 22, 33, 44 
+                    yeol+=arr[i][n-i-1];
+                }
+                answer=Math.max(answer, hang, yeol); // answer에는 인수 세개 중 가장 큰 수 저장된다
+                return answer;
+            }
+
+            let arr=[[10, 13, 10, 12, 15], 
+                     [12, 39, 30, 23, 11],
+                     [11, 25, 50, 53, 15],
+                     [19, 27, 29, 37, 27],
+                     [19, 13, 30, 13, 19]];
+            console.log(solution(arr));
+        </script>
+    </body>
+</html>
