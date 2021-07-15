@@ -134,10 +134,10 @@
 1. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section2#%ED%81%B0-%EC%88%98-%EC%B6%9C%EB%A0%A5%ED%95%98%EA%B8%B0">큰 수 출력하기</a>
 2. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section2#%EB%B3%B4%EC%9D%B4%EB%8A%94-%ED%95%99%EC%83%9D">보이는 학생</a>
 3. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section2#%EA%B0%80%EC%9C%84-%EB%B0%94%EC%9C%84-%EB%B3%B4">가위바위보</a>
-4. 점수 계산
-5. 등수구하기
-6. 격자판 최대합
-7. 봉우리
+4. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section2#점수계산">점수 계산</a>
+5. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section2#등수구하기">등수구하기</a>
+6. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section2#격자판-최대합">격자판 최대합</a>
+7. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section2#봉우리">봉우리</a>
 
 </details>
 

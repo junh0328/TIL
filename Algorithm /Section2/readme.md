@@ -611,6 +611,35 @@ let answer= [1,1,1,1,1];
 </html>
 ```
 
+> 다시 풀기
+
+```html
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        let n = arr.length;
+        let answer = [1, 1, 1, 1, 1];
+
+        for (let i = 0; i < n; i++) {
+          for (let j = 0; j < n; j++) {
+            if (arr[j] > arr[i]) answer[i]++;
+          }
+        }
+        return answer;
+      }
+
+      let arr = [87, 89, 92, 100, 76];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
+```
+
 </details>
 
 <details>
