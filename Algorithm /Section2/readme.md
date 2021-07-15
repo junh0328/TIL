@@ -12,6 +12,9 @@
 - [보이는 학생](#보이는-학생)
 - [가위 바위 보](#가위-바위-보)
 - [점수계산](#점수계산)
+- [등수구하기](#등수구하기)
+- [격자판 최대합](#격자판-최대합)
+- [봉우리](#봉우리)
 - [정리](#정리)
 
 ## 큰 수 출력하기
@@ -744,8 +747,8 @@ N*N의 격자판이 주어지면 각 행의 합, 각 열의 합, 두 대각선�
         }
         hang = yeol = 0;
         for (let i = 0; i < n; i++) {
-          hang += arr[i][i]; // 00, 11, 22, 33, 44
-          yeol += arr[i][n - i - 1];
+          hang += arr[i][i]; // 좌 > 우 대각선 00, 11, 22, 33, 44
+          yeol += arr[i][n - i - 1]; // 우 > 좌 대각선 04, 13, 22, 31, 40
         }
         answer = Math.max(answer, hang, yeol); // answer에는 인수 세개 중 가장 큰 수 저장된다
         return answer;
@@ -765,3 +768,194 @@ N*N의 격자판이 주어지면 각 행의 합, 각 열의 합, 두 대각선�
 ```
 
 </details>
+
+## 봉우리
+
+```
+지도 정보가 N*N 격자판에 주어집니다. 각 격자에는 그 지역의 높이가 쓰여있습니다. 각 격자 판의 숫자 중 자신의 상하좌우 숫자보다 큰 숫자는 봉우리 지역입니다. 봉우리 지역이 몇 개 있는 지 알아내는 프로그램을 작성하세요.
+격자의 가장자리는 0으로 초기화 되었다고 가정한다.
+만약 N=5 이고, 격자판의 숫자가 다음과 같다면 봉우리의 개수는 10개입니다.
+```
+
+<img width="300" src="./images/7.png" alt="봉우리"/>
+
+```
+▣ 입력설명
+첫 줄에 자연수 N이 주어진다.(1<=N<=50)
+두 번째 줄부터 N줄에 걸쳐 각 줄에 N개의 자연수가 주어진다. 각 자연수는 100을 넘지 않는다.
+
+▣ 출력설명
+봉우리의 개수를 출력하세요.
+
+▣ 입력예제 1
+5
+
+53723
+37161
+72534
+43641
+87352
+
+▣ 출력예제 1
+10
+```
+
+<details>
+<summary>예제 코드 보기</summary>
+
+<details>
+<summary>접근법 보기</summary>
+<img width="600" src="./images/7_2.jpg" alt="봉우리접근법"/>
+</details>
+
+```html
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        let answer = 0;
+        let n = arr.length;
+
+        return answer;
+      }
+
+      let arr = [
+        [5, 3, 7, 2, 3],
+        [3, 7, 1, 6, 1],
+        [7, 2, 5, 3, 4],
+        [4, 3, 6, 4, 1],
+        [8, 7, 3, 5, 2],
+      ];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
+```
+
+</details>
+
+<details>
+<summary>내 코드 보기</summary>
+
+```html
+<!-- 실패 -->
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        let answer = 0;
+        let n = arr.length;
+        for (let i = 0; i < n; i++) {
+          for (let j = 0; j < n; j++) {
+            if (arr[i] > arr[i - 1]) {
+              if (arr[i] > arr[i + 1]) {
+                if (arr[j] > arr[j - 1]) {
+                  if (arr[j] > arr[j + 1]) answer++;
+                }
+              }
+            }
+            // console.log(i,j)
+          }
+        }
+        return answer;
+      }
+
+      let arr = [
+        [5, 3, 7, 2, 3],
+        [3, 7, 1, 6, 1],
+        [7, 2, 5, 3, 4],
+        [4, 3, 6, 4, 1],
+        [8, 7, 3, 5, 2],
+      ];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
+```
+
+</details>
+
+<details>
+<summary>선생님 문제 풀이 보기</summary>
+
+```html
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        let answer = 0; // answer는 카운팅해야 하므로 0
+        let n = arr.length;
+        let dx = [-1, 0, 1, 0]; // dx[0],dy[0] > (-1,0) 12시 (0,1) 3시, (1,0) 6시, (0,-1) 9시
+        let dy = [0, 1, 0, -1];
+
+        for (let x = 0; x < n; x++) {
+          for (let y = 0; y < n; y++) {
+            // let x, y는 2차원 배열 탐색을 위함
+            let flag = 1; // flag는 봉우리의 참과 거짓을 판단하는 변수 (참, 1 or 거짓, 0)
+            for (let k = 0; k < 4; k++) {
+              // let k 는 dx,dy 즉 자신을 기준으로 12시 3시 6시 9시 방향의 요소와 비교하기 위한 반복문
+              let nx = x + dx[k]; // 가려고 하는 행 좌표 상하좌우 [-1. 0, 1, 0] 와 기준 좌표 x의 합
+              let ny = y + dy[k]; // 가려고 하는 열 좌표 상하좌우 [-1. 0, 1, 0] 와 기준 좌표 y의 합
+              console.log("nx:", nx, "ny:", ny);
+              if (
+                nx >= 0 &&
+                nx < n &&
+                ny >= 0 &&
+                ny < n &&
+                arr[nx][ny] >= arr[x][y]
+              ) {
+                flag = 0;
+                break;
+              }
+            }
+            if (flag) answer++;
+          }
+        }
+
+        return answer;
+      }
+
+      let arr = [
+        [5, 3, 7, 2, 3],
+        [3, 7, 1, 6, 1],
+        [7, 2, 5, 3, 4],
+        [4, 3, 6, 4, 1],
+        [8, 7, 3, 5, 2],
+      ];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
+```
+
+</details>
+
+## 정리
+
+( ) 사용한 함수들
+(✔️) 다시 보면 좋은 함수들
+
+```
+Array
+Array.prototype.push()
+
+Math
+Math.max()
+
+반복문
+for (a of b)
+
+2차원 배열
+```
