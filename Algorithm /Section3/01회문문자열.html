@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>정답</title>
+</head>
+<body>
+  <script>
+    function solution(str){
+      let answer = 'YES';
+      let n = str.length;
+      let lowerStr = str.toLowerCase();
+
+      for(let i=0; i<n/2; i++){
+          if(lowerStr[i] !== lowerStr[n-1-i]) {
+            answer ='NO';
+            break;
+          }
+      }
+      return answer;
+    }
+    let str = "gocg";
+    console.log(solution(str))
+  </script>
+</body>
+</html>
+

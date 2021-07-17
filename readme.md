@@ -114,7 +114,7 @@
 5. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section1#%EC%B5%9C%EC%86%9F%EA%B0%92-%EA%B5%AC%ED%95%98%EA%B8%B0">최솟값 구하기</a>
 6. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section1#%ED%99%80%EC%88%98">홀수</a>
 7. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section1#10%EB%B6%80%EC%A0%9C">10부제</a>
-8. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section1#%EC%9D%BC%EA%B3%B1-%EB%82%9C%EC%9F%81%EC%9D%B4">일곱난쟁이</a>
+8. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section1#%EC%9D%BC%EA%B3%B1-%EB%82%9C%EC%9F%81%EC%9D%B4">📍일곱난쟁이</a>
 9. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section1#a%EB%A5%BC-%EC%9C%BC%EB%A1%9C">A를 #으로</a>
 10. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section1#%EB%AC%B8%EC%9E%90-%EC%B0%BE%EA%B8%B0">문자 찾기</a>
 11. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section1#%EB%8C%80%EB%AC%B8%EC%9E%90-%EC%B0%BE%EA%B8%B0">대문자 찾기</a>
@@ -122,8 +122,8 @@
 13. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section1#%EB%8C%80%EC%86%8C%EB%AC%B8%EC%9E%90-%EB%B3%80%ED%99%98">대소문자변환</a>
 14. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section1#%EA%B0%80%EC%9E%A5-%EA%B8%B4-%EB%AC%B8%EC%9E%90%EC%97%B4">가장 긴 문자열</a>
 15. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section1#%EA%B0%80%EC%9A%B4%EB%8D%B0-%EB%AC%B8%EC%9E%90-%EC%B6%9C%EB%A0%A5">가운데 문자 출력(substring, substr)</a>
-16. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section1#%EC%A4%91%EB%B3%B5-%EB%AC%B8%EC%9E%90-%EC%A0%9C%EA%B1%B0">중복 문자 제거(indexOf)</a>
-17. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section1#%EC%A4%91%EB%B3%B5-%EB%8B%A8%EC%96%B4-%EC%A0%9C%EA%B1%B0">중복 단어 제거</a>
+16. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section1#%EC%A4%91%EB%B3%B5-%EB%AC%B8%EC%9E%90-%EC%A0%9C%EA%B1%B0">📍 중복 문자 제거(indexOf)</a>
+17. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section1#%EC%A4%91%EB%B3%B5-%EB%8B%A8%EC%96%B4-%EC%A0%9C%EA%B1%B0">📍 중복 단어 제거</a>
 </details>
 
 ### 1, 2차원 배열 탐색
@@ -135,9 +135,9 @@
 2. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section2#%EB%B3%B4%EC%9D%B4%EB%8A%94-%ED%95%99%EC%83%9D">보이는 학생</a>
 3. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section2#%EA%B0%80%EC%9C%84-%EB%B0%94%EC%9C%84-%EB%B3%B4">가위바위보</a>
 4. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section2#점수계산">점수 계산</a>
-5. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section2#등수구하기">등수구하기</a>
-6. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section2#격자판-최대합">격자판 최대합</a>
-7. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section2#봉우리">봉우리</a>
+5. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section2#등수구하기">등수구하기📍</a>
+6. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section2#격자판-최대합">격자판 최대합📍</a>
+7. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section2#봉우리">봉우리📍</a>
 
 </details>
 
@@ -145,6 +145,11 @@
 
 <details>
 <summary>목차 보기</summary>
+1. 회문문자열
+2. 유효한 팰린드롬
+3. 숫자만 추출
+4. 가장 짧은 문자거리
+5. 문자열 압축
 </details>
 
 ### 완전탐색(블루투포스)

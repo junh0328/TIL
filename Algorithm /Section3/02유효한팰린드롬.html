@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<head>
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function solution(arr){
+      let answer = 'YES';
+      let s = arr;
+      let answerArr = []
+      const regex = /a-z/g
+
+      for(let a of s){
+        // 1차적으로 대문자를 없앤다.
+        a = a.toLowerCase();
+        answerArr.push(a);
+      }
+      console.log(answerArr);
+      
+      return answer;
+    }
+    let arr = ['found7', 'time:', 'study;', 'Yduts;', 'emit,', '7Dnuof'];
+    console.log(solution(arr));
+
+  </script>
+</body>
+</html>
+
+<!-- 
+  1. 대문자를 소문자로
+  2. 특수 기호 (regex)판별을 통해 특수 기호 (:), (;), (,)를 제거해서 새로운 배열에 담는다
+  3. 회문 문자열과 동일하게 돌아서 같은지 비교
+ -->
