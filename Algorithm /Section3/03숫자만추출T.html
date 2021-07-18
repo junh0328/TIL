@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function solution(str){
+      let answer="";
+      for(let x of str){
+        if(!isNaN(x)) answer += x;    
+        // isNaN (숫자가 아니니?) > true 일 경우 숫자가 아닌 경우이므로 !isNaN으로 숫자만 추출한다.
+      }
+      answer= parseInt(answer);
+      return answer;
+    }
+    let str="g0en2T0s8eSoft";
+    console.log(solution(str));
+  </script>
+</body>
+</html>
