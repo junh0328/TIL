@@ -45,6 +45,9 @@
 
 ### React 개념
 
+<details>
+<summary>목차 보기</summary>
+
 - <a href="https://github.com/junh0328/TIL/tree/master/React#Chapter-1-%EB%A6%AC%EC%95%A1%ED%8A%B8-%EC%8B%9C%EC%9E%91">Chapter 1, 리액트 시작</a>
 - <a href="https://github.com/junh0328/TIL/tree/master/React#Chapter-2-JSX">Chapter 2, JSX</a>
 - <a href="https://github.com/junh0328/TIL/tree/master/React#Chapter-3-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8">Chapter 3, 컴포넌트</a>
@@ -62,6 +65,8 @@
 - <a href="https://github.com/junh0328/TIL/tree/master/React#Chapter-19-%EC%BD%94%EB%93%9C-%EC%8A%A4%ED%94%8C%EB%A6%AC%ED%8C%85">Chapter 19, 코드 스플리팅</a>
 - <a href="https://github.com/junh0328/TIL/tree/master/React#Chapter-20-%EC%84%9C%EB%B2%84-%EC%82%AC%EC%9D%B4%EB%93%9C-%EB%A0%8C%EB%8D%94%EB%A7%81">Chpater 20, 서버 사이드 렌더링</a>
 
+</details>
+
 ### React에 타입스크립트 적용하기
 
 - <a href="https://github.com/junh0328/learning_typescript/blob/master/ReactByTS/readme.md#-todolist">todolist에 타입스크립트 환경 적용하기</a>
@@ -69,6 +74,10 @@
 - <a href="https://github.com/junh0328/learning_typescript/blob/master/ReactByTS/readme.md#-redux-thunk">타입스크립트 환경에서 thunk 미들웨어 사용하기</a>
 
 ## JavaScript
+
+<details>
+
+<summary>Eloquent Javascript</summary>
 
 - <a href="https://github.com/junh0328/upgrade_javascript/tree/master/BASIC#Chapter-1-%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%EB%9E%80">Chapter 1, 자바스크립트란</a>
 - <a href="https://github.com/junh0328/upgrade_javascript/tree/master/BASIC#Chapter-2-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8-%EA%B5%AC%EC%A1%B0">Chapter 2, 프로그램 구조</a>
@@ -80,7 +89,34 @@
 - <a href="https://github.com/junh0328/upgrade_javascript/tree/master/BASIC#Chapter-11-%EB%B9%84%EB%8F%99%EA%B8%B0-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D">Chapter 11, 비동기 프로그래밍</a>
 - <a href="https://github.com/junh0328/upgrade_javascript/tree/master/BASIC#Chapter-13-%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%EC%99%80-%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80">Chapter 13, 자바스크립트와 브라우저</a>
 
+</details>
+
+<details>
+
+<summary>모던 자바스크립트 DEEP DIVE</summary>
+
+- <a href="https://github.com/junh0328/upgrade_javascript/tree/master/DEEPDIVE#1%EC%9E%A5-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D">프로그래밍</a>
+- <a href="https://github.com/junh0328/upgrade_javascript/tree/master/DEEPDIVE#2%EC%9E%A5-%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%EB%9E%80">자바스크립트란?</a>
+- <a href="https://github.com/junh0328/upgrade_javascript/tree/master/DEEPDIVE#3%EC%9E%A5-%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD%EA%B3%BC-%EC%8B%A4%ED%96%89-%EB%B0%A9%EB%B2%95">자바스크립트 개발 환경과 실행 방법</a>
+- <a href="https://github.com/junh0328/upgrade_javascript/tree/master/DEEPDIVE#4%EC%9E%A5-%EB%B3%80%EC%88%98">변수</a>
+- <a href="https://github.com/junh0328/upgrade_javascript/tree/master/DEEPDIVE#5%EC%9E%A5-%ED%91%9C%ED%98%84%EC%8B%9D%EA%B3%BC-%EB%AC%B8">표현식과 문</a>
+- <a href="https://github.com/junh0328/upgrade_javascript/tree/master/DEEPDIVE#6%EC%9E%A5-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%83%80%EC%9E%85">데이터 타입</a>
+- <a href="https://github.com/junh0328/upgrade_javascript/tree/master/DEEPDIVE#8%EC%9E%A5-%EC%A0%9C%EC%96%B4%EB%AC%B8">제어문</a>
+- <a href="https://github.com/junh0328/upgrade_javascript/tree/master/DEEPDIVE#9%EC%9E%A5-%ED%83%80%EC%9E%85%EB%B3%80%ED%99%98%EA%B3%BC-%EB%8B%A8%EC%B6%95-%ED%8F%89%EA%B0%80">타입변환과 단축 평가</a>
+- <a href="https://github.com/junh0328/upgrade_javascript/tree/master/DEEPDIVE#10%EC%9E%A5-%EA%B0%9D%EC%B2%B4-%EB%A6%AC%ED%84%B0%EB%9F%B4">객체 리터럴</a>
+- <a href="https://github.com/junh0328/upgrade_javascript/tree/master/DEEPDIVE#11%EC%9E%A5-%EC%9B%90%EC%8B%9C-%EA%B0%92%EA%B3%BC-%EA%B0%9D%EC%B2%B4-%EB%B9%84%EA%B5%90">원시 값과 객체 비교</a>
+- <a href="https://github.com/junh0328/upgrade_javascript/tree/master/DEEPDIVE#12%EC%9E%A5-%ED%95%A8%EC%88%98">함수</a>
+- <a href="https://github.com/junh0328/upgrade_javascript/tree/master/DEEPDIVE#13%EC%9E%A5-%EC%8A%A4%EC%BD%94%ED%94%84">스코프</a>
+- <a href="https://github.com/junh0328/upgrade_javascript/tree/master/DEEPDIVE#14%EC%9E%A5-%EC%A0%84%EC%97%AD-%EB%B3%80%EC%88%98%EC%9D%98-%EB%AC%B8%EC%A0%9C%EC%A0%90">전역 변수의 문제점</a>
+- <a href="https://github.com/junh0328/upgrade_javascript/tree/master/DEEPDIVE#15%EC%9E%A5-let,-const-%ED%82%A4%EC%9B%8C%EB%93%9C%EC%99%80-%EB%B8%94%EB%A1%9D-%EB%A0%88%EB%B2%A8-%EC%8A%A4%EC%BD%94%ED%94%84">let, const 키워드와 블록 레벨 스코프</a>
+- <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme2.md#17%EC%9E%A5-%EC%83%9D%EC%84%B1%EC%9E%90-%ED%95%A8%EC%88%98%EC%97%90-%EC%9D%98%ED%95%9C-%EA%B0%9D%EC%B2%B4-%EC%83%9D%EC%84%B1">생성자 함수에 의한 객체 생성</a>
+
+</details>
+
 ## Typescript
+
+<details>
+<summary>목차 보기</summary>
 
 - <a href="https://github.com/junh0328/learning_typescript#-%ED%8A%B9%EC%A7%95">타입스크립트 특징</a>
 - <a href="https://github.com/junh0328/learning_typescript#-%EC%82%AC%EC%9A%A9%EB%B2%95">사용법</a>
@@ -91,6 +127,8 @@
 - <a href="https://github.com/junh0328/learning_typescript#-Any-Union-Type-Type-Aliases-Type-Guards">Any, Union Type, Type Aliases, Type Guards</a>
 - <a href="https://github.com/junh0328/learning_typescript#-%ED%95%A8%EC%88%98-%ED%83%80%EC%9D%B4%ED%95%91-%EC%84%A0%ED%83%9D%EC%A0%81-%EB%A7%A4%EA%B0%9C-%EB%B3%80%EC%88%98%EC%99%80-%EA%B8%B0%EB%B3%B8-%EB%A7%A4%EA%B0%9C-%EB%B3%80%EC%88%98">함수 타이핑 선택적 매개 변수와 기본 매개 변수</a>
 - <a href="https://github.com/junh0328/learning_typescript#-%EA%B0%9D%EC%B2%B4-%EC%A7%80%ED%96%A5-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%ED%81%B4%EB%9E%98%EC%8A%A4%EC%99%80-%EC%98%A4%EB%B8%8C%EC%A0%9D%ED%8A%B8-%EA%B4%80%EA%B3%84-%ED%8C%8C%ED%97%A4%EC%B9%98%EA%B8%B0">객체 지향 프로그래밍 클래스와 오브젝트 관계 파헤치기</a>
+
+</details>
 
 ## Team Project
 
