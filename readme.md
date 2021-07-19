@@ -174,11 +174,13 @@
 
 <details>
 <summary>목차 보기</summary>
-1. 회문문자열
-2. 유효한 팰린드롬
-3. 숫자만 추출
-4. 가장 짧은 문자거리
-5. 문자열 압축
+
+1. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section3#%ED%9A%8C%EB%AC%B8-%EB%AC%B8%EC%9E%90%EC%97%B4">회문문자열</a>
+2. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section3#%EC%9C%A0%ED%9A%A8%ED%95%9C-%ED%8C%B0%EB%A6%B0%EB%93%9C%EB%A1%AC">유효한 팰린드롬</a>
+3. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section3#%EC%88%AB%EC%9E%90%EB%A7%8C-%EC%B6%94%EC%B6%9C">숫자만 추출</a>
+4. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section3#%EA%B0%80%EC%9E%A5-%EC%A7%A7%EC%9D%80-%EB%AC%B8%EC%9E%90%EC%97%B4">가장 짧은 문자거리</a>
+5. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section3#%EB%AC%B8%EC%9E%90%EC%97%B4-%EC%95%95%EC%B6%95">문자열 압축</a>
+
 </details>
 
 ### 완전탐색(블루투포스)

@@ -11,6 +11,8 @@
 - [회문 문자열](#회문-문자열)
 - [유효한 팰린드롬](#유효한-팰린드롬)
 - [숫자만 추출](#숫자만-추출)
+- [가장 짧은 문자열](#가장-짧은-문자열)
+- [문자열 압축](#문자열-압축)
 - [정리](#정리)
 
 ## 회문 문자열
@@ -419,8 +421,34 @@ teachermode e
 <details>
 <summary>예제 코드 보기</summary>
 
-```html
+<details>
 
+<summary>접근 방법 보기</summary>
+
+<img width="600" src="./images/4_1.jpg" alt="4.1">
+
+<img width="600" src="./images/4_2.jpg" alt="4.2">
+
+</details>
+
+```html
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s, t) {
+        let answer = [];
+
+        return answer;
+      }
+      let str = "teachermode";
+      console.log(solution(str, "e"));
+    </script>
+  </body>
+</html>
 ```
 
 </details>
@@ -429,7 +457,44 @@ teachermode e
 <summary>내 코드 보기</summary>
 
 ```html
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s, t) {
+        let answer = [];
+        let p = 1000; // 특정 기준값 p
 
+        for (let x of s) {
+          if (x === t) {
+            p = 0;
+            answer.push(p);
+          } else {
+            p++;
+            answer.push(p);
+          }
+        }
+        // 우 > 좌 P값 초기화
+        p = 1000;
+        for (let i = str.length - 1; i >= 0; i--) {
+          if (s[i] === t) {
+            p = 0;
+            answer[i] = p;
+          } else {
+            p++;
+            answer[i] = Math.min(answer[i], p);
+          }
+        }
+        return answer;
+      }
+      let str = "teachermode";
+      console.log(solution(str, "e"));
+    </script>
+  </body>
+</html>
 ```
 
 </details>
@@ -438,7 +503,41 @@ teachermode e
 <summary>선생님 코드 보기</summary>
 
 ```html
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s, t) {
+        let answer = [];
+        let p = 1000;
+        for (let x of s) {
+          if (x === t) {
+            p = 0;
+            answer.push(p);
+          } else {
+            p++;
+            answer.push(p);
+          }
+        }
+        p = 1000;
+        for (let i = s.length - 1; i >= 0; i--) {
+          if (s[i] === t) p = 0;
+          else {
+            p++;
+            answer[i] = Math.min(answer[i], p);
+          }
+        }
+        return answer;
+      }
 
+      let str = "teachermode";
+      console.log(solution(str, "e"));
+    </script>
+  </body>
+</html>
 ```
 
 </details>
@@ -565,11 +664,25 @@ K2HS7E
 
 ```
 
+String constructor
+String()
+
+Number constructor
+Number()
+
+Number
+Number.prototype.parseInt();
+
+Math
+Math.prototype.floor()
+Math.prototype.min()
+
 String
 String.prototype.split()
 String.prototype.reverse()
 String.prototype.join()
 String.prototype.replace()
+String.prototype.toLowerCase()
 
 정규표현식
 
