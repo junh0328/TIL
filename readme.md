@@ -100,6 +100,35 @@
 
 ## Code Review
 
+<details>
+<summary>Netflix 클론</summary>
+
+<b>04.25 ~ 06.13</b>
+
+- <a href="https://github.com/Team-Okky/movie/pull/2">1.영화 API 임시 적용</a>
+- <a href="https://github.com/Team-Okky/movie/pull/4">2.넷플릭스 초기 UI 작업</a>
+- <a href="https://github.com/Team-Okky/movie/pull/8">3.넷플릭스 헤더 이벤트 추가</a>
+- <a href="https://github.com/Team-Okky/movie/pull/15">4.검색 API 구현</a>
+- <a href="https://github.com/Team-Okky/movie/pull/21">5.모달 적용 및 마무리</a>
+
+</details>
+
+<details>
+<summary>콜라맵 프로젝트</summary>
+
+<b>05.17 - 현재 진행중</b>
+
+- <a href="https://github.com/Doong-Ji/cola-map/pull/4">1.개발 환경 세팅하기</a>
+- <a href="https://github.com/Doong-Ji/cola-map/pull/9">2.검색 결과 리스트로 가져오기</a>
+- <a href="https://github.com/Doong-Ji/cola-map/pull/13">3.메인 슬라이더 기능 구현</a>
+- <a href="https://github.com/Doong-Ji/cola-map/pull/17">4.더미 데이터를 통해 지도 마커 표시</a>
+- <a href="https://github.com/Doong-Ji/cola-map/pull/24">5.제보를 위한 세부 페이지 구성</a>
+- <a href="https://github.com/Doong-Ji/cola-map/pull/33">6.개인 페이지 세부 스타일링 및 반응형 작업</a>
+- <a href="https://github.com/Doong-Ji/cola-map/pull/36">7.카테고리 선택 및 데이터 서버로 전달</a>
+- <a href="https://github.com/Doong-Ji/cola-map/pull/42">8.소셜 로그인 구현(프론트 단 작업)</a>
+
+</details>
+
 ## Algorithm
 
 ### 기본 문제 풀이
