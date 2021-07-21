@@ -1,0 +1,66 @@
+<!-- <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(n, arr){
+                let answer, max=Number.MIN_SAFE_INTEGER;
+                for(let x of arr){
+                  let sum =0, tmp=x;  // x를 변형하는 것이 아닌, 임시 변수(tmp)를 지정하여 해당 변수를 통해 연산한다
+                  while(tmp){
+                    sum += (tmp%10); // tmp의 10으로 나눈 나머지 값을 sum에 저장
+                    tmp = Math.floor(tmp/10); 
+                  }
+                  // console.log(sum);
+                  if(sum > max){
+                    max = sum;
+                    answer=x; // sum의 원본 값인 x를 넣어준다.
+                  }else if(sum ===max){ // sum값과 max 값이 같은 경우 (원본 값의 더 큰 것이 max다)
+                    if(x>answer) answer=x;
+                  }
+                }
+                return answer;
+            }
+            
+            let arr=[128, 460, 603, 40, 521, 137, 123];
+            console.log(solution(7, arr));
+        </script>
+    </body>
+</html> -->
+
+
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(n, arr){
+                let answer, max=Number.MIN_SAFE_INTEGER;
+                for(let x of arr){
+                  let sum=0;
+                  
+                  sum =x.toString().split('').reduce((a,b) => a+ Number(b),0);
+                  // sum =x.toString().split('').reduce((a,b) => a+ Number(b)); 0 없을 때 확인하기
+                  console.log('sum:', sum);
+                  // sum.reduce((a,b) => a + Number(b));
+                  if(sum > max){
+                    max = sum;
+                    answer=x; // sum의 원본 값인 x를 넣어준다.
+                  }else if(sum ===max){ // sum값과 max 값이 같은 경우 (원본 값의 더 큰 것이 max다)
+                    if(x>answer) answer=x;
+                  }
+                }
+                return answer;
+            }
+            
+            let arr=[128, 460, 603, 40, 521, 137, 123];
+            console.log(solution(7, arr));
+        </script>
+    </body>
+</html>
+

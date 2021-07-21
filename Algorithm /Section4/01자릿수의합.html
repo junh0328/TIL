@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<head>
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function solution(n, arr){
+      
+      let answer; // 최종 max 값 (정답)을 담을 변수  5
+      let s=[]; // 분리한 숫자 배열을 담을 변수 2
+      let immsi; // 숫자를 문자열로 변환 1
+      let sum=0; // 각 배열의 합을 담음 3
+      let max = Number.MIN_SAFE_INTEGER; // sum 과 비교하여 큰 값을 저장 4
+
+      for(let i = 0; i<arr.length; i++){
+        s = [];
+        sum=0;
+        immsi = String(arr[i]);
+        // 1. 문자열로 만들기
+        console.log('immsi: ',immsi);
+
+        // 2. for of 문 둘면서 숫자로 변환하기
+        for(let x of immsi){
+          console.log('숫자로 변환: ',parseInt(x)); // 문자열을 숫자로 변환 > 다 더해
+          s.push(parseInt(x));
+        }
+        console.log('s:', s);
+        for(let y of s){
+          sum += y;
+        }
+        console.log('sum: ',sum);
+        // max 보다 sum의 값이 크거나 같을 경우 원래 숫자가 더 큰 것을 출력
+        if(max <= sum){
+          max = sum;
+        }
+        console.log('max:',max);
+      }
+      return answer;
+    }
+    let n = 7;
+    let arr = [128, 460, 603, 40, 521, 137, 123]
+    console.log(solution(n, arr));
+  </script>
+</body>
+</html>
