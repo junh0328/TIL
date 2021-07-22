@@ -12,14 +12,14 @@
 
 <p>React</p>
 
-- [ ] 타입스크립트 리덕스 사가 적용 로직 정리
+- [x] 타입스크립트 리덕스 사가 적용 로직 정리
 - [x] 리액트 개념 TIL에 정리
 
 <p>Netflix clone project</p>
 
 - [x] netflix 클론 프로젝트 부족한 부분 정리하기
 - [x] netflix 클론 프로젝트 타입스크립트 환경에서 리덕스 사가 적용하기
-- [ ] netflix 클론 프로젝트 배포하기 (netflify)
+- [x] netflix 클론 프로젝트 배포하기 (netflify)
 
 <p>colamap project</p>
 
@@ -110,6 +110,8 @@
 - <a href="https://github.com/junh0328/upgrade_javascript/tree/master/DEEPDIVE#14%EC%9E%A5-%EC%A0%84%EC%97%AD-%EB%B3%80%EC%88%98%EC%9D%98-%EB%AC%B8%EC%A0%9C%EC%A0%90">전역 변수의 문제점</a>
 - <a href="https://github.com/junh0328/upgrade_javascript/tree/master/DEEPDIVE#15%EC%9E%A5-let,-const-%ED%82%A4%EC%9B%8C%EB%93%9C%EC%99%80-%EB%B8%94%EB%A1%9D-%EB%A0%88%EB%B2%A8-%EC%8A%A4%EC%BD%94%ED%94%84">let, const 키워드와 블록 레벨 스코프</a>
 - <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme2.md#17%EC%9E%A5-%EC%83%9D%EC%84%B1%EC%9E%90-%ED%95%A8%EC%88%98%EC%97%90-%EC%9D%98%ED%95%9C-%EA%B0%9D%EC%B2%B4-%EC%83%9D%EC%84%B1">생성자 함수에 의한 객체 생성</a>
+- <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme2.md#18%EC%9E%A5-%ED%95%A8%EC%88%98%EC%99%80-%EC%9D%BC%EA%B8%89-%EA%B0%9D%EC%B2%B4">함수와 일급 객체</a>
+- <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme2.md#19%EC%9E%A5-%ED%94%84%EB%A1%9C%ED%86%A0%ED%83%80%EC%9E%85">프로토타입</a>
 
 </details>
 
@@ -164,6 +166,7 @@
 - <a href="https://github.com/Doong-Ji/cola-map/pull/33">6.개인 페이지 세부 스타일링 및 반응형 작업</a>
 - <a href="https://github.com/Doong-Ji/cola-map/pull/36">7.카테고리 선택 및 데이터 서버로 전달</a>
 - <a href="https://github.com/Doong-Ji/cola-map/pull/42">8.소셜 로그인 구현(프론트 단 작업)</a>
+- <a href="https://github.com/Doong-Ji/cola-map/pull/51">9.소셜 로그인 백엔드와 연동작업</a>
 
 </details>
 
@@ -216,7 +219,7 @@
 1. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section3#%ED%9A%8C%EB%AC%B8-%EB%AC%B8%EC%9E%90%EC%97%B4">회문문자열</a>
 2. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section3#%EC%9C%A0%ED%9A%A8%ED%95%9C-%ED%8C%B0%EB%A6%B0%EB%93%9C%EB%A1%AC">유효한 팰린드롬</a>
 3. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section3#%EC%88%AB%EC%9E%90%EB%A7%8C-%EC%B6%94%EC%B6%9C">숫자만 추출</a>
-4. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section3#%EA%B0%80%EC%9E%A5-%EC%A7%A7%EC%9D%80-%EB%AC%B8%EC%9E%90%EC%97%B4">가장 짧은 문자거리</a>
+4. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section3#%EA%B0%80%EC%9E%A5-%EC%A7%A7%EC%9D%80-%EB%AC%B8%EC%9E%90%EC%97%B4">📍가장 짧은 문자거리</a>
 5. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section3#%EB%AC%B8%EC%9E%90%EC%97%B4-%EC%95%95%EC%B6%95">문자열 압축</a>
 
 </details>
@@ -225,6 +228,13 @@
 
 <details>
 <summary>목차 보기</summary>
+
+1. <a href="https://github.com/junh0328/TIL/tree/master/Algorithm%20/Section4#%EC%9E%90%EB%A6%BF%EC%88%98%EC%9D%98-%ED%95%A9">📍자리수의 합</a>
+2. <a>뒤집은 소수</a>
+3. <a>멘토링</a>
+4. <a>졸업선물</a>
+5. <a>K번째 큰 수</a>
+
 </details>
 
 ### 효율성(투포인터 알고리즘, 슬라이딩윈도우, 해쉬)
