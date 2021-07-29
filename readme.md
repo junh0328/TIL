@@ -10,6 +10,9 @@
 
 ### 6월 목표 및 계획
 
+<details>
+<summary>목차 보기</summary>
+
 <p>React</p>
 
 - [x] 타입스크립트 리덕스 사가 적용 로직 정리
@@ -26,20 +29,30 @@
 - [x] colamap 프로젝트 커스텀 오버레이 구현 (더미 데이터를 통해 배열 형식으로 받아온 배열을 렌더링하기) > 마커 이미지로 표현
 - [x] colamap 프로젝트 백엔드 서버와 연결
 - [x] colamap 프로젝트 가게별 세부 페이지 구현
+</details>
 
 ### 7월 목표 및 계획
 
-<p>JavaScript</p>
+<details>
+<summary>목차 보기</summary>
 
-- [ ] 모던 자바스크립트 Deep Dive 1회독 및 정리(개강 전 까지)
+### JavaScript
 
-<p>Algorithm</p>
+- [x] 모던 자바스크립트 Deep Dive 1회독 및 정리(개강 전 까지) [진행중]
 
-- [ ] 바닐라 JS를 사용하여 알고리즘 공부 시작 (개강 전 까지 1회독)
+### Algorithm
 
-<p>colamap project</p>
+~~바닐라 JS를 사용하여 알고리즘 공부 시작 (개강 전 까지 1회독)~~
 
-- [ ] 팀원간 피드백 및 1차 배포 (7월까지)
+<b>자바스크립트 개념 및 프로젝트 배포를 위해 잠시 중단</b>
+
+### colamap project
+
+~~팀원간 피드백 및 1차 배포 (7월까지)~~
+
+<b>작업 중이나 8월 중순까지 되어야 끝날 것 같음</b>
+
+</details>
 
 ## React (+ typescript)
 
@@ -69,9 +82,15 @@
 
 ### React에 타입스크립트 적용하기
 
+<details>
+<summary>목차보기</summary>
+
 - <a href="https://github.com/junh0328/learning_typescript/blob/master/ReactByTS/readme.md#-todolist">todolist에 타입스크립트 환경 적용하기</a>
 - <a href="https://github.com/junh0328/learning_typescript/blob/master/ReactByTS/readme.md#-todo-redux">todolist에 타입스크립트 리덕스 적용하기</a>
 - <a href="https://github.com/junh0328/learning_typescript/blob/master/ReactByTS/readme.md#-redux-thunk">타입스크립트 환경에서 thunk 미들웨어 사용하기</a>
+- <a href="https://github.com/junh0328/learning_typescript/blob/master/ReactByTS/readme.md#-redux-saga">리덕스-사가 보일러플레이트 만들어보기</a>
+
+</details>
 
 ## JavaScript
 
@@ -167,6 +186,7 @@
 - <a href="https://github.com/Doong-Ji/cola-map/pull/36">7.카테고리 선택 및 데이터 서버로 전달</a>
 - <a href="https://github.com/Doong-Ji/cola-map/pull/42">8.소셜 로그인 구현(프론트 단 작업)</a>
 - <a href="https://github.com/Doong-Ji/cola-map/pull/51">9.소셜 로그인 백엔드와 연동작업</a>
+- <a href="https://github.com/Doong-Ji/cola-map/pull/64">10.백엔드와 REST API 데이터 소통 1</a>
 
 </details>
 
