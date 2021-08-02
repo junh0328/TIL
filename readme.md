@@ -54,6 +54,25 @@
 
 </details>
 
+### 8월 목표 및 계획
+
+<details>
+<summary>목차 보기</summary>
+
+### JavaScript
+
+- [ ] 모던 자바스크립트 Deep Dive 1회독 및 정리
+
+### colamap project
+
+- [ ] 콜라맵 프로젝트 작업 마무리 및 배포
+
+### 빗썸 테크아카데미
+
+- [ ] 지원 결과 08.09일 발표로 후에 계획 변동 예정
+
+</details>
+
 ## React (+ typescript)
 
 ### React 개념
@@ -131,6 +150,10 @@
 - <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme2.md#17%EC%9E%A5-%EC%83%9D%EC%84%B1%EC%9E%90-%ED%95%A8%EC%88%98%EC%97%90-%EC%9D%98%ED%95%9C-%EA%B0%9D%EC%B2%B4-%EC%83%9D%EC%84%B1">생성자 함수에 의한 객체 생성</a>
 - <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme2.md#18%EC%9E%A5-%ED%95%A8%EC%88%98%EC%99%80-%EC%9D%BC%EA%B8%89-%EA%B0%9D%EC%B2%B4">함수와 일급 객체</a>
 - <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme2.md#19%EC%9E%A5-%ED%94%84%EB%A1%9C%ED%86%A0%ED%83%80%EC%9E%85">프로토타입</a>
+- <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme2.md#20%EC%9E%A5-strict-mode">strict mode</a>
+- <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme2.md#21%EC%9E%A5-%EB%B9%8C%ED%8A%B8%EC%9D%B8-%EA%B0%9D%EC%B2%B4">빌트인 객체</a>
+- <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme2.md#22%EC%9E%A5-this">this</a>
+- <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme2.md#23%EC%9E%A5-%EC%8B%A4%ED%96%89-%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8">실행 컨텍스트</a>
 
 </details>
 
@@ -153,9 +176,9 @@
 
 ## Team Project
 
-- <a href="https://github.com/junh0328/TIL/tree/master/Chore#%EC%B2%AB-%EB%B2%88%EC%A7%B8-usestate%EB%A1%9C-%EB%A7%89%EB%8C%80-%EA%B7%B8%EB%9E%98%ED%94%84-%EB%B9%84%EC%9C%A8-%EA%B4%80%EB%A6%AC%ED%95%98%EA%B8%B0">첫 번째 useState로 막대 그래프 비율 관리하기
-  </a>
+- <a href="https://github.com/junh0328/TIL/tree/master/Chore#%EC%B2%AB-%EB%B2%88%EC%A7%B8-usestate%EB%A1%9C-%EB%A7%89%EB%8C%80-%EA%B7%B8%EB%9E%98%ED%94%84-%EB%B9%84%EC%9C%A8-%EA%B4%80%EB%A6%AC%ED%95%98%EA%B8%B0">첫 번째 useState로 막대 그래프 비율 관리하기</a>
 - <a href="https://github.com/junh0328/TIL/tree/master/Chore#%EB%91%90-%EB%B2%88%EC%A7%B8-%EC%9E%8A%EC%A7%80-%EB%A7%90%EC%9E%90,-useCallback-%EC%83%81%ED%99%A9-%EC%86%8C%EA%B0%9C">두 번째 잊지 말자, useCallback 상황 소개</a>
+- <a href="https://github.com/junh0328/TIL/tree/master/Chore#%EC%84%B8-%EB%B2%88%EC%A7%B8-es6-property-shorthand%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0">세 번째, ES6 property shorthand를 사용하기</a>
 
 ## Code Review
 

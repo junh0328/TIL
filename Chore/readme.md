@@ -8,7 +8,7 @@
 
 - [첫 번째 useState로 막대 그래프 비율 관리하기](#첫-번째-useState로-막대-그래프-비율-관리하기)
 - [두 번째 잊지 말자, useCallback 상황 소개](#두-번째-잊지-말자,-useCallback-상황-소개)
-- [세 번째, ES6 property shorthand를 사용하기](#세-번째,-ES6-property-shorthand를-사용하기)
+- [세 번째 ES6 property-shorthand를 사용하기](#세-번째-ES6-property-shorthand를-사용하기)
 
 ## 첫 번째 useState로 막대 그래프 비율 관리하기
 
@@ -322,7 +322,7 @@ const Store = () => {
 };
 ```
 
-## 세 번째, ES6 property-shorthand를 사용하기
+## 세 번째 ES6 property-shorthand를 사용하기
 
 <p>새롭게 현업을 시작하는 과정에서, 전에도 해결하지 못한(?) 방식으로 코드를 짜시는 팀원분을 만났습니다.</p>
 
