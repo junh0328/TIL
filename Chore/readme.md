@@ -8,6 +8,7 @@
 
 - [첫 번째 useState로 막대 그래프 비율 관리하기](#첫-번째-useState로-막대-그래프-비율-관리하기)
 - [두 번째 잊지 말자, useCallback 상황 소개](#두-번째-잊지-말자,-useCallback-상황-소개)
+- [세 번째, ES6 property shorthand를 사용하기](#세-번째,-ES6-property-shorthand를-사용하기)
 
 ## 첫 번째 useState로 막대 그래프 비율 관리하기
 
@@ -320,3 +321,122 @@ const Store = () => {
   );
 };
 ```
+
+## 세 번째, ES6 property-shorthand를 사용하기
+
+<p>새롭게 현업을 시작하는 과정에서, 전에도 해결하지 못한(?) 방식으로 코드를 짜시는 팀원분을 만났습니다.</p>
+
+### return문에 { } 객체형식으로 변수 반환하기
+
+```js
+function useHeader() {
+  const teamName = "MIC-TEAM";
+
+  return { teamName };
+}
+
+export default useHeader;
+```
+
+### 해당 teamName 객체의 사용
+
+```js
+import React from "react";
+import useHeader from "../../hooks/useHeader";
+import { container } from "./styles";
+
+function Header() {
+  const { teamName } = useHeader();
+
+  return <h1 css={container}>{teamName}</h1>;
+}
+
+export default Header;
+```
+
+<p>끈질긴 질문 끝에 property-shorthand라 불리우는 ES6의 문법이라는 단서를 얻을 수 있었습니다.</p>
+
+<p>property-shorthand에 대한 기본적인 내용은 다음과 같습니다.</p>
+
+```js
+/* property shorthand (단축 속성명) */
+var a = "foo";
+var b = 42;
+var c = {};
+
+console.log("a:", a, "b:", b, "c:", c);
+// a: foo b: 42 c: {}
+
+var o = {
+  a: a,
+  b: b,
+  c: c,
+};
+
+console.log("o:", o);
+// o: { a: 'foo', b: 42, c: {} }
+
+// 프로퍼티 {key: value}에서 해당 key , value의 값이 일치한다면 단축 속성명을 사용할 수 있습니다.
+// 다음과 같이 key값을 변수명으로 생성할 수 있습니다.
+
+var o2 = { a, b, c };
+
+console.log("o2:", o2);
+// o2: { a: 'foo', b: 42, c: {} }
+```
+
+<p>프로퍼티를 구성하는 {key : value}의 형태에서, key와 value의 값이 일치하게 구성한다면, 단축 속성명 (property-shorthand)을 사용할 수 있습니다. 따라서 처음 제시한 코드를 풀어보면 다음과 같습니다.</p>
+
+```js
+case 1: 단축 속성명 사용 전,
+
+function useHeader() {
+  const teamName = "MIC-TEAM";
+
+  return { teamName: teamName };
+}
+
+export default useHeader;
+
+console.log(useHeader());
+// { teamName: 'MIC-TEAM' }
+
+case 2: 단축 속성명 사용 후,
+
+function useHeader() {
+  const teamName = "MIC-TEAM";
+
+  return { teamName };
+}
+
+export default useHeader;
+
+console.log(useHeader());
+// { teamName: 'MIC-TEAM' }
+```
+
+<p>호출된 함수가 객체 형식으로 반환할 때, 프로퍼티의 value를 적어주지 않더라도 같은 값을 반환하는 것을 알 수 있었습니다.</p>
+<p>따라서, useHeader 함수를 호춣하며 { } 중괄호 내부에 담는 { teamName } 은 실질적으로 teamName이라는 식별자에 의해 참조가 가능한 메모리에 저장된 원시값인 'MIC-TEAM' 문자열을 의미합니다.</p>
+
+```js
+import React from "react";
+import useHeader from "../../hooks/useHeader";
+import { container } from "./styles";
+
+function Header() {
+  const { teamName } = useHeader();
+
+  return <h1 css={container}>{teamName}</h1>;
+}
+
+export default Header;
+```
+
+<p>사실 아직까지는 그냥 이렇게 분리해서 사용해야 하는 이유를 발견하지 못했습니다. 조금 더 공부하면서, 해당 부분을 단축 속성명을 사용하며 생기는 이점에 대해 알아보겠습니다.</p>
+
+```
+아하~ 저 useHeader에 리턴하는 값이 teamName 하나라면 준희님 말씀처럼 값만 던져주는 게 더 좋은 코드인 것 같습니다~!
+그런데 보통 useHeader 같은 커스텀 훅은 비즈니스 로직 처리 후 리턴 값이 여러 키, 밸류를 담고 있는 객체가 전달되는 게 보통인 것 같아서 미리 객체로 만들어서 리턴 시켜줬습니다
+```
+
+<p>와 같은 답변을 받았습니다...! 후에 비즈니스 로직이 추가되면, 반드시 객체로 반환하는 이유를 찾아 추가적으로 작성해보도록 하겠습니다!</p>
