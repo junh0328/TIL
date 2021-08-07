@@ -154,7 +154,7 @@
 - <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme2.md#21%EC%9E%A5-%EB%B9%8C%ED%8A%B8%EC%9D%B8-%EA%B0%9D%EC%B2%B4">빌트인 객체</a>
 - <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme2.md#22%EC%9E%A5-this">this</a>
 - <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme2.md#23%EC%9E%A5-%EC%8B%A4%ED%96%89-%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8">실행 컨텍스트</a>
-
+- <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme3.md#24%EC%9E%A5-%ED%81%B4%EB%A1%9C%EC%A0%80">클로저</a>
 </details>
 
 ## Typescript
@@ -210,7 +210,13 @@
 - <a href="https://github.com/Doong-Ji/cola-map/pull/42">8.소셜 로그인 구현(프론트 단 작업)</a>
 - <a href="https://github.com/Doong-Ji/cola-map/pull/51">9.소셜 로그인 백엔드와 연동작업</a>
 - <a href="https://github.com/Doong-Ji/cola-map/pull/64">10.백엔드와 REST API 데이터 소통 1</a>
+- <a href="https://github.com/Doong-Ji/cola-map/pull/79">백엔드와 REST API 데이터 소통 (제보 수정하기, 삭제하기)</a>
+</details>
 
+<details>
+<summary>웰시코딩 프로젝트</summary>
+
+- <a href="https://github.com/MIC-TEAM/wellseecoding-front/pull/4">1. next 프레임워크에서 타입스크립트 기반의 리덕스 사가 보일러 플레이트 작성하기</a>
 </details>
 
 ## Algorithm
