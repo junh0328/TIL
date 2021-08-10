@@ -69,7 +69,20 @@
 
 ### 빗썸 테크아카데미
 
-- [ ] 지원 결과 08.09일 발표로 후에 계획 변동 예정
+~~지원 결과 08.09일 발표로 후에 계획 변동 예정~~
+
+<details>
+<summary>결과 보기</summary>
+
+### 🔥합격
+
+<img width="400" src="./images/1.PNG" alt="🔥합격"/>
+
+<br/>
+
+<p>빠르게 자바스크립트 1회독을 9월 중순까지 마치고 알고리즘을 병행하여 취업 준비를 하는 방향으로 설정 🥲 </p>
+
+</details>
 
 </details>
 
@@ -155,6 +168,7 @@
 - <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme2.md#22%EC%9E%A5-this">this</a>
 - <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme2.md#23%EC%9E%A5-%EC%8B%A4%ED%96%89-%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8">실행 컨텍스트</a>
 - <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme3.md#24%EC%9E%A5-%ED%81%B4%EB%A1%9C%EC%A0%80">클로저</a>
+- <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme3.md#25%EC%9E%A5-%ED%81%B4%EB%9E%98%EC%8A%A4">클래스</a>
 </details>
 
 ## Typescript
