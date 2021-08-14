@@ -171,6 +171,9 @@
 - <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme3.md#25%EC%9E%A5-%ED%81%B4%EB%9E%98%EC%8A%A4">클래스</a>
 - <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme3.md#26%EC%9E%A5-ES6-%ED%95%A8%EC%88%98%EC%9D%98-%EC%B6%94%EA%B0%80-%EA%B8%B0%EB%8A%A5">ES6 함수의 추가 기능</a>
 - <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme4.md#27%EC%9E%A5-%EB%B0%B0%EC%97%B4">배열</a>
+- <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme4.md#28%EC%9E%A5-Number">Number</a>
+- <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme4.md#29%EC%9E%A5-Math">Math</a>
+- <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme4.md#30%EC%9E%A5-Date">Date</a>
 </details>
 
 ## Typescript
