@@ -174,6 +174,8 @@
 - <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme4.md#28%EC%9E%A5-Number">Number</a>
 - <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme4.md#29%EC%9E%A5-Math">Math</a>
 - <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme4.md#30%EC%9E%A5-Date">Date</a>
+- <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme4.md#31%EC%9E%A5-RegExp">RegExp</a>
+- <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme4.md#32%EC%9E%A5-String">String</a>
 </details>
 
 ## Typescript
