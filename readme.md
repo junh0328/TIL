@@ -231,7 +231,7 @@
 - <a href="https://github.com/Doong-Ji/cola-map/pull/42">8.소셜 로그인 구현(프론트 단 작업)</a>
 - <a href="https://github.com/Doong-Ji/cola-map/pull/51">9.소셜 로그인 백엔드와 연동작업</a>
 - <a href="https://github.com/Doong-Ji/cola-map/pull/64">10.백엔드와 REST API 데이터 소통 1</a>
-- <a href="https://github.com/Doong-Ji/cola-map/pull/79">백엔드와 REST API 데이터 소통 (제보 수정하기, 삭제하기)</a>
+- <a href="https://github.com/Doong-Ji/cola-map/pull/79">11.백엔드와 REST API 데이터 소통 (제보 수정하기, 삭제하기)</a>
 </details>
 
 <details>
@@ -241,6 +241,9 @@
 </details>
 
 ## Algorithm
+
+<details>
+<summary>목차 보기</summary>
 
 ### 기본 문제 풀이
 
@@ -341,4 +344,6 @@
 
 <details>
 <summary>목차 보기</summary>
+</details>
+
 </details>

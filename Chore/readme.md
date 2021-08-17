@@ -7,8 +7,10 @@
 ## 목차
 
 - [첫 번째 useState로 막대 그래프 비율 관리하기](#첫-번째-useState로-막대-그래프-비율-관리하기)
-- [두 번째 잊지 말자, useCallback 상황 소개](#두-번째-잊지-말자,-useCallback-상황-소개)
+- [두 번째 잊지 말자 useCallback 상황 소개](#두-번째-잊지-말자-useCallback-상황-소개)
 - [세 번째 ES6 property-shorthand를 사용하기](#세-번째-ES6-property-shorthand를-사용하기)
+- [네 번째 쿠키와 세션](#네-번째-쿠키와-세션)
+- [다섯 번째 react-cookie](#다섯-번째-react-cookie)
 
 ## 첫 번째 useState로 막대 그래프 비율 관리하기
 
@@ -234,7 +236,7 @@ return Math.floor((pepsiArr.length / reviewList.length) * 100); // 펩시의 백
 - <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Math/floor">MDN: Math.floor</a>
 - <a href="https://www.google.com/search?q=%EB%B0%B0%EC%97%B4+%ED%94%84%EB%A1%9C%ED%8D%BC%ED%8B%B0+%EC%B6%94%EC%B6%9C%ED%95%98%EA%B8%B0&rlz=1C5CHFA_enKR920KR920&sxsrf=ALeKk03bnq9RNoznCQVXOJzP2L2OczMNTg%3A1625054492051&ei=HF3cYLPPAse2mAWmrJrICw&oq=%EB%B0%B0%EC%97%B4+%ED%94%84%EB%A1%9C%ED%8D%BC%ED%8B%B0+%EC%B6%94%EC%B6%9C%ED%95%98%EA%B8%B0&gs_lcp=Cgdnd3Mtd2l6EANKBAhBGAFQ2wpYghBgwhFoAXAAeACAAaYCiAHLC5IBBTEuMS41mAEAoAEBqgEHZ3dzLXdpesABAQ&sclient=gws-wiz&ved=0ahUKEwizzfTdp7_xAhVHG6YKHSaWBrkQ4dUDCA4&uact=5">키워드로 검색: 배열 프로퍼티 추출하기</a>
 
-## 두 번째 잊지 말자, useCallback 상황 소개
+## 두 번째 잊지 말자 useCallback 상황 소개
 
 <p>콜라맵 프로젝트를 진행하는 중에, input 값을 추출하여 서버에 데이터를 전송하는 부분이 있었다. 카카오 API에서 제공하는 가게의 고유 id와, 가게의 이름, 글쓴이, 카테고리, 댓글(코멘트)를 서버에 넘겨줘야하는 상황이다. form 태그를 통해서 실제로 컨트롤하는 것은 카테고리 분류에 대한 값과 댓글을 처리하는 방법이다. 이를 각각 useState와 useRef를 사용하여 처리하였다.</p>
 
@@ -440,3 +442,262 @@ export default Header;
 ```
 
 <p>와 같은 답변을 받았습니다...! 후에 비즈니스 로직이 추가되면, 반드시 객체로 반환하는 이유를 찾아 추가적으로 작성해보도록 하겠습니다!</p>
+
+## 네 번째 쿠키와 세션
+
+<p>이번 프로젝트에서 처음 맡은 부분은 네이버와 카카오의 소셜 로그인을 통해 간편 로그인을 구현하고, 해당 정보를 바탕으로 로그인 환경을 유지하는 것이다. 
+이전에 로컬 스토리지(Local Storage)에 토큰을 저장하는 방법을 사용하였다. 이번에는 저번과 달리 헤더를 통해 넘어오는 정보(토큰)를 쿠키에 저장하기 위해 공부하였다.</p>
+
+<p>우선 쿠키와 세션에 대한 정확한 개념이 없을 수 있으니, 구글링을 통해 얻은 정보를 바탕으로 정리해보겠다.</p>
+
+### 참고자료
+
+[쿠키와 세션](https://sirong.tistory.com/100)<br/>
+[쿠키란?](https://hahahoho5915.tistory.com/32)<br/>
+[react-cookie](https://sirong.tistory.com/101)<br/>
+[SameSite 속성](https://seob.dev/posts/%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80-%EC%BF%A0%ED%82%A4%EC%99%80-SameSite-%EC%86%8D%EC%84%B1)<br/>
+
+### 쿠키와 세션
+
+<p>HTTP는 항상 연결되어있는 것이 아닌 필요할 때마다 요청을 보내고 응답을 반는 <b>비연결성</b>이라는 특징을 가지고 있다.</p>
+
+<p>이는 클라이언트가 응답을 받으면 서버는 접속을 끊는다는 것인데, 연결이 끝나면 상태 정보가 유지되지 않는 특성이 있다.</p>
+
+```
+로그인을 한 뒤, 다른 도메인으로 이동했다 기존 사이트로 돌아오면 로그인 정보가 유지되지 않는다는 것
+```
+
+<p>이렇게 유지되지 않는 로그인 정보를 유지하기 위한 방법이 <b>쿠키와 세션</b>이다.</p>
+
+### 쿠키
+
+<p>HTTP의 일종으로 사용자가 어떠한 웹 사이트를 방문할 경우, 그 사이트가 사용하고 있는 서버에서 사용자의 컴퓨터에 저장하는 작은 기록 정보 파일이다.  HTTP에서 클라이언트의 상태 정보를 클라이언트의 PC에 저장하였다가 필요시 정보를 참조하거나 재사용할 수 있다.</p>
+
+### 쿠키의 특징
+
+- 이름, 값, 만료일(저장 기간 설정), 경로 정보로 구성되어 있다.
+- 클라이언트에 총 300개의 쿠키를 저장할 수 있다.
+- 하나의 도메인 당 20개의 쿠키를 가질 수 있다
+- 하나의 쿠키는 4KB(=4096byte)까지 저장 가능하다.
+
+### 쿠키의 동작 순서
+
+<img src="./images/cookie.jpg" alt="cookie">
+
+- 클라이언트가 페이지를 요청한다 (사용자가 웹사이트 접근) 웹 서버는 쿠키를 생성한다
+- 생성한 쿠키에 정보를 담아 HTTP 화면을 돌려줄 때, 같이 클라이언트에게 돌려준다
+- 넘겨 받은 쿠키는 클라이언트가 가지고 있다가(로컬 PC에 저장) 다시 서버에 요청할 때 요청과 함께 쿠키를 전송한다
+- 동일 사이트 재방문시 클라이언트의 PC에 해당 쿠키가 있는 경우, 요청 페이지와 함께 쿠키를 전송한다
+
+### 사용 예시
+
+1. 방문했던 사이트에 다시 방문 하였을 때 아이디와 비밀번호 자동 입력
+2. 팝업창을 통해 "오늘 이 창을 다시 보지 않기" 체크
+
+### 쿠키의 약점
+
+- 쿠키의 특징으로는 클라이언트(브라우저)단에 저장된다는 것이다
+- 즉 보안에 약할 수 있다
+- 쿠키를 훔쳐서 계정 접근 권한 등을 탈취하여 유저의 정보를 악용할 수 있다
+
+### 세션
+
+<p>
+HTTP 세션이란 클라이이언트가 웹서버에 연결된 순간부터 웹 브라우저를 닫아 서버와의 HTTP 통신을 끝낼 때 까지의 기간이다.
+
+하지만 보통 세션이라고 말할 때에는 <b>서버에 세션에 대한 정보(세션 상태, 클라이언트 상태, 세션 데이터 등)를 저장해 놓고 세션 쿠키( 고유한 세션 ID 값 )를 클라이언트에게 주어 서버가 클라이언트를 식별할 수 있도록 하는 방식자체를 의미하는 경우</b>가 많다.
+
+</p>
+
+### 세션의 특징
+
+- 따로 용량의 제한이 없다 (서버의 능력에 따라 다를 수 있다)
+- 서버에 세션 객체를 생성하며 각 클라이언트 마다 고유한 세션 ID 값을 부여한다
+- 쿠키를 사용하여 세션 ID 값을 클라이언트에 보낸다
+- 웹 브라우저가 종료되면 세션 쿠키는 삭제된다
+
+### 세션의 동작 방식
+
+- 클라이언트 페이지가 요청한다
+- 서버가 클라이언트마다 개별의 세션 ID를 부여한다
+- 클라이언트는 요청할 때마다 세션 ID를 서버에 전달한다
+- 서버는 받은 세션 ID로 클라이언트 정보를 가져와 활용한다
+
+## 다섯 번째 react-cookie
+
+<p>이번에는 리액트 환경에서 쿠키를 사용하여 브라우저에 쿠키값을 저장하는 방법을 알아보도록 하겠다</p>
+
+[예제보기](https://github.com/junh0328/TIL/commits/master/React/react-cookie)
+
+### 라이브러리 다운로드
+
+<p>리액트 환경에서 쿠키를 사용하기 위해 npm에서 제공하는 패키지를 다운 받는다.</p>
+
+```
+npm install react-cookie
+```
+
+<p>📁/src/index.js에서 쿠키를 사용하기 위해 Provider로 해당 &lt;App&gt;을 감싸준다</p>
+
+```js
+import React from "react";
+import ReactDOM from "react-dom";
+import { CookiesProvider } from "react-cookie";
+import App from "./App";
+
+ReactDOM.render(
+  <CookiesProvider>
+    <App />
+  </CookiesProvider>,
+  document.getElementById("root")
+);
+```
+
+### 코드
+
+```js
+import "./App.css";
+import { useCallback, useEffect, useState } from "react";
+import { useCookies } from "react-cookie";
+
+function App() {
+  const [text, setText] = useState("");
+  const [isRemember, setIsRemember] = useState(false);
+  const [cookies, setCookie, removeCookie] = useCookies(["rememberText"]);
+
+  let now = new Date();
+  let afterOneMinute = new Date();
+
+  useEffect(() => {
+    if (cookies.rememberText !== undefined) {
+      setText(cookies.rememberText);
+      setIsRemember(true);
+    }
+  }, []);
+
+  const onChange = useCallback((e) => {
+    setText(e.target.value);
+  }, []);
+
+  const handleOnChage = (e) => {
+    setIsRemember(e.target.checked);
+    if (e.target.checked) {
+      afterOneMinute.setMinutes(now.getMinutes() + 1);
+      setCookie("rememberText", text, { path: "/", expires: afterOneMinute });
+    } else {
+      removeCookie("rememberText");
+    }
+  };
+
+  return (
+    <div>
+      <h1>react-cookie</h1>
+      <input value={text} onChange={onChange} />
+      <input type="checkBox" onChange={handleOnChage} checked={isRemember} />
+      <h1>{text}</h1>
+    </div>
+  );
+}
+
+export default App;
+```
+
+### 해석
+
+### ① 렌더링 부분
+
+```js
+  const [text, setText] = useState("");
+  const [isRemember, setIsRemember] = useState(false);
+
+  const onChange = useCallback((e) => {
+    setText(e.target.value);
+  }, []);
+
+  const handleOnChage = (e) => {
+    setIsRemember(e.target.checked)
+  }
+
+...
+  return (
+    <div>
+      <h1>react-cookie</h1>
+      <input value={text} onChange={onChange} />
+      <input type="checkBox" onChange={handleOnChage} checked={isRemember} />
+      <h1>{text}</h1>
+    </div>
+  );
+```
+
+<p>input 태그에 useState로 관리하는 text state를 지정해주었다. 이 text를 바탕으로 check-box가 체크되었을 때 쿠키 로직을 작성하여 쿠키에 text 정보를 저장할 것이다</p>
+
+### ② 쿠키 로직 부분
+
+```js
+import "./App.css";
+import { useCallback, useEffect, useState } from "react";
+import { useCookies } from "react-cookie";
+
+function App() {
+  const [text, setText] = useState("");
+  const [isRemember, setIsRemember] = useState(false);
+  /* 
+  react-cookie 에서 제공하는 훅함수인 useCookies를 사용하였다 
+  cookies는 쿠기의 정의
+  setCookie는 쿠키를 재정의
+  removeCookie는 쿠키를 제거
+  useCookies 안에는 초기값을 넣는다
+  */
+  const [cookies, setCookie, removeCookie] = useCookies(["rememberText"]);
+
+  let now = new Date(); // Date 객체를 통해 생성한 인스턴스 now를 통해 현재 시간을 불러온다
+  let afterOneMinute = new Date(); // 1분 후에 쿠키를 재거하기 위한 변수 afterOneMinute를 인스턴스로 생성한다
+
+  useEffect(() => {
+    if (cookies.rememberText !== undefined) {
+      setText(cookies.rememberText);
+      setIsRemember(true);
+    }
+  }, []);
+
+  /* text input 값이 변하면 활성되는 함수*/
+  const onChange = useCallback((e) => {
+    setText(e.target.value);
+  }, []);
+
+  const handleOnChage = (e) => {
+    setIsRemember(e.target.checked);
+    if (e.target.checked) {
+      afterOneMinute.setMinutes(now.getMinutes() + 1);
+      /* setCookie를 통해 초기값(rememberText)에 text state를 저장한다 */
+      setCookie("rememberText", text, { path: "/", expires: afterOneMinute });
+    } else {
+      /* check가 되지 않는다면 쿠키를 제거한다 */
+      removeCookie("rememberText");
+    }
+  };
+
+  return (
+    <div>
+      <h1>react-cookie</h1>
+      <input value={text} onChange={onChange} />
+      <input type="checkBox" onChange={handleOnChage} checked={isRemember} />
+      <h1>{text}</h1>
+    </div>
+  );
+}
+
+export default App;
+```
+
+### 결과
+
+<img width="600" src="./images/cookieResult.gif" alt="cookie 저장 결과"/>
+
+<br/>
+
+문제없이 동작한다
+
+### 추가 정리 내용
+
+현재까지는 react-cookie 라이브러리를 통해 브라우저 상에서 임의의 쿠키를 생성하였다. 하지만, 실제로 쿠키를 사용하는 이유는 서버에서 헤더를 통해 넘겨받는 정보를 저장하기 위함이므로, 이에 대한 내용을 추가적으로 정리할 필요가 있을 것이다.
