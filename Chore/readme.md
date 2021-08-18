@@ -455,6 +455,8 @@ export default Header;
 [쿠키와 세션](https://sirong.tistory.com/100)<br/>
 [쿠키란?](https://hahahoho5915.tistory.com/32)<br/>
 [react-cookie](https://sirong.tistory.com/101)<br/>
+[MDN HTTP 쿠키](https://developer.mozilla.org/ko/docs/Web/HTTP/Cookies)<br/>
+[MDN Set-Cookie](https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Set-Cookie)<br/>
 
 ### 쿠키와 세션
 
@@ -703,6 +705,135 @@ export default App;
 
 현재까지는 react-cookie 라이브러리를 통해 브라우저 상에서 임의의 쿠키를 생성하였다. 하지만, 실제로 쿠키를 사용하는 이유는 서버에서 헤더를 통해 넘겨받는 정보를 저장하기 위함이므로, 이에 대한 내용을 추가적으로 정리할 필요가 있을 것이다.
 
+### 쿠키 만들기
+
+HTTP 요청을 수신할 때, 서버는 응답과 함께 <b>Set-Cookie</b> 헤더를 전송할 수 있습니다. <br/>
+쿠키는 보통 브라우저에 의해 저장되며, 그 후 쿠키는 같은 서버에 의해 만들어진 요청(Request)들의 <b>Cookie HTTP 헤더</b>안에 포함되어 전송됩니다. <br/>
+만료일 혹은 지속시간(duration)도 명시될 수 있고, 만료된 쿠키는 더이상 보내지지 않습니다. <br/>
+추가적으로, 특정 도메인 혹은 경로 제한을 설정할 수 있으며 이는 쿠키가 보내지는 것을 제한할 수 있습니다.<br/>
+
+### 쿠키 문법
+
+```
+Set-Cookie: <cookie-name>=<cookie-value>
+Set-Cookie: <cookie-name>=<cookie-value>; Expires=<date>
+Set-Cookie: <cookie-name>=<cookie-value>; Max-Age=<non-zero-digit>
+Set-Cookie: <cookie-name>=<cookie-value>; Domain=<domain-value>
+Set-Cookie: <cookie-name>=<cookie-value>; Path=<path-value>
+Set-Cookie: <cookie-name>=<cookie-value>; Secure
+Set-Cookie: <cookie-name>=<cookie-value>; HttpOnly
+
+Set-Cookie: <cookie-name>=<cookie-value>; SameSite=Strict
+Set-Cookie: <cookie-name>=<cookie-value>; SameSite=Lax
+
+// Multiple directives are also possible, for example:
+Set-Cookie: <cookie-name>=<cookie-value>; Domain=<domain-value>; Secure; HttpOnly
+```
+
+### Set-Cookie 그리고 Cookie 헤더
+
+간단한 쿠키는 다음과 같이 설정될 수 있습니다.
+
+```
+Set-Cookie: <cookie-name>=<cookie-value>
+```
+
+이 서버 헤더는 클라이언트에게 쿠키를 저장하라고 전달합니다.
+
+```
+HTTP/1.0 200 OK
+Content-type: text/html
+Set-Cookie: yummy_cookie=choco
+Set-Cookie: tasty_cookie=strawberry
+
+[page content]
+```
+
+이제, 서버로 전송되는 모든 요청과 함께, 브라우저는 <b>Cookie 헤더</b>를 사용하여 서버로 이전에 저장했던 모든 쿠키를 회신할 것입니다.
+
+```
+GET /sample_page.html HTTP/1.1
+Host: www.example.org
+Cookie: yummy_cookie=choco; tasty_cookie=strawberry
+```
+
+### 쿠키에 대한 도메인 설정
+
+쿠키가 유효한 사이트를 명시하기 위해 쿠키에 도메인을 설정할 수 있습니다
+
+```
+Set-Cookie: yummy_cookie=choco; Domain=localhost
+```
+
+이렇게 도메인이 설정된 쿠키는 해당 도메인에서만 유요한 쿠키가 됩니다.<br/>
+위에서 yummy_cookies 쿠키는 localhost를 대상으로 쿠키가 설정되었기 때문에, localhost를 대상으로 한 요청에만 normal 쿠키가 전송됩니다.<br/>
+
+쿠키에 별도로 명시된 도메인이 없다면 기본값으로 쿠키를 보낸 서버의 도메인으로 설정됩니다.
+
+### 쿠키의 라이프 타임
+
+쿠키의 라이프타임은 두 가지 방법으로 정의할 수 있습니다
+
+```
+① 세션쿠키는 현재 세션이 끝날 때 삭제됩니다. 브라우저는 '현재 세션'이 끝나는 시점을 정의하며,
+어떤 브라우저들은 재시작할 때 세션을 복원해 세션 쿠키가 무기한 존재할 수 있도록 합니다.
+
+② 영속적인 쿠키는 Expires 속성에 명시된 날짜에 삭제되거나, Max-Age 속성에 명시된 기간 이후에 삭제됩니다.
+```
+
+예를 들면 아래와 같습니다.
+
+```
+Set-Cookie: id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT;
+```
+
+### 쿠키의 스코프
+
+```
+Set-Cookie: <cookie-name>=<cookie-value>; Domain=<domain-value>
+Set-Cookie: <cookie-name>=<cookie-value>; Path=<path-value>
+```
+
+Domain 그리고 Path 디렉티브는 쿠키의 스코프를 정의합니다: 어떤 URL을 쿠키가 보내야 하는지. <br/>
+
+Domain은 쿠키가 전송되게 될 호스트들을 명시합니다. 만약 명시되지 않는다면, 현재 문서 위치의 호스트 일부를 기본값으로 합니다.<br/>
+도메인이 명시되며, 서브도메인들은 항상 포함입니다.
+
+Path는 Cookie 헤더를 전송하기 위하여 요청되는 URL 내에 반드시 존재해야 하는 URL 경로입니다.
+
+```
+만약 Path=/docs 이 설정되면, 다음 경로들은 모두 매치될 것입니다
+
+/docs
+/docs/Web/
+/docs/Web/HTTP
+```
+
 ### SameSite (?)
 
 [SameSite 속성](https://seob.dev/posts/%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80-%EC%BF%A0%ED%82%A4%EC%99%80-SameSite-%EC%86%8D%EC%84%B1)<br/>
+
+SameSite 쿠키는 쿠키가 cross-site 요청과 함께 전송되지 않았음을 요구하게 만들어, cross-site 요청 위조 공격(CSRF (en-US))에 대해 어떤 보호 방법을 제공합니다. <br/>
+SameSite 쿠키는 여전히 실험 중이며 모든 브라우저에 의해 아직 제공되지 않고 있습니다.
+
+[CSRF(Cross Site Request Forgery)](https://ko.wikipedia.org/wiki/%EC%82%AC%EC%9D%B4%ED%8A%B8_%EA%B0%84_%EC%9A%94%EC%B2%AD_%EC%9C%84%EC%A1%B0)는 이 문제를 노린 공격입니다. 간단히 소개해보자면 아래와 같은 방식입니다.
+
+1. 공격대상 사이트는 쿠키로 사용자 인증을 수행함
+2. 피해자는 공격 대상 사이트에 이미 로그인 되어있어서 브라우저에 쿠키가 있는 상태
+3. 공격자는 피해자에게 그럴듯한 사이트 링크를 전송하고 누르게 함 (공격대상 사이트와 다른 도메인)
+4. 링크를 누르면 HTML 문서가 열리는데, 이 문서는 공격 대상 사이트에 HTTP 요청을 보냄
+5. 이 요청에는 쿠키가 포함(서드 파티 쿠키)되어 있으므로 공격자가 유도한 동작을 실행할 수 있음
+
+SameSite 쿠키는 앞서 언급한 서드 파티 쿠키의 보안적 문제를 해결하기 위해 만들어진 기술입니다. 크로스 사이트(Cross-site)로 전송하는 요청의 경우 쿠키의 전송에 제한을 두도록 합니다.<br/>
+
+SameSite 쿠키의 정책으로 None, Lax, Strict 세 가지 종류를 선택할 수 있고, 각각 동작하는 방식이 다릅니다.
+
+1. <b>None</b>: SameSite 가 탄생하기 전 쿠키와 동작하는 방식이 같습니다. None으로 설정된 쿠키의 경우 크로스 사이트 요청의 경우에도 항상 전송됩니다. 즉, 서드 파티 쿠키도 전송됩니다. 따라서, 보안적으로도 SameSite 적용을 하지 않은 쿠키와 마찬가지로 문제가 있는 방식입니다.
+2. <b>Strict</b>: 가장 보수적인 정책입니다. Strict로 설정된 쿠키는 크로스 사이트 요청에는 항상 전송되지 않습니다. 즉, 서드 파티 쿠키는 전송되지 않고, 퍼스트 파티 쿠키만 전송됩니다.
+3. <b>Lax</b>: Strict에 비해 상대적으로 느슨한 정책입니다. Lax로 설정된 경우, 대체로 서드 파티 쿠키는 전송되지 않지만, 몇 가지 예외적인 요청에는 전송됩니다.
+
+### 퍼스트 쿠키 서드파티 쿠키
+
+<p>
+쿠키는 그와 관련된 도메인을 가집니다. 이 도메인이 당신이 현재 보고 있는 페이지의 도메인과 동일하다면, 그 쿠키는 퍼스트파티 쿠키라고 불립니다. 만약 도메인이 다르다면, 서드파티 쿠키라고 부릅니다. 퍼스트파티 쿠키가 그것을 설정한 서버에만 전송되는데 반해, 웹 페이지는 다른 도메인의 서버 상에 저장된 (광고 배너와 같은) 이미지 혹은 컴포넌트를 포함할 수도 있습니다. 이러한 서드파티 컴포넌트를 통해 전송되는 쿠키들을 서드파티 쿠키라고 부르며 웹을 통한 광고와 트래킹에 주로 사용됩니다.
+</p>
