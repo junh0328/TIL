@@ -176,6 +176,9 @@
 - <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme4.md#30%EC%9E%A5-Date">Date</a>
 - <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme4.md#31%EC%9E%A5-RegExp">RegExp</a>
 - <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme4.md#32%EC%9E%A5-String">String</a>
+- <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme5.md#33%EC%9E%A5-Symbol">Symbol</a>
+- <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme5.md#34%EC%9E%A5-%EC%9D%B4%ED%84%B0%EB%9F%AC%EB%B8%94">이터러블</a>
+- <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme5.md#35%EC%9E%A5-%EC%8A%A4%ED%94%84%EB%A0%88%EB%93%9C-%EB%AC%B8%EB%B2%95">스프레드(...) 문법</a>
 </details>
 
 ## Typescript

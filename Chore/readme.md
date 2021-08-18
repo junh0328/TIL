@@ -455,7 +455,6 @@ export default Header;
 [쿠키와 세션](https://sirong.tistory.com/100)<br/>
 [쿠키란?](https://hahahoho5915.tistory.com/32)<br/>
 [react-cookie](https://sirong.tistory.com/101)<br/>
-[SameSite 속성](https://seob.dev/posts/%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80-%EC%BF%A0%ED%82%A4%EC%99%80-SameSite-%EC%86%8D%EC%84%B1)<br/>
 
 ### 쿠키와 세션
 
@@ -482,7 +481,7 @@ export default Header;
 
 ### 쿠키의 동작 순서
 
-<img src="./images/cookie.jpg" alt="cookie">
+<img width="400" src="./images/cookie.jpg" alt="cookie">
 
 - 클라이언트가 페이지를 요청한다 (사용자가 웹사이트 접근) 웹 서버는 쿠키를 생성한다
 - 생성한 쿠키에 정보를 담아 HTTP 화면을 돌려줄 때, 같이 클라이언트에게 돌려준다
@@ -517,6 +516,8 @@ HTTP 세션이란 클라이이언트가 웹서버에 연결된 순간부터 웹 
 - 웹 브라우저가 종료되면 세션 쿠키는 삭제된다
 
 ### 세션의 동작 방식
+
+<img width="400" src="./images/session.jpg" alt="session" >
 
 - 클라이언트 페이지가 요청한다
 - 서버가 클라이언트마다 개별의 세션 ID를 부여한다
@@ -701,3 +702,7 @@ export default App;
 ### 추가 정리 내용
 
 현재까지는 react-cookie 라이브러리를 통해 브라우저 상에서 임의의 쿠키를 생성하였다. 하지만, 실제로 쿠키를 사용하는 이유는 서버에서 헤더를 통해 넘겨받는 정보를 저장하기 위함이므로, 이에 대한 내용을 추가적으로 정리할 필요가 있을 것이다.
+
+### SameSite (?)
+
+[SameSite 속성](https://seob.dev/posts/%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80-%EC%BF%A0%ED%82%A4%EC%99%80-SameSite-%EC%86%8D%EC%84%B1)<br/>
