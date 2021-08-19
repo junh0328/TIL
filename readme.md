@@ -121,6 +121,7 @@
 - <a href="https://github.com/junh0328/learning_typescript/blob/master/ReactByTS/readme.md#-todo-redux">todolist에 타입스크립트 리덕스 적용하기</a>
 - <a href="https://github.com/junh0328/learning_typescript/blob/master/ReactByTS/readme.md#-redux-thunk">타입스크립트 환경에서 thunk 미들웨어 사용하기</a>
 - <a href="https://github.com/junh0328/learning_typescript/blob/master/ReactByTS/readme.md#-redux-saga">리덕스-사가 보일러플레이트 만들어보기</a>
+- <a href="https://github.com/junh0328/learning_typescript/blob/master/ReactByTS/readme.md#-social-login">소셜 로그인 구현하기</a>
 
 </details>
 
@@ -179,12 +180,12 @@
 - <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme5.md#33%EC%9E%A5-Symbol">Symbol</a>
 - <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme5.md#34%EC%9E%A5-%EC%9D%B4%ED%84%B0%EB%9F%AC%EB%B8%94">이터러블</a>
 - <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme5.md#35%EC%9E%A5-%EC%8A%A4%ED%94%84%EB%A0%88%EB%93%9C-%EB%AC%B8%EB%B2%95">스프레드(...) 문법</a>
+- <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme5.md#36%EC%9E%A5-%EB%94%94%EC%8A%A4%ED%8A%B8%EB%9F%AD%EC%B2%98%EB%A7%81-%ED%95%A0%EB%8B%B9">디스트럭처링 할당(구조 분해 할당)</a>
 </details>
 
 ## Typescript
 
 <details>
-<summary>목차 보기</summary>
 
 - <a href="https://github.com/junh0328/learning_typescript#-%ED%8A%B9%EC%A7%95">타입스크립트 특징</a>
 - <a href="https://github.com/junh0328/learning_typescript#-%EC%82%AC%EC%9A%A9%EB%B2%95">사용법</a>
@@ -198,18 +199,26 @@
 
 </details>
 
-## Team Project
+## 프로젝트 진행 시에 하는 추가 공부
 
-- <a href="https://github.com/junh0328/TIL/tree/master/Chore#%EC%B2%AB-%EB%B2%88%EC%A7%B8-usestate%EB%A1%9C-%EB%A7%89%EB%8C%80-%EA%B7%B8%EB%9E%98%ED%94%84-%EB%B9%84%EC%9C%A8-%EA%B4%80%EB%A6%AC%ED%95%98%EA%B8%B0">첫 번째 useState로 막대 그래프 비율 관리하기</a>
-- <a href="https://github.com/junh0328/TIL/tree/master/Chore#%EB%91%90-%EB%B2%88%EC%A7%B8-%EC%9E%8A%EC%A7%80-%EB%A7%90%EC%9E%90,-useCallback-%EC%83%81%ED%99%A9-%EC%86%8C%EA%B0%9C">두 번째 잊지 말자, useCallback 상황 소개</a>
-- <a href="https://github.com/junh0328/TIL/tree/master/Chore#%EC%84%B8-%EB%B2%88%EC%A7%B8-es6-property-shorthand%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0">세 번째, ES6 property shorthand를 사용하기</a>
+<details>
+
+- <a href="https://github.com/junh0328/TIL/tree/master/Chore#%EC%B2%AB-%EB%B2%88%EC%A7%B8-usestate%EB%A1%9C-%EB%A7%89%EB%8C%80-%EA%B7%B8%EB%9E%98%ED%94%84-%EB%B9%84%EC%9C%A8-%EA%B4%80%EB%A6%AC%ED%95%98%EA%B8%B0">useState로 막대 그래프 비율 관리하기</a>
+- <a href="https://github.com/junh0328/TIL/tree/master/Chore#%EB%91%90-%EB%B2%88%EC%A7%B8-%EC%9E%8A%EC%A7%80-%EB%A7%90%EC%9E%90,-useCallback-%EC%83%81%ED%99%A9-%EC%86%8C%EA%B0%9C">useCallback 상황 소개</a>
+- <a href="https://github.com/junh0328/TIL/tree/master/Chore#%EC%84%B8-%EB%B2%88%EC%A7%B8-es6-property-shorthand%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0">ES6 property shorthand를 사용하기</a>
+- <a href="https://github.com/junh0328/TIL/tree/master/Chore#%EB%84%A4-%EB%B2%88%EC%A7%B8-%EC%BF%A0%ED%82%A4%EC%99%80-%EC%84%B8%EC%85%98">쿠키와 세션</a>
+- <a href="https://github.com/junh0328/TIL/tree/master/Chore#%EB%8B%A4%EC%84%AF-%EB%B2%88%EC%A7%B8-react-cookie">react-cookie</a>
+
+</details>
 
 ## Code Review
 
 <details>
 <summary>Netflix 클론</summary>
 
-<b>04.25 ~ 06.13</b>
+[프로젝트 소개 보기](https://github.com/junh0328/movie)
+
+<b>21.04.25 ~ 21.06.13</b>
 
 - <a href="https://github.com/Team-Okky/movie/pull/2">1.영화 API 임시 적용</a>
 - <a href="https://github.com/Team-Okky/movie/pull/4">2.넷플릭스 초기 UI 작업</a>
@@ -222,7 +231,9 @@
 <details>
 <summary>콜라맵 프로젝트</summary>
 
-<b>05.17 - 현재 진행중</b>
+[프로젝트 소개 보기](https://github.com/Doong-Ji/cola-map)
+
+<b>21.05.17 - 21.08.19</b>
 
 - <a href="https://github.com/Doong-Ji/cola-map/pull/4">1.개발 환경 세팅하기</a>
 - <a href="https://github.com/Doong-Ji/cola-map/pull/9">2.검색 결과 리스트로 가져오기</a>
@@ -235,6 +246,7 @@
 - <a href="https://github.com/Doong-Ji/cola-map/pull/51">9.소셜 로그인 백엔드와 연동작업</a>
 - <a href="https://github.com/Doong-Ji/cola-map/pull/64">10.백엔드와 REST API 데이터 소통 1</a>
 - <a href="https://github.com/Doong-Ji/cola-map/pull/79">11.백엔드와 REST API 데이터 소통 (제보 수정하기, 삭제하기)</a>
+- <a href="https://github.com/Doong-Ji/cola-map/pull/83">12.카테고리 페이지 작업 및 리팩토링 마무리</a>
 </details>
 
 <details>
