@@ -6,13 +6,13 @@
 
 ## 목차
 
-- [첫 번째 useState로 막대 그래프 비율 관리하기](#첫-번째-useState로-막대-그래프-비율-관리하기)
-- [두 번째 잊지 말자 useCallback 상황 소개](#두-번째-잊지-말자-useCallback-상황-소개)
-- [세 번째 ES6 property-shorthand를 사용하기](#세-번째-ES6-property-shorthand를-사용하기)
-- [네 번째 쿠키와 세션](#네-번째-쿠키와-세션)
-- [다섯 번째 react-cookie](#다섯-번째-react-cookie)
+- [useState로 막대 그래프 비율 관리하기](#useState로-막대-그래프-비율-관리하기)
+- [잊지 말자 useCallback 상황 소개](#잊지-말자-useCallback-상황-소개)
+- [ES6 property-shorthand를 사용하기](#ES6-property-shorthand를-사용하기)
+- [쿠키와 세션](#쿠키와-세션)
+- [react-cookie](#react-cookie)
 
-## 첫 번째 useState로 막대 그래프 비율 관리하기
+## useState로 막대 그래프 비율 관리하기
 
 <p>지난 주말 (6월 27일) 회의를 통해서 현재 만들고 있는 프로젝트의 변경 사항에 대해 논의 했습니다. 따로 세부적으로 기획을 하거나 디자인을 한 것이 아닌, 타깃 사이트를 잡고 진행한 프로젝트였기 때문에 큰 문제가 없이 빨리 끝낼 수 있을 것이라 생각했지만 마음처럼 쉽지 않았다. 우리만의 무언가를 보여주기 위해서 백엔드 개발자인 진수님이 순수 figma를 작성하여 '이런 식으로 해보면 어떨까요..?' 라는 주제를 던져 주셨다. </p>
 
@@ -236,7 +236,7 @@ return Math.floor((pepsiArr.length / reviewList.length) * 100); // 펩시의 백
 - <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Math/floor">MDN: Math.floor</a>
 - <a href="https://www.google.com/search?q=%EB%B0%B0%EC%97%B4+%ED%94%84%EB%A1%9C%ED%8D%BC%ED%8B%B0+%EC%B6%94%EC%B6%9C%ED%95%98%EA%B8%B0&rlz=1C5CHFA_enKR920KR920&sxsrf=ALeKk03bnq9RNoznCQVXOJzP2L2OczMNTg%3A1625054492051&ei=HF3cYLPPAse2mAWmrJrICw&oq=%EB%B0%B0%EC%97%B4+%ED%94%84%EB%A1%9C%ED%8D%BC%ED%8B%B0+%EC%B6%94%EC%B6%9C%ED%95%98%EA%B8%B0&gs_lcp=Cgdnd3Mtd2l6EANKBAhBGAFQ2wpYghBgwhFoAXAAeACAAaYCiAHLC5IBBTEuMS41mAEAoAEBqgEHZ3dzLXdpesABAQ&sclient=gws-wiz&ved=0ahUKEwizzfTdp7_xAhVHG6YKHSaWBrkQ4dUDCA4&uact=5">키워드로 검색: 배열 프로퍼티 추출하기</a>
 
-## 두 번째 잊지 말자 useCallback 상황 소개
+## 잊지 말자 useCallback 상황 소개
 
 <p>콜라맵 프로젝트를 진행하는 중에, input 값을 추출하여 서버에 데이터를 전송하는 부분이 있었다. 카카오 API에서 제공하는 가게의 고유 id와, 가게의 이름, 글쓴이, 카테고리, 댓글(코멘트)를 서버에 넘겨줘야하는 상황이다. form 태그를 통해서 실제로 컨트롤하는 것은 카테고리 분류에 대한 값과 댓글을 처리하는 방법이다. 이를 각각 useState와 useRef를 사용하여 처리하였다.</p>
 
@@ -324,7 +324,7 @@ const Store = () => {
 };
 ```
 
-## 세 번째 ES6 property-shorthand를 사용하기
+## ES6 property-shorthand를 사용하기
 
 <p>새롭게 현업을 시작하는 과정에서, 전에도 해결하지 못한(?) 방식으로 코드를 짜시는 팀원분을 만났습니다.</p>
 
@@ -443,10 +443,10 @@ export default Header;
 
 <p>와 같은 답변을 받았습니다...! 후에 비즈니스 로직이 추가되면, 반드시 객체로 반환하는 이유를 찾아 추가적으로 작성해보도록 하겠습니다!</p>
 
-## 네 번째 쿠키와 세션
+## 쿠키와 세션
 
-<p>이번 프로젝트에서 처음 맡은 부분은 네이버와 카카오의 소셜 로그인을 통해 간편 로그인을 구현하고, 해당 정보를 바탕으로 로그인 환경을 유지하는 것이다. 
-이전에 로컬 스토리지(Local Storage)에 토큰을 저장하는 방법을 사용하였다. 이번에는 저번과 달리 헤더를 통해 넘어오는 정보(토큰)를 쿠키에 저장하기 위해 공부하였다.</p>
+프로젝트에서 처음 맡은 부분은 네이버와 카카오의 소셜 로그인을 통해 간편 로그인을 구현하고, 해당 정보를 바탕으로 로그인 환경을 유지하는 것이다.
+스토리지(Local Storage)에 토큰을 저장하는 방법을 사용하였다. 이번에는 저번과 달리 헤더를 통해 넘어오는 정보(토큰)를 쿠키에 저장하기 위해 공부하였다.</p>
 
 <p>우선 쿠키와 세션에 대한 정확한 개념이 없을 수 있으니, 구글링을 통해 얻은 정보를 바탕으로 정리해보겠다.</p>
 
@@ -526,7 +526,7 @@ HTTP 세션이란 클라이이언트가 웹서버에 연결된 순간부터 웹 
 - 클라이언트는 요청할 때마다 세션 ID를 서버에 전달한다
 - 서버는 받은 세션 ID로 클라이언트 정보를 가져와 활용한다
 
-## 다섯 번째 react-cookie
+## react-cookie
 
 <p>이번에는 리액트 환경에서 쿠키를 사용하여 브라우저에 쿠키값을 저장하는 방법을 알아보도록 하겠다</p>
 
