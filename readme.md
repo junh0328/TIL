@@ -184,6 +184,7 @@
 - <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme6.md#38%EC%9E%A5-%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80-%EB%A0%8C%EB%8D%94%EB%A7%81-%EA%B3%BC%EC%A0%95">브라우저 렌더링 과정</a>
 - <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme6.md#39%EC%9E%A5-DOM">DOM</a>
 </details>
+- <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme6.md#40%EC%9E%A5-%EC%9D%B4%EB%B2%A4%ED%8A%B8">이벤트</a>
 
 ## Typescript
 
