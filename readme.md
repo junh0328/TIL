@@ -61,11 +61,11 @@
 
 ### JavaScript
 
-- [ ] 모던 자바스크립트 Deep Dive 1회독 및 정리
+- [x] 모던 자바스크립트 Deep Dive 1회독 및 정리
 
 ### colamap project
 
-- [ ] 콜라맵 프로젝트 작업 마무리 및 배포
+- [x] 콜라맵 프로젝트 작업 마무리 및 배포 [배포는 하지 않게됨..]
 
 ### 빗썸 테크아카데미
 
@@ -83,6 +83,26 @@
 <p>빠르게 자바스크립트 1회독을 9월 중순까지 마치고 알고리즘을 병행하여 취업 준비를 하는 방향으로 설정 🥲 </p>
 
 </details>
+
+</details>
+
+### 9월 목표 및 계획
+
+<details>
+<summary>목차 보기</summary>
+
+### JavaScript
+
+- [ ] 모던 자바스크립트 Deep Dive 1회독 및 정리 (9월 둘째주 마무리)
+- [ ] velog 정리 추가
+
+### Algorithm
+
+- [ ] 기존 알고리즘 강의 복습 및 재시작!
+
+### wellseecoding
+
+- [ ] 새로운 프로젝트 팀 작업 중 10월 배포 예상 (마크업 단계에서 vercel로 선 배포 완료)
 
 </details>
 
@@ -183,8 +203,11 @@
 - <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme5.md#36%EC%9E%A5-%EB%94%94%EC%8A%A4%ED%8A%B8%EB%9F%AD%EC%B2%98%EB%A7%81-%ED%95%A0%EB%8B%B9">디스트럭처링 할당(구조 분해 할당)</a>
 - <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme6.md#38%EC%9E%A5-%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80-%EB%A0%8C%EB%8D%94%EB%A7%81-%EA%B3%BC%EC%A0%95">브라우저 렌더링 과정</a>
 - <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme6.md#39%EC%9E%A5-DOM">DOM</a>
-</details>
 - <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme6.md#40%EC%9E%A5-%EC%9D%B4%EB%B2%A4%ED%8A%B8">이벤트</a>
+- <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme7.md#41%EC%9E%A5-%ED%83%80%EC%9D%B4%EB%A8%B8">타이머</a>
+- <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme7.md#42%EC%9E%A5-%EB%B9%84%EB%8F%99%EA%B8%B0-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D">비동기 프로그래밍</a>
+
+</details>
 
 ## Typescript
 
