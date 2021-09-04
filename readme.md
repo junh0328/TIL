@@ -206,7 +206,8 @@
 - <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme6.md#40%EC%9E%A5-%EC%9D%B4%EB%B2%A4%ED%8A%B8">이벤트</a>
 - <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme7.md#41%EC%9E%A5-%ED%83%80%EC%9D%B4%EB%A8%B8">타이머</a>
 - <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme7.md#42%EC%9E%A5-%EB%B9%84%EB%8F%99%EA%B8%B0-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D">비동기 프로그래밍</a>
-
+- <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme7.md#43%EC%9E%A5-Ajax">Ajax</a>
+- <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme7.md#44%EC%9E%A5-REST-API">REST API</a>
 </details>
 
 ## Typescript
