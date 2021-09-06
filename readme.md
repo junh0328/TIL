@@ -208,6 +208,8 @@
 - <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme7.md#42%EC%9E%A5-%EB%B9%84%EB%8F%99%EA%B8%B0-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D">비동기 프로그래밍</a>
 - <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme7.md#43%EC%9E%A5-Ajax">Ajax</a>
 - <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme7.md#44%EC%9E%A5-REST-API">REST API</a>
+- <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme7.md#45%EC%9E%A5-%ED%94%84%EB%A1%9C%EB%AF%B8%EC%8A%A4">Promise</a>
+- <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme7.md#46%EC%9E%A5-%EC%A0%9C%EB%84%88%EB%A0%88%EC%9D%B4%ED%84%B0%EC%99%80-async/await">제너레이터와 async/await</a>
 </details>
 
 ## Typescript
@@ -280,6 +282,9 @@
 <summary>웰시코딩 프로젝트</summary>
 
 - <a href="https://github.com/MIC-TEAM/wellseecoding-front/pull/4">1. next 프레임워크에서 타입스크립트 기반의 리덕스 사가 보일러 플레이트 작성하기</a>
+- <a href="https://github.com/MIC-TEAM/wellseecoding-front/pull/10">2. 스터디 게시글 마크업 작업</a>
+- <a href="https://github.com/MIC-TEAM/wellseecoding-front/pull/15">3. 함께해요 글쓰기 작업 (POST)</a>
+- <a href="https://github.com/MIC-TEAM/wellseecoding-front/pull/17">4. 홈/함께해요 페이지 다이나믹 라우팅 작업 (GET)</a>
 </details>
 
 ## Algorithm
