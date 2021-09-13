@@ -93,8 +93,8 @@
 
 ### JavaScript
 
-- [ ] 모던 자바스크립트 Deep Dive 1회독 및 정리 (9월 둘째주 마무리)
-- [ ] velog 정리 추가
+- [x] 모던 자바스크립트 Deep Dive 1회독 및 정리 (9월 둘째주 마무리)
+- [x] velog 정리 추가
 
 ### Algorithm
 
@@ -104,9 +104,38 @@
 
 - [ ] 새로운 프로젝트 팀 작업 중 10월 배포 예상 (마크업 단계에서 vercel로 선 배포 완료)
 
+### 당근마켓 MVP 인턴십
+
+<details>
+<summary>결과보기</summary>
+
+### 🔥합격
+
+<img width="400" src="./images/2.jpg" alt="🔥합격"/>
+
+<br/>
+
+내 나름대로는 질문에 답을 잘했다고 생각했지만, 멘토님의 질문에 대한 나의 대답에 경험적인 부분과 기술적인 부분이 모두 부족한 것으로 보인다.
+
+더 많은 경험을 하는 것도 좋지만, 취준인 만큼 기존의 지식들도 잊지 않고 복습하는 방향으로 결정
+
+자바스크립트 deep dive 1회독을 완료했으므로, 이를 바탕으로 velog 정리 및 알고리즘 공부 시작!
+
+velog에 deep dive에 대한 정리와 알고리즘 강의 1회독이 완료되는 대로 복습 및 본격 취준 start 🔥
+
+</details>
+
 </details>
 
 ## React (+ typescript)
+
+### Webpack
+
+<details>
+
+[웹팩](https://github.com/junh0328/CAPATIN_WEBPACK)
+
+</details>
 
 ### React 개념
 
@@ -210,6 +239,9 @@
 - <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme7.md#44%EC%9E%A5-REST-API">REST API</a>
 - <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme7.md#45%EC%9E%A5-%ED%94%84%EB%A1%9C%EB%AF%B8%EC%8A%A4">Promise</a>
 - <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme7.md#46%EC%9E%A5-%EC%A0%9C%EB%84%88%EB%A0%88%EC%9D%B4%ED%84%B0%EC%99%80-async/await">제너레이터와 async/await</a>
+- <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme8.md#47%EC%9E%A5-%EC%97%90%EB%9F%AC%EC%B2%98%EB%A6%AC">에러처리</a>
+- <a href="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme8.md#48%EC%9E%A5-%EB%AA%A8%EB%93%88">모듈</a>
+
 </details>
 
 ## Typescript
@@ -285,6 +317,7 @@
 - <a href="https://github.com/MIC-TEAM/wellseecoding-front/pull/10">2. 스터디 게시글 마크업 작업</a>
 - <a href="https://github.com/MIC-TEAM/wellseecoding-front/pull/15">3. 함께해요 글쓰기 작업 (POST)</a>
 - <a href="https://github.com/MIC-TEAM/wellseecoding-front/pull/17">4. 홈/함께해요 페이지 다이나믹 라우팅 작업 (GET)</a>
+- <a href="https://github.com/MIC-TEAM/wellseecoding-front/pull/19">5. 변경사항 수정 및 함께해요 페이지 서버 데이터 적용 (GET/POST) </a>
 </details>
 
 ## Algorithm
