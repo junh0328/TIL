@@ -114,6 +114,7 @@
 <img width="400" src="./images/2.jpg" alt="🔥합격"/>
 
 <br/>
+<br/>
 
 내 나름대로는 질문에 답을 잘했다고 생각했지만, 멘토님의 질문에 대한 나의 대답에 경험적인 부분과 기술적인 부분이 모두 부족한 것으로 보인다.
 
@@ -312,6 +313,10 @@ velog에 deep dive에 대한 정리와 알고리즘 강의 1회독이 완료되�
 
 <details>
 <summary>웰시코딩 프로젝트</summary>
+
+[프로젝트 소개 보기](https://github.com/MIC-TEAM/wellseecoding-front)
+
+<b>21.08 ~ 진행중</b>
 
 - <a href="https://github.com/MIC-TEAM/wellseecoding-front/pull/4">1. next 프레임워크에서 타입스크립트 기반의 리덕스 사가 보일러 플레이트 작성하기</a>
 - <a href="https://github.com/MIC-TEAM/wellseecoding-front/pull/10">2. 스터디 게시글 마크업 작업</a>
