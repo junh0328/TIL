@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .inner {
+      background-color: salmon;
+      width: 300px;
+      height: 150px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>
+    Hello HTML!
+  </h1>
+  <button type="button" class="btn">index2로 가기</button>
+  <div class="outer">
+    <div class="inner">1</div>
+    <div class="inner">2</div>
+    <div class="inner">3</div>
+  </div>
+  <script>
+    document.querySelector('.btn').addEventListener('click', () => {
+      location.href=`http://127.0.0.1:5500/csr/index2.html`
+    })
+
+    const $outer = document.querySelector('.outer');
+    console.log($outer.children)
+
+    $outer.addEventListener('click', ()=> {
+      $outer.parentNode.removeChild($outer)
+    })
+
+    // document.getElementById("remove").onclick = function() {
+    // var node = document.getElementById("register");
+    // node.parentNode.removeChild(node);
+
+
+
+    // $inner.addEventListener('click', (e) => {
+    //   console.log(e.target)
+    //   // $outer.removeChild($inner)
+    // })
+
+    
+
+  </script>
+</body>
+</html>
