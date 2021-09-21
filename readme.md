@@ -389,9 +389,9 @@ velog에 deep dive에 대한 정리와 알고리즘 강의 1회독이 완료되�
 
 1. <a href="https://github.com/junh0328/TIL/issues/6">자리수의 합</a>
 2. <a href="https://github.com/junh0328/TIL/issues/6">뒤집은 소수</a>
-3. <a>멘토링</a>
-4. <a>졸업선물</a>
-5. <a>K번째 큰 수</a>
+3. <a href="https://github.com/junh0328/TIL/issues/7">멘토링</a>
+4. <a href="https://github.com/junh0328/TIL/issues/7">졸업선물</a>
+5. <a href="https://github.com/junh0328/TIL/issues/7">K번째 큰 수</a>
 
 </details>
 
