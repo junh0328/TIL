@@ -1,18 +1,15 @@
-function 공통원소(arr1, arr2) {
-  let answer = [];
-  arr1.sort((a, b) => a - b, 0);
-  arr2.sort((a, b) => a - b, 0);
-  let p1 = (p2 = 0);
-  while (p1 < arr1.length && p2 < arr2.length) {
-    if (arr1[p1] == arr2[p2]) {
-      answer.push(arr1[p1++]);
-      p2++;
-    } else if (arr1[p1] < arr2[p2]) p1++;
-    else p2++;
+function 최대매출(k, arr) {
+  let answer = 0;
+  let sum = 0;
+
+  for (let i = 0; i < k; i++) sum += arr[i];
+  answer = sum;
+  for (let i = k; i < arr.length; i++) {
+    sum += arr[i] - arr[i - k];
+    answer = Math.max(answer, sum);
   }
+  console.log(answer);
   return answer;
 }
 
-let a = [1, 3, 9, 5, 2];
-let b = [3, 2, 5, 7, 8];
-console.log(공통원소(a, b));
+최대매출(3, [12, 15, 11, 20, 25, 10, 20, 19, 13, 15]);

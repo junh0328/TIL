@@ -400,14 +400,14 @@ velog에 deep dive에 대한 정리와 알고리즘 강의 1회독이 완료되�
 <details>
 <summary>목차 보기</summary>
 
-1. <a href="https://github.com/junh0328/TIL/issues/9">두 배열 합치기</a>
-2. <a href="https://github.com/junh0328/TIL/issues/9">공통원소 구하기</a>
-3. <a href="">연속부분수열 1</a>
-4. <a href="">연속부분수열 2</a>
-5. <a href="">최대 매출</a>
-6. <a href="">학급 회장(해쉬)</a>
-7. <a href="">아나그램</a>
-8. <a href="">모든 아나그램</a>
+1. <a href="https://github.com/junh0328/TIL/issues/9">두 배열 합치기(투 포인터)🔥</a>
+2. <a href="https://github.com/junh0328/TIL/issues/9">공통원소 구하기(투 포인터)🔥</a>
+3. <a href="https://github.com/junh0328/TIL/issues/10">연속부분수열 1(투 포인터)🔥</a>
+4. <a href="https://github.com/junh0328/TIL/issues/10">연속부분수열 2(투 포인터)🔥</a>
+5. <a href="https://github.com/junh0328/TIL/issues/11">최대 매출(슬라이딩 윈도우)🔥</a>
+6. <a href="https://github.com/junh0328/TIL/issues/11">학급 회장(해쉬)</a>
+7. <a href="">아나그램(해쉬)</a>
+8. <a href="">모든 아나그램(해쉬)</a>
 
 </details>
 
