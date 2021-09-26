@@ -406,8 +406,8 @@ velog에 deep dive에 대한 정리와 알고리즘 강의 1회독이 완료되�
 4. <a href="https://github.com/junh0328/TIL/issues/10">연속부분수열 2(투 포인터)🔥</a>
 5. <a href="https://github.com/junh0328/TIL/issues/11">최대 매출(슬라이딩 윈도우)🔥</a>
 6. <a href="https://github.com/junh0328/TIL/issues/11">학급 회장(해쉬)</a>
-7. <a href="">아나그램(해쉬)</a>
-8. <a href="">모든 아나그램(해쉬)</a>
+7. <a href="https://github.com/junh0328/TIL/issues/12">아나그램(해쉬)</a>
+8. <a href="https://github.com/junh0328/TIL/issues/12">모든 아나그램(해쉬)</a>
 
 </details>
 
