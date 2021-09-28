@@ -415,6 +415,15 @@ velog에 deep dive에 대한 정리와 알고리즘 강의 1회독이 완료되�
 
 <details>
 <summary>목차 보기</summary>
+
+1. [올바른 괄호(스택)](https://github.com/junh0328/TIL/issues/14)
+2. [괄호 문자 제거(스택)](https://github.com/junh0328/TIL/issues/14)
+3. [크레인 인형뽑기(스택):카카오]()
+4. [후위식 (postfix)연산(스택)]()
+5. [쇠막대기 (스택)]()
+6. [공주구하기 (큐)]()
+7. [교육과정 설계(큐]()
+)
 </details>
 
 ### 정렬과 그리디, 결정알고리즘(이분검색)
