@@ -1,20 +1,19 @@
 function solution(str) {
   let answer = "";
   let stack = [];
-  let left = "(";
-  let right = ")";
-
   for (let x of str) {
-    stack.push(x);
-    {
-      if (x === right) {
-        while (stack.pop() !== left);
-      }
+    if (!isNaN(x)) stack.push(Number(x));
+    else {
+      let right = stack.pop();
+      let left = stack.pop();
+      if (x === "+") stack.push(left + right);
+      else if (x === "-") stack.push(left - right);
+      else if (x === "*") stack.push(left * right);
+      else stack.push(left / right);
     }
   }
-  answer = stack.join("");
-  console.log(answer);
-  return answer;
+
+  return (answer = stack[0]);
 }
 
-console.log(solution("(A(BC)D)EF(G(H)(IJ)K)LM(N)"));
+console.log(solution("352+*9-"));
