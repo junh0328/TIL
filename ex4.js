@@ -1,20 +1,14 @@
-function solution(n, k) {
-  let queue = [];
-  let answer;
-
-  for (let i = 1; i <= n; i++) {
-    queue.push(i);
+function solution(arr) {
+  let answer = arr;
+  for (let i = 0; i < arr.length - 1; i++) {
+    for (let j = 0; j < arr.length - 1 - i; j++) {
+      if (arr[j + 1] < 0) {
+        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+      }
+    }
   }
 
-  while (queue.length) {
-    // k는 제외할 번호이므로 k 전까지로 반복한다
-    for (let i = 1; i < k; i++) queue.push(queue.shift());
-    queue.shift();
-    if (queue.length === 1) answer = queue.shift();
-  }
-
-  // answer = stack[0]
   return answer;
 }
 
-console.log(solution(8, 3));
+console.log(solution([1, 2, 3, -3, -2, 5, 6, -6]));

@@ -323,6 +323,10 @@ velog에 deep dive에 대한 정리와 알고리즘 강의 1회독이 완료되�
 - <a href="https://github.com/MIC-TEAM/wellseecoding-front/pull/15">3. 함께해요 글쓰기 작업 (POST)</a>
 - <a href="https://github.com/MIC-TEAM/wellseecoding-front/pull/17">4. 홈/함께해요 페이지 다이나믹 라우팅 작업 (GET)</a>
 - <a href="https://github.com/MIC-TEAM/wellseecoding-front/pull/19">5. 변경사항 수정 및 함께해요 페이지 서버 데이터 적용 (GET/POST) </a>
+- <a href="https://github.com/MIC-TEAM/wellseecoding-front/pull/23">6. JWT 복호화/글 수정 및 삭제/단일 포스트 불러오기 (GET/UPDATE/DELETE)</a>
+- <a href="https://github.com/MIC-TEAM/wellseecoding-front/pull/27">7. 검색하기 및 검색 데이터 LocalStorage에 저장 / 랜덤 포스트 불러오기 기능 추가</a>
+- <a href="https://github.com/MIC-TEAM/wellseecoding-front/pull/29">8. 검색하기 관련 백엔드 API와 연동 (GET)</a>
+
 </details>
 
 ## Algorithm
@@ -422,14 +426,27 @@ velog에 deep dive에 대한 정리와 알고리즘 강의 1회독이 완료되�
 4. [후위식 (postfix)연산(스택)](https://github.com/junh0328/TIL/issues/16)
 5. [쇠막대기 (스택)](https://github.com/junh0328/TIL/issues/17)
 6. [공주구하기 (큐)](https://github.com/junh0328/TIL/issues/17)
-7. [교육과정 설계(큐]()
-)
+7. [교육과정 설계(큐](https://github.com/junh0328/TIL/issues/18)
+
 </details>
 
 ### 정렬과 그리디, 결정알고리즘(이분검색)
 
 <details>
 <summary>목차 보기</summary>
+
+1. [선택정렬](https://github.com/junh0328/TIL/issues/19)
+2. [버블정렬](https://github.com/junh0328/TIL/issues/19)
+3. [Special Sort(버블정렬응용)](https://github.com/junh0328/TIL/issues/19)
+4. [삽입정렬]()
+5. [LRU(카카오 캐시 변형: 삽입정렬응용)]()
+6. [장난꾸러기 현수]()
+7. [좌표 정렬]()
+8. [결혼식]()
+9. [이분검색]()
+10. [뮤직비디오(결정알고리즘)]()
+11. [마구간 정하기(결정알고리즘)]()
+
 </details>
 
 ### 재귀함수와 완전탐색(DFS:깊이우선탐색)
