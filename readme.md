@@ -98,11 +98,11 @@
 
 ### Algorithm
 
-- [ ] 기존 알고리즘 강의 복습 및 재시작!
+- [x] 기존 알고리즘 강의 복습 및 재시작!
 
 ### wellseecoding
 
-- [ ] 새로운 프로젝트 팀 작업 중 10월 배포 예상 (마크업 단계에서 vercel로 선 배포 완료)
+- [x] 새로운 프로젝트 팀 작업 중 10월 배포 예상 (마크업 단계에서 vercel로 선 배포 완료)
 
 ### 당근마켓 MVP 인턴십
 
@@ -125,6 +125,37 @@
 velog에 deep dive에 대한 정리와 알고리즘 강의 1회독이 완료되는 대로 복습 및 본격 취준 start 🔥
 
 </details>
+
+</details>
+
+### 10월 목표 및 계획
+
+<details>
+
+<br/>
+
+### 면접 스터디
+
+- [ ] 모던 자바스크립트 deep dive 정리본을 포함한 내용을 바탕으로 면접 스터디 준비 (HTML/CSS/JS/CS/React 관련 면접 예상 질문 정리하기 )
+- [ ] 바닐라 자바스크립트 관련 책(?) 또는 관련 강의 찾아볼 것
+
+### Algorithm
+
+~~기존 알고리즘 강의 10월 중으로 1회독 마무리~~
+
+기본적으로 자료구조에 대한 이해 없이, 문제만 풀다보니 하루 이틀만 지나도 어떤 방식으로 접근하는 지 잊게 되는 것 같았다.
+
+'삽입 정렬', '버블 정렬', '선택 정렬' 을 정말 왜 써야 하는지 이걸 왜 공부해야 하는 지 라는 생각이 자꾸 들어서 너무 하게 싫었다.
+
+따라서 조금 더 근본적으로 자료구조에 대해서 공부하고 강제성을 부여하고자 제로베이스의 '51일 알고리즘'를 등록했다.
+
+이걸로 알고리즘은 '끝' 이라고 할 수는 없겠지만, 모던 자바스크립트 deep dive처럼 자료구조에 대한 이해를 가지고 시작해야겠다는 마음이 들었다.
+
+- [x] [제로베이스 51일 알고리즘 완주반](https://zero-base.co.kr/category_dev_camp/cat_challenge) 등록 (10/12일 시작)
+
+### wellseecoding
+
+- [ ] wellseecoding 서비스 배포!
 
 </details>
 
@@ -332,7 +363,7 @@ velog에 deep dive에 대한 정리와 알고리즘 강의 1회독이 완료되�
 ## Algorithm
 
 <details>
-<summary>목차 보기</summary>
+<summary>인프런 강의 🔥</summary>
 
 ### 기본 문제 풀이
 
@@ -438,7 +469,7 @@ velog에 deep dive에 대한 정리와 알고리즘 강의 1회독이 완료되�
 1. [선택정렬](https://github.com/junh0328/TIL/issues/19)
 2. [버블정렬](https://github.com/junh0328/TIL/issues/19)
 3. [Special Sort(버블정렬응용)](https://github.com/junh0328/TIL/issues/19)
-4. [삽입정렬]()
+4. [삽입정렬](https://github.com/junh0328/TIL/issues/20)
 5. [LRU(카카오 캐시 변형: 삽입정렬응용)]()
 6. [장난꾸러기 현수]()
 7. [좌표 정렬]()
@@ -466,5 +497,12 @@ velog에 deep dive에 대한 정리와 알고리즘 강의 1회독이 완료되�
 <details>
 <summary>목차 보기</summary>
 </details>
+
+</details>
+
+<details>
+<summary>제로베이스 51일 알고리즘 온라인 완주반 🔥</summary>
+
+10/12일 start!
 
 </details>
