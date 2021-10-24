@@ -357,7 +357,8 @@ velog에 deep dive에 대한 정리와 알고리즘 강의 1회독이 완료되�
 - <a href="https://github.com/MIC-TEAM/wellseecoding-front/pull/23">6. JWT 복호화/글 수정 및 삭제/단일 포스트 불러오기 (GET/UPDATE/DELETE)</a>
 - <a href="https://github.com/MIC-TEAM/wellseecoding-front/pull/27">7. 검색하기 및 검색 데이터 LocalStorage에 저장 / 랜덤 포스트 불러오기 기능 추가</a>
 - <a href="https://github.com/MIC-TEAM/wellseecoding-front/pull/29">8. 검색하기 관련 백엔드 API와 연동 (GET)</a>
-
+- <a href="https://github.com/MIC-TEAM/wellseecoding-front/pull/31">9. 댓글 관련 CRUD 작업 (GET/POST/UPDATE/DELETE)</a>
+- <a href="https://github.com/MIC-TEAM/wellseecoding-front/pull/33">10. 메인 페이지 및 관련 로직 구현 (LIKE, UNLIKE, GET, POST, PUT)</a>
 </details>
 
 ## Algorithm
@@ -503,6 +504,18 @@ velog에 deep dive에 대한 정리와 알고리즘 강의 1회독이 완료되�
 <details>
 <summary>제로베이스 51일 알고리즘 온라인 완주반 🔥</summary>
 
-10/12일 start!
+**10/12일 start!**
+
+- [51일 완주반 day01](https://github.com/junh0328/TIL/issues/22)
+- [51일 완주반 day02](https://github.com/junh0328/TIL/issues/23)
+- [51일 완주반 day03](https://github.com/junh0328/TIL/issues/24)
+- [51일 완주반 day04](https://github.com/junh0328/TIL/issues/25)
+- [51일 완주반 day05](https://github.com/junh0328/TIL/issues/26)
+- [51일 완주반 day06](https://github.com/junh0328/TIL/issues/27)
+- [51일 완주반 day07](https://github.com/junh0328/TIL/issues/28)
+- [51일 완주반 day08](https://github.com/junh0328/TIL/issues/29)
+- [51일 완주반 day09](https://github.com/junh0328/TIL/issues/30)
+- [51일 완주반 day10](https://github.com/junh0328/TIL/issues/32)
+- [51일 완주반 day11](https://github.com/junh0328/TIL/issues/33)
 
 </details>
